@@ -1,0 +1,114 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-row hidden-sm-down">
+    
+  
+
+    <button class="navbar-toggler" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isCollapsed" aria-label="Toggle navigation" (click)="toggleArial()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div [ngClass]="toggleClass" id="navbarSupportedContent">
+
+        <ul></ul>
+      <ul class="navbar-nav mr-3 my-2 my-lg-0"> 
+
+          <button class="btn btn-info mx-2" type="button"   routerLink='/dashboarduser/loans' (click)="toggleArial()">
+              <i class="fas fa-user-friends"></i>
+           Loans
+            </button>
+          
+
+
+      <li></li>
+   
+  
+
+          <button class="btn btn-secondary mx-2" type="button"  routerLink='/dashboarduser/revenue' (click)="toggleArial()">
+            <i class="fas fa-coins"></i>
+           Revenues
+          </button>
+          <button class="btn btn-danger mx-2" type="button"  routerLink='/dashboarduser/clients' (click)="toggleArial()">
+              <i class="fas fa-users-cog"></i>
+            Customers
+            </button>
+  
+          <li></li>
+          <li></li>
+         
+      <li></li>
+  
+  
+    
+    <li></li>
+  </ul>
+     
+  <ul></ul>
+  
+  <ul></ul>
+  
+ 
+  <ul class="navbar-nav mr-3 my-2 my-lg-0" > 
+    
+  <li></li>
+      <!-- <button class="btn btn-primary mx-2" type="button"  routerLink='/dashboarduser/post' (click)="toggleArial()">
+        <i class="fas fa-business-time"></i>
+         Post Transaction
+        </button> -->
+        <button class="btn btn-info mx-2" type="button" routerLink="/dashboarduser/post_trn2"  (click)="toggleArial()">
+          <i class="fas fa-coins"></i>
+          Deposit/Withdrawal
+        </button>
+
+        <button class="btn btn-info mx-2" type="button" routerLink="/dashboarduser/viewsecrete"  (click)="toggleArial()">
+          <i class="fas fa-server"></i>
+        Secrete PIN
+        </button>
+  <li></li>
+  
+  </ul>
+ <ul></ul>
+
+  <ul class="navbar-nav mr-2 my-2 my-lg-0">
+    <button class="btn btn-success mx-2" type="button"  routerLink='/dashboarduser/stage' (click)="toggleArial()">
+      <i class="fas fa-air-freshener"></i>
+      Register Stage
+    </button>
+      <button class="btn btn-warning mx-2" type="button"  routerLink='/dashboarduser/enroll' (click)="toggleArial()">
+          <i class="fas fa-motorcycle" ></i>
+          Enroll Customers
+        </button>
+
+  
+  </ul>
+  
+ 
+  
+ 
+
+  <!-- <ul></ul>
+  
+  <ul></ul> -->
+  <ul class="navbar-nav mr-2 my-2 my-lg-0"> 
+    
+
+  <ul class="navbar-nav mr-2 my-2 my-lg-0">
+   
+  </ul>
+
+   <ul></ul>
+
+  <button class="btn btn-info"  routerLink='/authpage/loginpage'  (click)=" logMeout()" (click)="toggleArial()"> <i class="fas fa-sign-out-alt text-light mr-1"></i>LogOut</button>
+
+ 
+  <li></li>
+  <li></li>
+  
+  </ul>
+
+
+    </div>
+  </nav>
+
+  
+

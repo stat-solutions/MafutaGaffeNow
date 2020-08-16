@@ -1,0 +1,66 @@
+
+  <div class="jumbotron jumbotron-fluid shadow-lg"  style="background:transparent !important">
+
+    <div class="row">
+            <div class="col-12">
+
+ <div class="card-header ">
+  <h4 class="text-info text-center"> SECRET PIN</h4>
+    </div>
+      <div class="card-body">
+
+                               
+        <form [formGroup]="userForm" (ngSubmit)="secretPin()" >                               
+
+            <div class="form-group">  
+                <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-success' : ''">Number Plate:<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
+              
+                <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="SELECT Number Plate" >
+                <!-- numberPlates: NumberPlates[]; -->
+                <datalist id="number_plate">
+                    <option *ngFor="let item of numberPlates">{{item.customers_number_plate}}</option>
+                  </datalist>                                                 
+              
+               <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.required">The number plate is required</div>
+              
+               <div class="text-warning col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.minlength">The number plate should have a minimum of 8 characters</div>
+              
+               <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.maxLength">The number plate should have a maxmum of 8 characters</div>
+            </div>   
+            
+            <div class="form-group">  
+                <label class="text-light bg-info" >PIN:<span class="badge-heading">{{thisPin}}</span></label>
+              
+               
+            </div>   
+
+    <div class="row d-flex flex-row">
+            <div class="col-4">
+                    <div class="form-group"> 
+                            <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">SUBMIT</button>
+                            <ngx-spinner
+                            class="bg-warning bg-success"
+                            size="medium"
+                        
+                            type="ball-scale-multiple" >
+                              <p class="text-light">Loading...</p>
+                            </ngx-spinner> 
+                        
+                          </div>
+                          <ngx-alerts></ngx-alerts>
+            </div>
+        
+            </div>
+
+                                    </form>
+     
+                              
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                            The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
+                            </div>
+</div>
+       
+</div>
+   
+    </div>

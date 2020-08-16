@@ -1,0 +1,60 @@
+<!-- <div class="container  my-4  d-flex flex-row justify-content-center "> -->
+<div  class="jumbotron jumbotron-fluid  mx-1">
+    
+  <form [formGroup]="userForm" > 
+
+          <div class="form-group">  
+              <label for="start_date" [ngClass]="fval.start_date.valid ? 'text-success' : ''">DATE RANGE:<i  *ngIf="fval.start_date.valid" class="material-icons">check_circle</i></label>
+            <div class=" d-flex flex-row">
+              <input type="text"
+                class="form-control"
+                formControlName="start_date"
+                #daterangepicker="bsDaterangepicker"
+                bsDaterangepicker
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true }"
+                placement="bottom" >
+                                         
+              <button class="btn btn-success" (click)="daterangepicker.toggle()" [attr.aria-expanded]="daterangepicker.isOpen" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+              <button type="submit" class="btn btn-primary" (click)='getTheRevenueDetails()'>Submit</button>
+
+             <div class="text-danger col" *ngIf="(fval.start_date.touched||fval.start_date.dirty)  && fval.start_date.errors?.required">Date range is required</div> 
+             </div>    </div>                                             
+  </form>
+</div>
+<div class="table-responsive jumbotron jumbotron-fluid">
+  <table class="table table-striped  thead-dark table-hover table-sm"  style="background:transparent !important">
+      <thead >
+       <tr class="text-info">
+          <th>#</th>
+          <th>NAME</th>
+          <th >NUMBER PLATE</th>
+          <th >AMOUNT BORROWED</th>
+          <th >INTEREST PAID</th>
+          <th >COMMISSION EARNED</th>
+          <th >DATE PAID</th>
+       </tr>
+       </thead>
+      <tbody>
+     
+       <tr *ngFor="let loans of revenueDetails; let i=index;let odd=odd;let first=first;let last=last" 
+       [class.text-secondary]="odd"
+        [class.text-success]="!odd" 
+     
+          [class.bg-primary]="first||last" 
+          [class.text-light]="first||last" 
+         >
+      <td>{{ loans.interest_payments_id}}</td>
+       <td>{{ loans.customers_name }}</td>
+        <td>{{ loans.customers_number_plate}}</td>
+         <td>{{ loans.loan_amount_taken|number}}</td>                       
+          <td>{{ loans.interest_amount_paid |number}}</td>
+          <td>{{ loans.commission_amount|number }}</td>
+          <td>{{ loans.interest_date_paid}}</td>
+             </tr>
+         
+      </tbody>
+      <br/>
+       </table>
+      </div>
+
+<!-- </div> -->

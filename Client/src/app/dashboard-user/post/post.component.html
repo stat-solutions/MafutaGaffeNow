@@ -1,0 +1,101 @@
+
+  <div class="container my-3">
+
+        <div class="row">
+                <div class="col-12">
+
+   <div class="card">
+     <div class="card-header ">
+      <h4 class="text-info text-center">  Post Transaction</h4>
+        </div>
+          <div class="card-body">
+  <div class="row">
+    <div class="col">
+                                   
+            <form [formGroup]="userForm" (ngSubmit)="postTxn()" >                               
+ <table class="table table-condensed table-borderless" >
+  <tbody>
+ <tr>
+<td ><h4><span class="badge badge-pill badge-info">
+
+TRANSACTION TYPE:</span></h4></td>
+ <td> 
+     <div class="form-group">    
+<input type="text"  list="txn_typek"  formControlName="txn_type" class="form-control"  [ngClass]=" { 'is-invalid': (fval.txn_type.touched||fval.txn_type.dirty) && fval.txn_type.errors }" autocomplete="off" placeholder="Txn Type"><i  *ngIf="fval.txn_type.valid" class="material-icons">check_circle</i>
+
+
+
+    <datalist id="txn_typek">
+        <option>DEPOSIT</option>
+        <option>WITHDRAWAL</option>
+      </datalist>
+
+<div class="text-danger col" *ngIf="(fval.txn_type.touched||fval.txn_type.dirty)  && fval.txn_type.errors?.required">The Txn Type is required</div>
+
+<div class="text-danger col" *ngIf="(fval.txn_type.touched||fval.txn_type.dirty)  && fval.txn_type.errors?.belongTotxn_types">Please select a valid Txn Type</div>
+
+
+</div>  </td> </tr>
+                                          
+ <tr>
+  <td > 
+      <h4><span class="badge badge-pill badge-success">AMOUNT:</span></h4></td>
+ <td> 
+        <div class="form-group">
+           
+         
+               
+                <input id="txn_amount" formControlName="txn_amount" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.txn_amount.touched||fval.txn_amount.dirty) && fval.txn_amount.errors }" placeholder="Txn Amount" autocomplete="off"/><i  *ngIf="fval.txn_amount.valid" class="material-icons">check_circle</i>
+            
+            <div class="text-danger col" *ngIf="(fval.txn_amount.touched||fval.txn_amount.dirty)  && fval.txn_amount.errors?.required">The txn amount is required</div>
+            <div class="text-danger col" *ngIf="(fval.txn_amount.touched||fval.txn_amount.dirty)  && fval.txn_amount.errors?.hasNumber">The txn amount should be in digits/numbers</div> 
+                    <!-- <div class="text-danger col" *ngIf="(fval.txn_amount.touched||fval.txn_amount.dirty)  && fval.txn_amount.errors?.maxlength">The txn amount should not exceed 10 digits</div>
+                    <div class="text-danger col" *ngIf="(fval.txn_amount.touched||fval.txn_amount.dirty)  && fval.txn_amount.errors?.minlength">The txn amount  should have atleast 10 digits</div> -->
+            </div>    
+ </td></tr>
+</tbody>
+</table>                                        
+
+        <div class="row d-flex flex-row">
+                <div class="col-4">
+                        <div class="form-group"> 
+                                <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">SAVE</button>
+                                <ngx-spinner
+                                class="bg-warning bg-success"
+                                size="medium"
+                            
+                                type="ball-scale-multiple" >
+                                  <p class="text-light">Loading...</p>
+                                </ngx-spinner> 
+                            
+                              </div>
+                              <ngx-alerts></ngx-alerts>
+                </div>
+                <div class="col-5"></div>
+                <div class="col-3 d-flex flex-row justify-content-start mr-auto">
+                  <div class="form-group"> 
+                    <button  type='button' class="btn btn-info mr-5"(click)='revert()' >CANCEL</button>
+                  </div>
+                </div>  
+                </div>
+
+                                        
+                                        </form>
+                                  </div>
+
+                                  </div>
+                                  
+                              
+                                  
+                                  
+                                </div>
+                                <div class="card-footer text-muted text-center">
+                                The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
+                                </div>
+                              </div>
+    </div>
+           
+</div>
+       
+        </div>
+ 

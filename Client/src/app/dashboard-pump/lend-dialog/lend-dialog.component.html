@@ -1,0 +1,20 @@
+
+
+
+
+      <div class="modal-header bg-success text-light">
+        <h4 class="modal-title pull-right"> {{ title }} </h4>
+       
+    </div>
+
+    <div class="modal-body bg-success text-light">
+       <h1 class="my-3 mx-3">Transaction Successful</h1>
+        <div class="my-3 mx-3">Number Plate: {{data.number_plate}}</div>
+        <div class="my-3 mx-3">Transaction Id: {{data.txn_id}}</div>
+        <div class="my-3 mx-3">Borrowed: {{data.amount_to_borrow|number}}</div>
+        <div class="my-3 mx-3">Amount Due: {{data.amount_due|number}}</div>
+       <button type="button" class="btn btn-info my-3 mx-3" (click)="modalRef.hide()">
+            <span aria-hidden="true" class="text-light">OK</span>
+          </button>
+    </div>
+ 

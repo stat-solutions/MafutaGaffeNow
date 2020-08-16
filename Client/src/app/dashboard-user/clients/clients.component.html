@@ -1,0 +1,49 @@
+
+
+<div class="jumbotron jumbotron-fluid mx-1">
+
+     <div class="card-header ">
+    <h4 class="text-info text-center">CLIENTS</h4>
+</div>
+
+
+  <div class="jumbotron jumbotron-fluid table-responsive">
+        <table class="table table-striped ">
+    <thead >
+     <tr class="text-info">
+        <th >Edit</th>
+      <th>#</th>
+         <th>Name</th>
+      <th >Phone </th>
+      <th >Number Plate</th>
+     <th >Stage</th>
+     <th >Chair Name</th>
+     <th >Chair Number</th>
+     <th >Limit</th>
+
+     </tr>
+     </thead>
+    <tbody>
+
+     <tr *ngFor="let clients of clientDetails;let i of index" class="text-success">
+      <td> <button  class="btn btn-primary mr-5" [routerLink]="['/dashboarduser/editcustomer', clients.customers_name,clients.stage_name,clients.customers_number_plate,clients.customers_phone_number]">Edit</button></td>
+      <td>{{ clients.customers_id }}</td>
+     <td>{{ clients.customers_name }}</td>
+      <td>{{ clients.customers_phone_number}}</td>
+       <td>{{ clients.customers_number_plate }}</td>
+        <td>{{ clients.stage_name }}</td>
+        <td>{{ clients.chair_name }}</td>
+        <td>{{ clients.chair_number }}</td>
+        <td>{{ clients.l_limit|number }}</td>
+
+           </tr>
+    </tbody>
+     </table>
+
+    </div>
+
+
+
+    <div class="card-footer text-muted text-center">
+                            The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
+                            </div>

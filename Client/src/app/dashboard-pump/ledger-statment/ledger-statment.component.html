@@ -1,0 +1,88 @@
+
+<div  class="jumbotron jumbotron-fluid  mx-1">
+
+    <form [formGroup]="userForm" >
+
+      <div class="form-group">
+
+         <label for="selection_options" [ngClass]="fval.selection_options.valid ? 'text-success' : ''">DISPLAY OPTION:<i  *ngIf="fval.selection_options.valid" class="material-icons">check_circle</i></label>
+
+           <input type="text"  list="selection_optionsk"  formControlName="selection_options" class="form-control"  [ngClass]=" { 'is-invalid': (fval.selection_options.touched||fval.selection_options.dirty) && fval.selection_options.errors }" autocomplete="off" placeholder="Select Display Option">
+
+          <datalist id="selection_optionsk">
+           <option >ALL TRANSACTIONS</option>
+           <option >LOAN TRANSACTIONS</option>
+           <option >LOAN PAYMENTS</option>
+           <option >LOAN DISBUREMENTS</option>
+           <option >DEPOSITS AND WITHDRAWS</option>
+           </datalist>
+
+           </div>
+            <div class="form-group">
+                <label for="start_date" [ngClass]="fval.start_date.valid ? 'text-success' : ''">DATE RANGE:<i  *ngIf="fval.start_date.valid" class="material-icons">check_circle</i></label>
+              <div class=" d-flex flex-row">
+                <input type="text"
+                  class="form-control"
+                  formControlName="start_date"
+                  #daterangepicker="bsDaterangepicker"
+                  bsDaterangepicker
+                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true }"
+                  placement="bottom" >
+
+                <button class="btn btn-success" (click)="daterangepicker.toggle()" [attr.aria-expanded]="daterangepicker.isOpen" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-primary" (click)='getTheLedgerDetails()'>Submit</button>
+
+               <div class="text-danger col" *ngIf="(fval.start_date.touched||fval.start_date.dirty)  && fval.start_date.errors?.required">Date range is required</div>
+
+
+
+               </div>    </div>
+               <!-- <div class="form-group">
+
+
+
+
+            </div> -->
+               <!-- <ngx-alerts></ngx-alerts> -->
+
+
+
+    </form>
+<div class="table-responsive jumbotron jumbotron-fluid">
+    <table class="table table-striped  thead-dark table-hover table-sm"  style="background:transparent !important">
+        <thead >
+         <tr class="text-info">
+            <th>#</th>
+            <th>DATE</th>
+            <th >TIME</th>
+            <th >TYPE</th>
+            <th >NUMBER PLATE</th>
+            <th >MONEY IN</th>
+            <th >MONEY OUT</th>
+            <th >BALANCE</th>
+         </tr>
+         </thead>
+        <tbody>
+
+         <tr *ngFor="let loans of ledgerDetails; let i=index;let odd=odd;let first=first;let last=last"
+         [class.text-secondary]="odd"
+          [class.text-success]="!odd"
+
+            [class.bg-primary]="first||last"
+            [class.text-light]="first||last"
+           >
+        <td>{{ loans.id }}</td>
+         <td>{{ loans.trn_date }}</td>
+          <td>{{ loans.trn_time}}</td>
+           <td>{{ loans.trn_type}}</td>
+           <td>{{ loans.number_plate}}</td>
+            <td>{{ loans.debit_amount |number}}</td>
+            <td>{{ loans.credit_amount|number }}</td>
+            <td>{{ loans.running_balance|number}}</td>
+               </tr>
+
+        </tbody>
+        <br/>
+         </table>
+        </div>
+</div>

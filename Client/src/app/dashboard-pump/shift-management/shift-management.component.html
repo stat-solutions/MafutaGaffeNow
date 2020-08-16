@@ -1,0 +1,136 @@
+
+  <div class="container my-3">
+  <div class="row p-2">
+  <div class="col-xs-12">
+                  <!-- card -->
+  <div class=" card jumbotron jumbotron-fluid mx-4 p-1">
+    <div class="card-header p-2 mx-2">
+  <button type="btn" [ngClass]="status ? 'btn-success' : 'btn-danger'" (click)='updateShiftRecords()'>{{actionButton}}</button>
+                                </div>
+     <div class="card-body jumbotron jumbotron-fluid mx-2 p-1">
+
+     <div class="row mx-5" *ngIf='!balanceEnough'>
+        <div class="col"></div>
+        <div class="col">
+        <div class="form-group">
+        <label class="text-danger">{{station}} Petrol Staion Has Zero Balance</label>
+         <div class="text center">
+  <button class="btn btn-primary" routerLink='/dashboardpump/depositwithdraw'>First Deposit</button>
+ </div>
+  </div> 
+ </div>
+ <div class="col"></div>
+ </div> 
+ <div class="table-responsive jumbotron jumbotron-fluid d-flex flex-row justify-content-center">
+<table class="table table-condensed table-borderless " *ngIf='balanceEnough'>
+                                        
+ <tbody>
+ <tr>
+  <td class="text-info ">SHIFT ID:</td>
+    <td> <h4><span class="badge badge-pill badge-info">{{shiftDetails.shift_id}}</span></h4>
+                                              </td>
+                                              
+                                            </tr>
+                                            <tr>
+
+                                                <td class="text-success ">SHIFT STATUS:</td>
+                                                <td>
+                                               
+                                                  <h4><span class="badge badge-pill badge-success">{{shiftDetails.shift_status}}</span></h4>
+                                                </td>
+                                                
+                                              </tr>
+                                              <tr>
+
+                                                  <td class="text-warning ">SHIFT OPEN DATE:</td>
+                                                  <td>
+                                                 
+                                                    <h4><span class="badge badge-pill badge-warning">{{shiftDetails.shift_date}}</span></h4>
+                                                  </td>
+                                                  
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="text-primary ">SHIFT OPEN TIME:</td>
+                                                    <td>
+                                                   
+                                                      <h5><span class="badge badge-pill badge-primary">{{shiftDetails.open_time}}</span></h5>
+                                                    </td>
+                                                    
+                                                  </tr>
+
+                                                  <tr *ngIf="!status">
+
+                                                      <td class="text-primary ">CLOSING TIME:</td>
+                                                      <td>
+                                                     
+                                                        <h5><span class="badge badge-pill badge-primary">{{shiftDetails.close_time}}</span></h5>
+                                                      </td>
+                                                      
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td class="text-secondary ">OPENING BALANCE:</td>
+                                                        <td>
+                                                       
+                                                          <h5><span class="badge badge-pill badge-secondary">{{shiftDetails.shift_opening_bal|number}}</span></h5>
+                                                        </td>
+                                                        
+                                                      </tr>
+                                                      <tr>
+
+                                                          <td class="text-secondary ">{{closingBal}}</td>
+                                                          <td>
+                                                         
+                                                            <h5><span class="badge badge-pill badge-secondary">{{shiftDetails.shift_closing_bal|number}}</span></h5>
+                                                         
+                                                          </td>
+                                                          
+                                                        </tr>
+ <tr>
+ <td class="text-danger ">OPENED BY:</td>
+    <td  class="badge badge-pill badge-danger"> 
+     <!-- <h5><span class="badge badge-pill badge-danger"> -->
+     {{shiftDetails.opened_by}}
+    <!-- </span></h5> -->
+                                                            </td>
+                                                            
+                                                          </tr>
+
+  <tr *ngIf="!status">
+
+                                                              <td class="text-danger ">CLOSED BY:</td>
+                                                              <td>
+                                                             
+                                                                <h5><span class="badge badge-pill badge-danger">{{shiftDetails.closed_by}}</span></h5>
+                                                              </td>
+                                                              
+                                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                  <!-- </div> -->
+
+                                  <!-- </div> -->
+                                  
+                                  <!-- <div class="row">
+                                      <div class="col-6">
+                                           
+                                      </div>
+                                      <div class="col-6">
+                                            
+                                      </div>
+                                  </div> -->
+                                  
+                                  
+                                </div>
+                                <div class="card-footer text-muted text-center">
+                                The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
+                                </div>
+                              </div>
+    </div>
+           
+</div>
+       
+        </div>
+ 
