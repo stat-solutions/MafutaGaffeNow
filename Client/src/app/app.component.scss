@@ -1,3 +1,21 @@
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  padding-right: .35rem;
+  margin-right: .35rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  height: 4.25rem;
+  white-space: nowrap
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover {
+  border: 0px;
+  border-color: transparent;
+  text-decoration: none
+}
 .flux-container {
     height: 100%;
     position: relative;
@@ -8,18 +26,18 @@
     overflow-x: hidden;
     overflow-y:hidden;
   }
-  
+
   .flux-wrapper {
     width: 100%;
     position: relative;
     height:100%;
-  
+
   }
-  
+
   .flux-container[theme-layout="wide"] {
     width: 100%;
   }
-  
+
   .flux-container[theme-layout="box"][device-type="desktop"] {
     width: 1200px;
   }
@@ -29,8 +47,8 @@
   .flux-container[theme-layout="box"][device-type="mobile"] {
     width: 100%;
   }
-  
-  
+
+
   .overlay-box{
     position: absolute;
     background-color: rgba(253, 250, 250, 0.925);
@@ -38,13 +56,12 @@
     bottom: 0;
     top: 0;
     z-index: 1023;
-  
+
     -webkit-transition: width 0.5s linear;
         -moz-transition: width 0.5s linear;
         -o-transition: width 0.5s linear;
         transition: width 0.5s linear;
-  
+
   }
-  
-  
-  
+
+

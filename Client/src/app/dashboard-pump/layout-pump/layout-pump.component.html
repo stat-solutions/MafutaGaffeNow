@@ -1,115 +1,70 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-row hidden-sm-down">
-    <button class="navbar-toggler" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isCollapsed" aria-label="Toggle navigation"(click)="toggleArial()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-  
-    <div [ngClass]="toggleClass" id="navbarSupportedContent">
-
-        <ul></ul>
-      <ul class="navbar-nav mr-3 my-2 my-lg-0"> 
-
-          <!-- <button class="btn btn-info mx-2" type="button"  *ngIf='loggedInAdminUser' routerLink='/dashboarduser/loans'  (click)="toggleArial()">
-              <i class="fas fa-user-friends"></i>
-             View Loans
-            </button>
-           -->
-
-            <button class="btn btn-info mx-2" type="button"  *ngIf='loggedInPumpUser' routerLink="/dashboardpump/lend" (click)="toggleArial()" >
-              <i class="fa fa-credit-card" aria-hidden="true" ></i>
-              Lend
-            </button>
-
-               
-            <!--  -->
-
-
-      <button class="btn btn-info mx-2" type="button"  *ngIf='loggedInPumpUser' routerLink="/dashboardpump/payment"  (click)="toggleArial()">
-        <i class="fas fa-coins"></i>
-        Payment
-      </button>
-
-      <!-- <button class="btn btn-info mx-2" type="button" *ngIf='loggedInPumpUser'  routerLink="/dashboardpump/depositwithdraw"  (click)="toggleArial()">
-        <i class="fas fa-coins"></i>
-        Deposit/Withdrawal
-      </button> -->
-
-      <li></li>
-   
-      
-  
-          <li></li>
-          <li></li>
-         
-      <li></li>
-  
-  
-    
-    <li></li>
-  </ul>
-     
-  <ul></ul>
-  
-  <ul></ul>
-  
- 
-  <ul class="navbar-nav mr-3 my-2 my-lg-0" > 
-    
-
-   
-  <li></li>
- 
-     
-  <li></li>
-  
-  </ul>
- <ul></ul>
-
-  <ul class="navbar-nav mr-2 my-2 my-lg-0">
-
-    <button class="btn btn-danger mx-2" type="button" (click)="toggleArial()" routerLink="/dashboardpump/statement" >
-      <i class="fas fa-file-invoice" ></i>
-     Loan Statement
-    </button>
-  </ul>
-  
- 
-  
- 
-
-  <!-- <ul></ul>
-  
-  <ul></ul> -->
-  <ul class="navbar-nav mr-2 my-2 my-lg-0"> 
-    
-  
-    <button class="btn btn-success mx-2" type="button"   (click)="toggleArial()" routerLink="/dashboardpump/ledgerstatement" >
-      <i class="far fa-address-book"></i>
-      Cash Ledger
-    </button>
-
-    <button class="btn btn-secondary mx-2" type="button"   (click)="toggleArial()" routerLink="/dashboardpump/shiftmanagement" >
-      <i class="far fa-address-book"></i>
-      Shift Management
-    </button>
-
-
-   <ul></ul>
-
-  <button class="btn btn-info"  routerLink='/authpage/loginpage'  (click)=" logMeout()" (click)="toggleArial()" > <i class="fas fa-sign-out-alt text-light mr-1"></i>LogOut</button>
-
-  
-  <li></li>
-  <li></li>
-  
-  </ul>
-
-
+<nav class="navbar navbar-expand-lg bg-dark pt-0 pb-2">
+  <div class="rubai-nav justify-content-end align-self-end">
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1"
+        tooltip="Lend"
+        placement="top"
+        *ngIf="loggedInPumpUser"
+        routerLink="/dashboardpump/lend"
+      >
+        <i class="fa fa-credit-card" aria-hidden="true"></i> Lend
+      </a>
     </div>
-  </nav>
 
-  
-
-
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1"
+        tooltip="Payment"
+        placement="top"
+        *ngIf="loggedInPumpUser"
+        routerLink="/dashboardpump/payment"
+      >
+        <i class="fas fa-coins" aria-hidden="true"></i> Payment</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Loan Statement"
+        placement="top"
+        routerLink="/dashboardpump/statement"
+      >
+        <i class="fas fa-file-invoice" aria-hidden="true"></i>&nbsp;Loan Statement
+      </a>
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Cash Ledger"
+        placement="top"
+        routerLink="/dashboardpump/ledgerstatement"
+      >
+        <i class="fas fa-money-bill" aria-hidden="true"></i>
+        Cash Ledger</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Shift Management"
+        placement="top"
+        routerLink="/dashboardpump/shiftmanagement"
+      >
+        <i class="fas fa-tasks" aria-hidden="true"></i>
+        Shift Management</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Logout"
+        placement="top"
+        routerLink="/authpage/loginpage"
+        (click)="logMeout()"
+      >
+        <i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>

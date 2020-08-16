@@ -1,0 +1,83 @@
+.card-body {
+  height: inherit;
+  min-height: 450px !important;
+  max-height: 520px !important;
+  margin-bottom: 0rem;
+  border-radius: 8px;
+}
+
+button.btn {
+  width: 100% !important;
+  border-radius: 15px;
+}
+
+.text-success {
+  color: #28a745 !important
+}
+
+a.text-success:focus,
+a.text-success:hover {
+  color: #19692c !important
+}
+.btn-info {
+  color: #28a745;
+  background-color: transparent;
+  border-color: #28a745
+}
+  .btn-info:hover, .btn-info:focus {
+    color: #d9dbdd;
+    background-color: #28a745;
+    border-color: #28a745
+  }
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 0 0 .2rem rgba(126, 235, 36, 0.5)
+}
+.btn-info.disabled,
+.btn-info:disabled {
+  color: #83c057e0;
+  background-color: transparent;
+  border-color: #83c057e0
+}
+
+.pointerCursor {
+  cursor: pointer;
+}
+
+
+
+//Media queries
+@media (min-width: 280px) {
+}
+
+
+@media (min-width: 360px) {
+.card-body {
+  width: 330px;
+}
+
+}
+
+
+@media (min-width: 568px) {
+.card-body {
+  width: 345px !important;
+}
+h3{
+  font-size: 20px;
+}
+}
+
+
+@media (min-width: 812px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+
+
+@media (min-width: 1100px) {
+  h3 {
+    font-size: 28px;
+  }
+}
