@@ -4,6 +4,10 @@
   border-top-color: #041324c0 !important;
   box-shadow: none !important;
 }
+.navbar-brand{
+  color: #e5ebf1bb !important;
+}
+
 .dropbtn {
   background-color: transparent;
   padding: 10px;
@@ -64,12 +68,16 @@ a:active {
 
 .rubai-nav {
   display: inline-block;
-  margin-left: .6rem !important;
-  margin-right: .6rem !important;
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+  padding-left: 0;
+  padding-right: 0;
   margin-bottom: 0.5rem;
 }
 .rubai-link {
   display: inline-block;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   color: #e5ebf1bb;
 }
 .rubai-link:focus,
@@ -93,22 +101,22 @@ a:active {
 //media queries
 @media (min-width: 360px) {
   .rubai-nav {
-    margin-left: .9rem !important;
-    margin-right: .8rem !important;
+    margin-left: .6rem !important;
+    margin-right: .6rem !important;
   }
 }
 
 @media (min-width: 375px) {
   .rubai-nav {
-    margin-left: .3rem !important;
-    margin-right: .3rem !important;
+    margin-left: 1.0rem !important;
+    margin-right: 1.0rem !important;
   }
 }
 
 @media (min-width: 400px) {
   .rubai-nav {
-    margin-left: 5.5rem !important;
-    margin-right: 5.4rem !important;
+    margin-left: 1.7rem !important;
+    margin-right: 1.7rem !important;
   }
 }
 
