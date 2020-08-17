@@ -111,12 +111,12 @@ exports.theRevenueDetails = function (data) {
   return new Promise(function (resolve,next) {
 
     var sql = "CALL getTheRevenueFromLoans("+"'"+JSON.stringify(data)+"'"+")";
-  // console.log(sql);
+  console.log(sql);
   dbconnection.query(sql, null, function (error, results, fields) {
     if (error) {
       return next(error);
     } else {
-      console.log(results[0]);
+      // console.log(results[0]);
 
       resolve(results[0]);
     }
