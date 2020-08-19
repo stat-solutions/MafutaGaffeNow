@@ -21,6 +21,7 @@ export class RegisterUserComponent implements OnInit {
   userForm: FormGroup;
   serviceErrors: any = {};
   value: string;
+  fieldType: boolean;
   mySubscription: any;
   myDateValue: Date;
   userRoleInfo: UserRole[];
@@ -123,8 +124,15 @@ export class RegisterUserComponent implements OnInit {
     this.thePetrolSations(event.target.value);
   }
 
+    //toggle visibility of password field
+    toggleFieldType() {
+      this.fieldType = !this.fieldType;
+    }
+
+
+
   userRoleData() {
-    
+
     this.authService.getUserRoles().subscribe(
       data => {
         this.userRoleInfo = data;

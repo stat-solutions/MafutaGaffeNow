@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   posted = false;
   userForm: FormGroup;
   loginStatus: string;
+  fieldType: boolean;
   value: string;
   stationBalanceExits: boolean;
   mySubscription: any;
@@ -89,6 +90,12 @@ export class LoginComponent implements OnInit {
   get fval() {
     return this.userForm.controls;
   }
+
+    //toggle visibility of password field
+    toggleFieldType() {
+      this.fieldType = !this.fieldType;
+    }
+
 
   userRoleData1() {
     this.authService.getUserRoles().subscribe(

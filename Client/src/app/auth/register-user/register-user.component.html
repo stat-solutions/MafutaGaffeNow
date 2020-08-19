@@ -388,15 +388,13 @@
         <div class="form-group text-primary">
           <label
             for="password"
-            [ngClass]="fval.password.valid ? 'text-success' : ''"
-            >PIN<i
-              *ngIf="fval.password.valid"
-              class="material-icons"
+            [ngClass]="fval.password.valid ? 'text-info' : ''"
+            >PIN<i *ngIf="fval.password.valid" class="material-icons"
               >check_circle</i
             ></label
           >
 
-          <div class="input-group mb-2">
+          <div class="input-group mb-0">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <i
@@ -408,7 +406,7 @@
             <input
               id="password"
               formControlName="password"
-              type="password"
+              [type]="fieldType ? 'text' : 'password'"
               class="form-control"
               [ngClass]="{
                 'is-invalid':
@@ -418,9 +416,21 @@
               placeholder="Enter your PIN"
               autocomplete="off"
             />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i
+                  class="fas"
+                  [ngClass]="{
+                    'fa-eye-slash': !fieldType,
+                    'fa-eye': fieldType
+                  }"
+                  (click)="toggleFieldType()"
+                ></i>
+              </span>
+            </div>
           </div>
 
-          <label
+          <div
             class="text-danger col"
             *ngIf="
               (fval.password.touched || fval.password.dirty) &&
@@ -428,9 +438,9 @@
             "
           >
             PIN is Required!
-          </label>
+          </div>
 
-          <label
+          <div
             class="col"
             *ngIf="
               (fval.password.touched || fval.password.dirty) &&
@@ -448,8 +458,8 @@
                 : "check_circle"
             }}</i>
             Minimum of four digits!
-          </label>
-          <label
+          </div>
+          <div
             class="col"
             *ngIf="
               (fval.password.touched || fval.password.dirty) &&
@@ -467,9 +477,9 @@
                 : "check_circle"
             }}</i>
             Maximum four digits allowed!
-          </label>
+          </div>
 
-          <label
+          <div
             class="col"
             *ngIf="
               (fval.password.touched || fval.password.dirty) &&
@@ -489,7 +499,7 @@
                 : "check_circle"
             }}</i>
             Only digits are Allowed!!
-          </label>
+          </div>
         </div>
 
         <div class="d-flex my-2 py-2 mx-auto">
