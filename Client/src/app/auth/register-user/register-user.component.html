@@ -16,7 +16,7 @@
           <label
             for="petrol_station_company"
             [ngClass]="fval.petrol_station_company.valid ? 'text-success' : ''"
-            >The Petrol Station Company<i
+            >Petrol Station Company<i
               *ngIf="fval.petrol_station_company.valid"
               class="material-icons"
               >check_circle</i
@@ -82,7 +82,7 @@
           <label
             for="petrol_station"
             [ngClass]="fval.petrol_station.valid ? 'text-success' : ''"
-            >The Petrol Station<i
+            >Petrol Station<i
               *ngIf="fval.petrol_station.valid"
               class="material-icons"
               >check_circle</i
@@ -415,7 +415,7 @@
                   (fval.password.touched || fval.password.dirty) &&
                   fval.password.errors
               }"
-              placeholder="Password"
+              placeholder="Enter your PIN"
               autocomplete="off"
             />
           </div>
@@ -427,7 +427,7 @@
               fval.password.errors?.required
             "
           >
-            Password is Required!
+            PIN is Required!
           </label>
 
           <label
@@ -447,7 +447,7 @@
                 ? "cancel"
                 : "check_circle"
             }}</i>
-            Minimum of four digits!!!
+            Minimum of four digits!
           </label>
           <label
             class="col"
@@ -466,7 +466,7 @@
                 ? "cancel"
                 : "check_circle"
             }}</i>
-            Maximum four digits allowed!!!
+            Maximum four digits allowed!
           </label>
 
           <label

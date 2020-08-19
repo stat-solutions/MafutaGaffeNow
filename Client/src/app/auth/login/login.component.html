@@ -14,7 +14,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
     </h3>
     <form [formGroup]="userForm" (ngSubmit)="login()">
       <div class="form-group text-primary">
-        <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-success' : ''">Enter Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
+        <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-success' : ''">Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
          <div class="input-group mb-2">
          <div class="input-group-prepend">
           <div class="input-group-text">
@@ -95,7 +95,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
         <label
           for="password"
           [ngClass]="fval.password.valid ? 'text-info' : ''"
-          >Password<i *ngIf="fval.password.valid" class="material-icons"
+          >PIN<i *ngIf="fval.password.valid" class="material-icons"
             >check_circle</i
           ></label
         >
@@ -119,7 +119,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
                 (fval.password.touched || fval.password.dirty) &&
                 fval.password.errors
             }"
-            placeholder="Enter your password"
+            placeholder="Enter your PIN"
             autocomplete="off"
           />
           <div class="input-group-append">
@@ -142,7 +142,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
             fval.password.errors?.required
           "
         >
-          Password is required!
+          PIN is required!
         </div>
       </div>
 

@@ -4,9 +4,6 @@
   border-top-color: #041324c0 !important;
   box-shadow: none !important;
 }
-.navbar-brand{
-  color: #e5ebf1bb !important;
-}
 
 .dropbtn {
   background-color: transparent;
@@ -99,73 +96,93 @@ a:active {
 
 
 //media queries
-@media (min-width: 360px) {
+@media (min-width: 320px) {
+  .rubai-nav {
+    margin-left: .3rem !important;
+    margin-right: .3rem !important;
+  }
+  }
+
+  @media (min-width: 360px) {
+  .rubai-nav {
+    margin-left: .4rem !important;
+    margin-right: .4rem !important;
+  }
+}
+
+@media (min-width: 375px) {
   .rubai-nav {
     margin-left: .6rem !important;
     margin-right: .6rem !important;
   }
 }
 
-@media (min-width: 375px) {
-  .rubai-nav {
-    margin-left: 1.0rem !important;
-    margin-right: 1.0rem !important;
-  }
-}
-
 @media (min-width: 400px) {
   .rubai-nav {
-    margin-left: 1.7rem !important;
-    margin-right: 1.7rem !important;
+    margin-left: 1.4rem !important;
+    margin-right: 1.4rem !important;
+  }
+  .dropbtn {
+      font-size: 14px;
   }
 }
 
 @media (min-width: 440px) {
   .rubai-nav {
-    margin-left: 6.6rem !important;
-    margin-right: 6.6rem !important;
+    margin-left: 1.9rem !important;
+    margin-right: 1.9rem !important;
   }
 }
 
 @media (min-width: 568px) {
   .rubai-nav {
-    margin-left: 10.3rem !important;
-    margin-right: 10.3rem !important;
+    margin-left: 3.8rem !important;
+    margin-right: 3.8rem !important;
   }
 }
 
 @media (min-width: 640px) {
   .rubai-nav {
-    margin-left: 22rem !important;
-    margin-right: 2rem !important;
+    margin-left: 4.5rem !important;
+    margin-right: 4.5rem !important;
+  }
+  .dropbtn {
+    font-size: 16px;
+}
+}
+
+@media (min-width: 660px) {
+  .rubai-nav {
+    margin-left: 4.9rem !important;
+    margin-right: 4.9rem !important;
   }
 }
 
 @media (min-width: 730px) {
   .rubai-nav {
-    margin-left: 27rem !important;
-    margin-right: 2rem !important;
+    margin-left: 7.2rem !important;
+    margin-right: 7.2rem !important;
   }
 }
 
 @media (min-width: 768px) {
   .rubai-nav {
-    margin-left: 29rem !important;
-    margin-right: 2rem !important;
+    margin-left: 8.1rem !important;
+    margin-right: 8.1rem !important;
   }
 }
 
 @media (min-width: 811px) {
   .rubai-nav {
-    margin-left: 32rem !important;
-    margin-right: 2rem !important;
+    margin-left: 9.9rem !important;
+    margin-right: 9.9rem !important;
   }
 }
 
 @media (min-width: 1024px) {
   .rubai-nav {
-    margin-left: 43rem !important;
-    margin-right: 2rem !important;
+    margin-left: 6.5rem !important;
+    margin-right: 6.5rem !important;
   }
 }
 
@@ -173,17 +190,20 @@ a:active {
 }
 
 @media (min-width: 1280px) {
+  .rubai-nav {
+    margin-left: 22rem !important;
+    margin-right: 2rem !important;
+  }
+  .dropbtn {
+    font-size: 17px;
+}
 }
 
 @media (min-width: 1320px) {
-  .rubai-nav {
-    margin-left: 65rem !important;
-    margin-right: 2rem !important;
-  }
 }
 @media (min-width: 1410px) {
   .rubai-nav {
-    margin-left: 70rem !important;
+    margin-left: 53rem !important;
     margin-right: 2rem !important;
   }
 }

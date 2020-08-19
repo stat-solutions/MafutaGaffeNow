@@ -1,13 +1,18 @@
-
 <app-layout-pump></app-layout-pump>
 <router-outlet></router-outlet>
-<div class="jumbotron jumbotron-fluid" style="background:transparent !important">
-        <!-- <div class="container"> -->
-<!-- <div class="container"> -->
-
-        <label class="text-danger text-center mx-5 my-2">
-                <h1 class="text-success text-center"> Running Balance :UGX {{balance|number}}</h1></label>
-<!-- </div> -->
-
-<!-- </div> -->
+<div class="container-fluid mx-auto">
+  <div class="container mt-4 d-flex flex-row justify-content-between align-items-center px-1 shadow-lg">
+    <span class=" mx-sm-2 mx-md-auto px-1">
+      <label class="text-success h5 text-center mx-2 my-2">
+        Running Balance: UGX {{ balance | number }}</label
+      >
+    </span>
+  </div>
+  <!--footer -->
+  <div class="d-flex justify-content-center col-xs-12 col-lg-12 mt-4 pt-1 mx-auto">
+    <div class="small text-center text-info">
+      Copyright &copy; 2020 - Fika Salama
+    </div>
+  </div>
+  <!--/ footer -->
 </div>
