@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 // connect to the db
 dbConnectionInfo = {
-  host: "localhost",
+  host: "94.176.238.72",
   port: "3306",
   user: "root",
   password: "PRINCE?;=2020",

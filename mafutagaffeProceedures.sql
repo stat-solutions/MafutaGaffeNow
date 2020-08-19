@@ -1446,9 +1446,84 @@ DELIMITER ##
 
 CREATE PROCEDURE getTheRevenueFromLoans(IN data JSON) READS SQL DATA BEGIN
 
-SELECT i.interest_id,c.customers_name,c.customers_number_plate,l.loan_amount_taken,i. interest_paid,cm.commission_amount from interest i INNER JOIN commission cm ON cm.fk_interest_id_commision=ip.interest_id  INNER JOIN 
+DROP TABLE IF EXISTS revenueCommision;
+
+CREATE TEMPORARY TABLE revenueCommision(
+  id INT NOT NULL AUTO_INCREMENT ,
+  name VARCHAR(200),
+  number_plate VARCHAR(20),
+  amount_taken   VARCHAR(100),
+  interest_paid DOUBLE,
+  commision_amount DOUBLE,
+  PRIMARY KEY(id)
+) ENGINE=innoDB
+AUTO_INCREMENT=1
+DEFAULT CHARACTER SET=utf8;
+
+
+DROP TABLE IF EXISTS revenueCommision1;
+
+CREATE TEMPORARY TABLE revenueCommision1(
+  id INT NOT NULL AUTO_INCREMENT ,
+  name VARCHAR(200),
+  number_plate VARCHAR(20),
+  amount_taken   VARCHAR(100),
+  interest_paid DOUBLE,
+  commision_amount DOUBLE,
+  PRIMARY KEY(id)
+) ENGINE=innoDB
+AUTO_INCREMENT=1
+DEFAULT CHARACTER SET=utf8;
+
+
+
+INSERT INTO revenueCommision(
+  id  ,
+  name ,
+  number_plate,
+  amount_taken   ,
+  interest_paid ,
+  commision_amount 
+
+)
+
+SELECT NULL, c.customers_name,c.customers_number_plate,l.loan_amount_taken,i. interest_paid,cm.commission_amount from interest i INNER JOIN commission cm ON cm.fk_interest_id_commision=i.interest_id  INNER JOIN 
 loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN customers c ON l. fk_customers_id_loans=c.customers_id INNER JOIN users u ON c.fk_user_id_created_by_customers=u.users_id INNER JOIN petrol_station ps ON u.fk_petrol_station_id_users=ps.petrol_station_id  WHERE i.interest_paid>0 AND ps.petrol_station_id =JSON_UNQUOTE(
     JSON_EXTRACT(data, '$.user_station'));
+
+
+    INSERT INTO revenueCommision1(
+  id  ,
+  name ,
+  number_plate,
+  amount_taken   ,
+  interest_paid ,
+  commision_amount 
+
+) SELECT 0,'TOTAL',NULL,SUM(amount_taken),SUM(interest_paid),SUM(commision_amount) FROM revenueCommision;
+
+ INSERT INTO revenueCommision1(
+  id  ,
+  name ,
+  number_plate,
+  amount_taken   ,
+  interest_paid ,
+  commision_amount 
+
+) SELECT id+1,name,number_plate,amount_taken,interest_paid,commision_amount FROM revenueCommision;
+
+
+    INSERT INTO revenueCommision1(
+  id  ,
+  name ,
+  number_plate,
+  amount_taken   ,
+  interest_paid ,
+  commision_amount 
+
+) SELECT COUNT(id)+2,'TOTAL',NULL,SUM(amount_taken),SUM(interest_paid),SUM(commision_amount) FROM revenueCommision;
+
+SELECT * FROM revenueCommision1;
 
 
 END ##
