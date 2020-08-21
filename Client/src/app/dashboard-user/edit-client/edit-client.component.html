@@ -1,118 +1,170 @@
-
-<div class="container d-flex justify-content-center">
-
-
-  <div class="card mx-3 my-5 col-xs-12 col-lg-6 shadow-lg ">
-    <h1 class="d-flex flex-row justify-content-center mt-3 mx-auto"><i class="fas fa-motorcycle text-danger mx-auto" style="size: 50px"></i></h1>
-    <div class="card-body">
-        <h5 class="card-title  bg-primary text-light d-flex justify-content-center"><span>Register Customer</span></h5>
-
-
-
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
-
-
-
-              <div class="form-group">
-                      <label for="customer_name" [ngClass]="fval.customer_name.valid ? 'text-primary' : ''">Customer Name:<i  *ngIf="fval.customer_name.valid" class="material-icons">check_circle</i></label>
-              <input type="text" #custome  formControlName="customer_name" class="form-control"  [ngClass]=" { 'is-invalid': (fval.customer_name.touched||fval.customer_name.dirty) && fval.customer_name.errors }" autocomplete="off" placeholder="Enter Customer Name">
-
-
-              <div class="text-danger col" *ngIf="(fval.customer_name.touched||fval.customer_name.dirty)  && fval.customer_name.errors?.required">The customer_name is required</div>
-              <div class="text-danger col" *ngIf="(fval.customer_name.touched||fval.customer_name.dirty)  && fval.customer_name.errors?.belongTocustomer_names">Please select a valid customer_name</div>
+<div
+  class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 pt-md-0 pt-0 pb-3 shadow-lg col-xs-12 col-lg-8"
+>
+  <div class="jumbotron-fluid">
+    <div class="d-flex justify-content-center mt-2 mb-3 pt-0 pb-0">
+      <h2 class="d-flex flex-row justify-content-center mt-1 mb-0">
+        <i class="fas fa-users text-info mx-auto"></i>
+      </h2>
+    </div>
+    <div class="card-body mt-0 pt-2 mb-0 pb-2 shadow-lg">
+      <h3 class="text-info d-flex justify-content-center mt-2 pt-1 mb-3">
+          Update Client
+      </h3>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group text-primary">
+          <label for="customer_name" [ngClass]="fval.customer_name.valid ? 'text-info' : ''">Client Name<i  *ngIf="fval.customer_name.valid" class="material-icons">check_circle</i></label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i
+                  class="fas fa-user-alt text-primary mx-auto"
+                  style="size: 50px;"
+                >
+                </i>
               </div>
+            </div>
+            <input type="text"  formControlName="customer_name" class="form-control"  [ngClass]=" { 'is-invalid': (fval.customer_name.touched||fval.customer_name.dirty) && fval.customer_name.errors }" autocomplete="off" placeholder="Enter Customer Name">
+          </div>
+          <div class="text-danger col" *ngIf="(fval.customer_name.touched||fval.customer_name.dirty)  && fval.customer_name.errors?.required">The client name is required!</div>
+          <div class="text-danger col" *ngIf="(fval.customer_name.touched||fval.customer_name.dirty)  && fval.customer_name.errors?.belongTocustomer_names">Please select a valid client name!</div>
+</div>
 
-
-
-              <div class="form-group">
-
-                      <label for="stage_name" [ngClass]="fval.stage_name.valid ? 'text-primary' : ''">Stage Name:<i  *ngIf="fval.stage_name.valid" class="material-icons">check_circle</i></label>
-
-              <input type="text"  list="stage_namek"  formControlName="stage_name" class="form-control"  [ngClass]=" { 'is-invalid': (fval.stage_name.touched||fval.stage_name.dirty) && fval.stage_name.errors }" autocomplete="off" placeholder="Select The Stage">
-
-
-
-                  <datalist id="stage_namek">
-                      <option *ngFor="let item3k of theStageNames">{{item3k.stage_name}}</option>
-                    </datalist>
-
-              <div class="text-danger col" *ngIf="(fval.stage_name.touched||fval.stage_name.dirty)  && fval.stage_name.errors?.required">The Stage name is required</div>
-
-              <div class="text-danger col" *ngIf="(fval.stage_name.touched||fval.stage_name.dirty)  && fval.stage_name.errors?.belongTostage_names">Please select a valid stage name</div>
-
-              <!-- <ngx-alerts></ngx-alerts> -->
-
+        <div class="form-group text-primary">
+          <label for="stage_name" [ngClass]="fval.stage_name.valid ? 'text-info' : ''">Stage Name<i  *ngIf="fval.stage_name.valid" class="material-icons">check_circle</i></label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i
+                  class="fas fa-tag text-primary mx-auto"
+                  style="size: 50px;"
+                >
+                </i>
               </div>
+            </div>
+            <input type="text"  list="stage_namek"  formControlName="stage_name" class="form-control"  [ngClass]=" { 'is-invalid': (fval.stage_name.touched||fval.stage_name.dirty) && fval.stage_name.errors }" autocomplete="off" placeholder="Select The Stage">
 
-<div class="form-group">
-  <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-primary' : ''">Enter Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
-<div class="input-group mb-2">
-  <div class="input-group-prepend">
-    <div class="input-group-text"><i class="fas fa-phone text-danger mx-auto" style="size: 50px"></i></div>
+            <datalist id="stage_namek">
+              <option *ngFor="let item3k of theStageNames">{{item3k.stage_name}}</option>
+            </datalist>
+</div>
+<div class="text-danger col" *ngIf="(fval.stage_name.touched||fval.stage_name.dirty)  && fval.stage_name.errors?.required">The Stage name is required!</div>
+
+<div class="text-danger col" *ngIf="(fval.stage_name.touched||fval.stage_name.dirty)  && fval.stage_name.errors?.belongTostage_names">Please select a valid stage name!</div>
+</div>
+
+<div class="form-group text-primary">
+  <label
+    for="main_contact_number"
+    [ngClass]="fval.main_contact_number.valid ? 'text-info' : ''"
+    >Mobile Number<i
+      *ngIf="fval.main_contact_number.valid"
+      class="material-icons"
+      >check_circle</i
+    ></label
+  >
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i
+          class="fas fa-phone text-primary mx-auto"
+          style="size: 50px;"
+        ></i>
+      </div>
+    </div>
+    <input
+      id="main_contact_number"
+      formControlName="main_contact_number"
+      type="text"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          (fval.main_contact_number.touched ||
+            fval.main_contact_number.dirty) &&
+          fval.main_contact_number.errors
+      }"
+      placeholder="Mobile number like 07XXXXXXXX"
+      autocomplete="off"
+    />
   </div>
-  <input id="main_contact_number" formControlName="main_contact_number" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.main_contact_number.touched||fval.main_contact_number.dirty) && fval.main_contact_number.errors }" placeholder="Mobile number like 07XXXXXXXX" autocomplete="off"/>
-</div>
-<div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.required">The main mobile number is required</div>
-
-<div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.hasNumber">The main mobile number should be equal to 10 "digits"</div>
-</div>
-
-
-<div class="form-group">
-      <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-primary' : ''">Number Plate:<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
-
-      <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="Enter Number Plate" >
-
-
-     <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.required">The number plate is required</div>
-
-     <div class="text-warning col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.minlength">The number plate should have a minimum of 8 characters</div>
-
-     <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.maxLength">The number plate should have a maxmum of 8 characters</div>
-     <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.beUgandanNumberPlate">The number plate should follow the Ugandan number plate format and all letters must be in capital letters
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.main_contact_number.touched ||
+        fval.main_contact_number.dirty) &&
+      fval.main_contact_number.errors?.required
+    "
+  >
+    The main mobile number is required!
   </div>
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.main_contact_number.touched ||
+        fval.main_contact_number.dirty) &&
+      fval.main_contact_number.errors?.hasNumber
+    "
+  >
+    The main mobile number should be equal to 10 "digits"!
+  </div>
+</div>
+<div class="form-group text-primary">
+          <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-info' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
 
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i
+                  class="fas fa-cog text-primary mx-auto"
+                  style="size: 50px;"
+                >
+                </i>
+              </div>
+            </div>
+            <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="Enter Number Plate" >
+          </div>
+          <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.required">The number plate is required!</div>
 
-     </div>
+          <div class="text-warning col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.minlength">The number plate should have a minimum of 8 characters!</div>
 
-<div class="row d-flex flex-row">
-<div class="col">
-<div class="form-group">
-  <button type="submit" class="btn btn-primary mx-3" [disabled]="!userForm.valid">Submit</button>
-  <button type="button" class="btn btn-danger mx-3" (click)='revert()' routerLink='/dashboarduser/clients'>Cancel</button>
-  <ngx-spinner
-  class="bg-primary"
-  size="medium"
-
-  type="ball-scale-multiple" >
-    <p class="text-light">Wait!!!...</p>
-  </ngx-spinner>
-
-  <label class="col"  *ngIf="errored" class="text-danger">
-    <i class="material-icons">cancel</i>
-    <ngx-alerts></ngx-alerts>
-
-  </label>
-
-
-  <label class="col"  *ngIf="posted" class="text-primary">
-    <i class="material-icons">check_circle</i>
-    <ngx-alerts></ngx-alerts>
-
-  </label>
-
-
+          <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.maxLength">The number plate should have a maxmum of 8 characters!</div>
+          <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.beUgandanNumberPlate">The number plate should follow the Ugandan number plate format and all letters must be in capital letters!
+       </div>
 </div>
 
+        <div class="d-flex my-2 py-2 mx-auto">
+          <button
+            type="submit"
+            class="btn btn-info col-5 mx-auto"
+            [disabled]="!userForm.valid"
+          >
+            Register
+          </button>
 
+          <ngx-spinner class="bg-info" size="medium" type="ball-scale-multiple">
+            <p class="text-light">Please wait...</p>
+          </ngx-spinner>
+
+          <label class="col" *ngIf="errored" class="text-danger">
+            <i class="material-icons">Cancel</i>
+
+            <ngx-alerts></ngx-alerts>
+          </label>
+
+          <label class="col" *ngIf="posted" class="text-info">
+            <i class="material-icons">check_circle</i>
+            <ngx-alerts></ngx-alerts>
+          </label>
+
+          <button
+            type="button"
+            class="btn btn-info col-5 mx-auto"
+            (click)="returnHome()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-
-</div>
-</form>
-</div>
-</div>
-</div>
-
-
-
-

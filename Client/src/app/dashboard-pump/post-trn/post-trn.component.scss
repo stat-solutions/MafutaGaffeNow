@@ -27,29 +27,33 @@ button.btn {
   border-radius: 15px;
 }
 
-.text-success {
-  color: #28a745 !important
+.text-info {
+  color: #17aae0ee !important
 }
 
-a.text-success:focus,
-a.text-success:hover {
-  color: #19692c !important
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important
 }
 .btn-info {
-  color: #28a745;
+  color: #17aae0ee;
   background-color: transparent;
-  border-color: #28a745
+  border-color: #17aae0ee
 }
   .btn-info:hover, .btn-info:focus {
     color: #d9dbdd;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #17aae0ee;
+    border-color: #17aae0ee
   }
-  .btn-info.disabled,
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 0 0 .2rem #0e99ccee
+}
+.btn-info.disabled,
 .btn-info:disabled {
-  color: #83c057e0;
+  color: #1b9eceec;
   background-color: transparent;
-  border-color: #83c057e0
+  border-color: #1b9eceec
 }
 
 .pointerCursor {
@@ -61,12 +65,11 @@ a.text-success:hover {
 //media queries
 @media (min-width: 320px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 70px !important;
+    margin-left: 30px !important;
   }
 
   .card-body {
-    max-width: 300px;
+    max-width: 310px;
     min-width: 260px;
     max-height: 250px;
     min-height: 230px;
@@ -79,34 +82,34 @@ a.text-success:hover {
 
 @media (min-width: 360px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 110px !important;
+    margin-left: 80px !important;
   }
   .card-body {
     max-width: 350px;
     min-width: 320px;
     max-height: 260px;
-    min-height: 250px;
+    min-height: 230px;
     padding-top: 24px;
     margin-bottom: 35px !important;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 50px !important;
   }
 }
 
 @media (min-width: 375px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 115px !important;
+    margin-left: 95px !important;
   }
     .card-body {
       max-width: 360px;
       min-width: 340px;
       max-height: 270px;
-      min-height: 260px;
-      padding-top: 24px !important;
-      margin-bottom: 25px !important;
+      min-height: 230px;
+      margin-bottom: 45px !important;
     }
     .jumbotron-fluid {
-      padding-bottom: 35px !important;
+      padding-bottom: 60px !important;
     }
 
     }
@@ -116,27 +119,24 @@ a.text-success:hover {
     font-size: 18px;
   }
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 105px !important;
+    margin-left: 65px !important;
   }
     .card-body {
       max-width: 370px;
       min-width: 350px;
       max-height: 270px;
       min-height: 260px;
-      padding-top: 24px !important;
-      margin-bottom: 35px !important;
+      margin-bottom: 60px !important;
     }
     .jumbotron-fluid {
       padding-top: 18px !important;
-      padding-bottom: 35px !important;
+      padding-bottom: 50px !important;
     }
 }
 
 @media (min-width: 445px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 135px !important;
+    margin-left: 100px !important;
   }
     .card-body {
       max-width: 410px;
@@ -147,27 +147,24 @@ a.text-success:hover {
       margin-bottom: 0px !important;
     }
     .jumbotron-fluid {
-      padding-top: 8px !important;
+      padding-top: 0px !important;
       padding-bottom: 5px !important;
     }
 }
 
 @media (min-width: 568px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 135px !important;
+    margin-left: 100px !important;
   }
     .card-body {
       max-width: 410px;
       min-width: 390px;
       max-height: 250px;
-      min-height: 240px;
+      min-height: 220px;
       padding-top: 10px !important;
-      margin-bottom: 0px !important;
     }
     .jumbotron-fluid {
-      padding-top: 0px !important;
-      padding-bottom: 5px !important;
+      padding-bottom: 20px !important;
     }
 }
 
@@ -187,8 +184,7 @@ a.text-success:hover {
     font-size: 20px !important;
   }
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 130px !important;
+    margin-left: 80px !important;
   }
     .card-body {
       max-width: 410px;
@@ -196,18 +192,17 @@ a.text-success:hover {
       max-height: 270px;
       min-height: 250px;
       padding-top: 24px !important;
-      margin-bottom: 60px !important;
+      margin-bottom: 150px !important;
     }
     .jumbotron-fluid {
       padding-top: 30px !important;
-      padding-bottom: 45px !important;
+      padding-bottom: 130px !important;
     }
 }
 
 @media (min-width: 812px) {
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 125px !important;
+    margin-left: 80px !important;
   }
     .card-body {
       max-width: 410px;

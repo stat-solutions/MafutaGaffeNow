@@ -1,0 +1,122 @@
+.bg-info{
+  background-color: #141e27c0;
+}
+.text-primo{
+  color: #141e27c0;
+}
+
+.lend-modal{
+border-radius: 9px;
+border-top: 1px;
+border-bottom: 1px;
+border-left: 4px solid #17aae0ee;
+border-right: 4px solid #17aae0ee;
+}
+
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+
+button.btn {
+  border-radius: 15px;
+}
+
+.text-info {
+  color: #17aae0ee !important;
+}
+
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important;
+}
+.btn-info {
+  color: #17aae0ee;
+  background-color: transparent;
+  border-color: #17aae0ee;
+}
+.btn-info:hover,
+.btn-info:focus {
+  color: #d9dbdd;
+  background-color: #17aae0ee;
+  border-color: #17aae0ee;
+}
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 0 0 0.2rem #0e99ccee;
+}
+.btn-info.disabled,
+.btn-info:disabled {
+  color: #1b9eceec;
+  background-color: transparent;
+  border-color: #1b9eceec;
+}
+
+.pointerCursor {
+  cursor: pointer;
+}
+
+//media queries
+@media (min-width: 320px) {
+}
+
+@media (min-width: 360px) {
+}
+
+@media (min-width: 375px) {
+}
+
+@media (min-width: 410px) {
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 445px) {
+}
+
+@media (min-width: 568px) {
+}
+
+@media (min-width: 640px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  h4 {
+    font-size: 22px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 812px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1100px) {
+  h4 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1320px) {
+}

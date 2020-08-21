@@ -1,13 +1,18 @@
 .navbar {
   margin-top: 0px !important;
   padding: 0rem 0rem !important;
-  border-top-color: #041324c0 !important;
+  border-top-color: #141e27c0 !important;
   box-shadow: none !important;
 }
 
 .dropbtn {
   background-color: transparent;
-  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 4px;
+  padding-right: 4px;
   font-size: 12px;
   border: none;
 }
@@ -17,7 +22,7 @@
   display: inline-block;
   margin-top: 0rem;
   margin-right: 0rem;
-  color: #e5ebf1bb;
+  color: #141e27c0;
 }
 
 .dropdown-menu {
@@ -46,6 +51,11 @@
   display: block;
 }
 
+.dropdown-menu .dropdown-item {
+  color: #141e27c0 !important;
+  background-color: none;
+}
+
 .dropdown-menu a:hover,
 a:focus,
 a:active {
@@ -58,9 +68,6 @@ a:active {
 
 .dropdown:hover .dropbtn {
   background-color: transparent;
-}
-.dropdown-item {
-  background-color: none;
 }
 
 .rubai-nav {
@@ -79,14 +86,14 @@ a:active {
 }
 .rubai-link:focus,
 .rubai-link:active {
-  color: #16aa8af2;
+  color: #17aae0ee;
 }
 .rubai-link a {
   color: #e5ebf1bb !important;
 }
 .rubai-link a:hover, a:focus,
 .rubai-link a:active {
-  color: #28a745 !important;
+  color: #17aae0ee !important;
 }
 
 .pointerCursor {
@@ -105,46 +112,46 @@ a:active {
 
   @media (min-width: 360px) {
   .rubai-nav {
-    margin-left: .4rem !important;
-    margin-right: .4rem !important;
+    margin-left: 1.2rem !important;
+    margin-right: 1.2rem !important;
   }
 }
 
 @media (min-width: 375px) {
-  .rubai-nav {
-    margin-left: .6rem !important;
-    margin-right: .6rem !important;
-  }
-}
-
-@media (min-width: 400px) {
-  .rubai-nav {
-    margin-left: 1.4rem !important;
-    margin-right: 1.4rem !important;
-  }
-  .dropbtn {
-      font-size: 14px;
-  }
-}
-
-@media (min-width: 440px) {
   .rubai-nav {
     margin-left: 1.9rem !important;
     margin-right: 1.9rem !important;
   }
 }
 
+@media (min-width: 410px) {
+  .rubai-nav {
+    margin-left: 1.96rem !important;
+    margin-right: 1.96rem !important;
+  }
+  .dropbtn {
+      font-size: 14px;
+  }
+}
+
+@media (min-width: 445px) {
+  .rubai-nav {
+    margin-left: 3.0rem !important;
+    margin-right: 3.0rem !important;
+  }
+}
+
 @media (min-width: 568px) {
   .rubai-nav {
-    margin-left: 3.8rem !important;
-    margin-right: 3.8rem !important;
+    margin-left: 4.5rem !important;
+    margin-right: 4.5rem !important;
   }
 }
 
 @media (min-width: 640px) {
   .rubai-nav {
-    margin-left: 4.5rem !important;
-    margin-right: 4.5rem !important;
+    margin-left: 5.1rem !important;
+    margin-right: 5.1rem !important;
   }
   .dropbtn {
     font-size: 16px;
@@ -160,24 +167,32 @@ a:active {
 
 @media (min-width: 730px) {
   .rubai-nav {
-    margin-left: 7.2rem !important;
-    margin-right: 7.2rem !important;
+    margin-left: 8.0rem !important;
+    margin-right: 8.0rem !important;
   }
 }
 
 @media (min-width: 768px) {
   .rubai-nav {
-    margin-left: 8.1rem !important;
-    margin-right: 8.1rem !important;
+    margin-left: 1.8rem !important;
+    margin-right: 1.8rem !important;
   }
 }
 
 @media (min-width: 811px) {
   .rubai-nav {
-    margin-left: 9.9rem !important;
-    margin-right: 9.9rem !important;
+    margin-left: 2.4rem !important;
+    margin-right: 2.4rem !important;
   }
 }
+
+@media (min-width: 820px) {
+  .rubai-nav {
+    margin-left: 11.1rem !important;
+    margin-right: 11.1rem !important;
+  }
+}
+
 
 @media (min-width: 1024px) {
   .rubai-nav {

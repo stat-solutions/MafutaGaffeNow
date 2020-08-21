@@ -1,5 +1,99 @@
+<div
+  class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 pt-md-0 pt-0 pb-3 shadow-lg col-xs-12 col-lg-8"
+>
+<div class="jumbotron-fluid mx-0 px-0 mb-0 pb-1">
+  <div class="container mt-3 mx-0 shadow-lg">
+    <div class="row">
+      <div class="col-2 mt-1">
+        <a class="text-info mx-1" routerLink="/dashboarduser">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i
+        ></a>
+      </div>
+      <div class="col-10">
+        <h5
+          class="rub-head4 text-info align-right font-weight-bold pt-0 py-1"
+        >
+          Secret PIN
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-2 pt-3 mb-0 mx-auto pb-0 shadow-lg">
+      <form [formGroup]="userForm" (ngSubmit)="postTxn()">
+        <div class="form-group text-primary">
+          <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-info' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
+          <div class="input-group mb-0">
+            <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="SELECT Number Plate" >
+            <!-- numberPlates: NumberPlates[]; -->
+            <datalist id="number_plate">
+                <option *ngFor="let item of numberPlates">{{item.customers_number_plate}}</option>
+              </datalist>
+      </div>
+      <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.required">The number plate is required!</div>
 
-  <div class="jumbotron jumbotron-fluid shadow-lg"  style="background:transparent !important">
+      <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.minlength">The number plate should have a minimum of 8 characters!</div>
+
+      <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.maxLength">The number plate should have a maximum of 8 characters!</div>
+</div>
+        <div class="form-group text-primary">
+          <label class="" >PIN: &nbsp;<span class="badge-heading">{{thisPin}}</span></label>
+        </div>
+
+        <div class="row d-flex flex-row">
+          <div class="col-12 my-0 pt-2 pb-0">
+            <div class="form-group">
+              <button type="submit" class="btn btn-info col-12" (click)='getTheLedgerDetails()'>Submit</button>
+
+              <ngx-spinner
+                class="bg-warning bg-info"
+                size="small"
+                type="ball-spin"
+              >
+                <h4 class="text-info">Please Wait...</h4>
+              </ngx-spinner>
+              <ngx-alerts></ngx-alerts>
+
+              <div class="row">
+                <div class="col" *ngIf="errored" class="text-danger">
+                  <i class="material-icons">cancel</i>
+
+                  <ngx-alerts></ngx-alerts>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col" *ngIf="posted" class="text-info">
+                  <i class="material-icons">check_circle</i>
+                  <ngx-alerts></ngx-alerts>
+                </div>
+              </div>
+                  </div>
+          </div>
+        </div>
+  </form>
+    </div>
+    <div
+    class="d-flex justify-content-center col-xs-12 col-lg-12 mt-3 mx-auto px-0"
+  >
+    <div class="small text-center text-info mx-0 px-0">
+      Area Region:<span class="text-primo font-weight-bold"
+        ><strong> {{ theCompany }}</strong>
+      </span>
+      Service station:<span class="text-primo font-weight-bold"
+        ><strong>{{ station }}</strong>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<!--
+
+
+ <div class="jumbotron jumbotron-fluid shadow-lg"  style="background:transparent !important">
 
     <div class="row">
             <div class="col-12">
@@ -9,58 +103,58 @@
     </div>
       <div class="card-body">
 
-                               
-        <form [formGroup]="userForm" (ngSubmit)="secretPin()" >                               
 
-            <div class="form-group">  
+        <form [formGroup]="userForm" (ngSubmit)="secretPin()" >
+
+            <div class="form-group">
                 <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-success' : ''">Number Plate:<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
-              
-                <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="SELECT Number Plate" >
+
+                <input type="text"  list="number_plate"  formControlName="number_plate" class="form-control"  [ngClass]=" { 'is-invalid': (fval.number_plate.touched||fval.number_plate.dirty) && fval.number_plate.errors}" autocomplete="off" placeholder="SELECT Number Plate" >-->
                 <!-- numberPlates: NumberPlates[]; -->
-                <datalist id="number_plate">
+                <!-- <datalist id="number_plate">
                     <option *ngFor="let item of numberPlates">{{item.customers_number_plate}}</option>
-                  </datalist>                                                 
-              
+                  </datalist>
+
                <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.required">The number plate is required</div>
-              
+
                <div class="text-warning col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.minlength">The number plate should have a minimum of 8 characters</div>
-              
+
                <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.maxLength">The number plate should have a maxmum of 8 characters</div>
-            </div>   
-            
-            <div class="form-group">  
+            </div>
+
+            <div class="form-group">
                 <label class="text-light bg-info" >PIN:<span class="badge-heading">{{thisPin}}</span></label>
-              
-               
-            </div>   
+
+
+            </div>
 
     <div class="row d-flex flex-row">
             <div class="col-4">
-                    <div class="form-group"> 
+                    <div class="form-group">
                             <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">SUBMIT</button>
                             <ngx-spinner
                             class="bg-warning bg-success"
                             size="medium"
-                        
+
                             type="ball-scale-multiple" >
                               <p class="text-light">Loading...</p>
-                            </ngx-spinner> 
-                        
+                            </ngx-spinner>
+
                           </div>
                           <ngx-alerts></ngx-alerts>
             </div>
-        
+
             </div>
 
                                     </form>
-     
-                              
+
+
                             </div>
                             <div class="card-footer text-muted text-center">
                             The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
                             </div>
 </div>
-       
+
 </div>
-   
-    </div>
+
+    </div> -->

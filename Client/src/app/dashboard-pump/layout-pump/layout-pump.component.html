@@ -10,34 +10,25 @@
         <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;Lend
       </a>
     </div>
-
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1"
-        *ngIf="loggedInPumpUser"
-        routerLink="/dashboardpump/payment"
-      >
-        <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Payment</a
-      >
-    </div>
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1 js-scroll-trigger"
-        routerLink="/dashboardpump/statement"
-      >
-        <i class="fas fa-file-invoice" aria-hidden="true"></i>&nbsp;Loan Statement
-      </a>
-    </div>
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1 js-scroll-trigger"
-        routerLink="/dashboardpump/ledgerstatement"
-      >
-        <i class="fas fa-money-bill" aria-hidden="true"></i>&nbsp;
-        Cash Ledger</a
-      >
-    </div>
-    <div class="rubai-link">
+                      <div class="rubai-link">
+                        <a
+                          class="dropbtn text-light mx-1 js-scroll-trigger"
+                          routerLink="/dashboardpump/depositwithdraw"
+                        >
+                          <i class="fas fa-piggy-bank" aria-hidden="true"></i>&nbsp;
+                          Deposit/Withdrawal</a
+                        >
+                      </div>
+                      <div class="rubai-link">
+                        <a
+                          class="dropbtn text-light mx-1"
+                          *ngIf="loggedInPumpUser"
+                          routerLink="/dashboardpump/payment"
+                        >
+                          <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Payment</a
+                        >
+                      </div>
+                                      <div class="rubai-link">
       <a
         class="dropbtn text-light mx-1 js-scroll-trigger"
         routerLink="/dashboardpump/shiftmanagement"
@@ -45,6 +36,24 @@
         <i class="fas fa-tasks" aria-hidden="true"></i>&nbsp;
         Shift Management</a
       >
+    </div>
+    <div class="rubai-link dropdown">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        id="navbarDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        ><i class="fas fa-clipboard"></i>&nbsp;Statements
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item text-dark" routerLink="/dashboardpump/ledgerstatement"
+          ><i class="fas fa-money-bill-alt"></i>&nbsp;Cash Ledger
+        </a>
+        <a class="dropdown-item text-dark" routerLink="/dashboarduser/statement"
+          ><i class="fas fa-file-invoice"></i>&nbsp;Loan Statement
+        </a>
+      </div>
     </div>
     <div class="rubai-link">
       <a

@@ -30,42 +30,37 @@ button.btn {
   border-radius: 15px;
 }
 
-.text-success {
-  color: #28a745 !important
+.text-info {
+  color: #17aae0ee !important
 }
 
-a.text-success:focus,
-a.text-success:hover {
-  color: #19692c !important
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important
 }
 .btn-info {
-  color: #28a745;
+  color: #17aae0ee;
   background-color: transparent;
-  border-color: #28a745
+  border-color: #17aae0ee
 }
   .btn-info:hover, .btn-info:focus {
     color: #d9dbdd;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #17aae0ee;
+    border-color: #17aae0ee
   }
 .btn-info.focus,
 .btn-info:focus {
-  box-shadow: 0 0 0 .2rem rgba(126, 235, 36, 0.5)
+  box-shadow: 0 0 0 .2rem #0e99ccee
 }
 .btn-info.disabled,
 .btn-info:disabled {
-  color: #83c057e0;
+  color: #1b9eceec;
   background-color: transparent;
-  border-color: #83c057e0
+  border-color: #1b9eceec
 }
 
 .pointerCursor {
   cursor: pointer;
-}
-.msg{
-  border-color: 2px solid #041324c0 !important;
-  // box-shadow: 0 0 0 .2rem rgba(126, 235, 36, 0.5)
-
 }
 
 
@@ -80,14 +75,18 @@ a.text-success:hover {
   .card1 {
     max-width: 300px;
     min-width: 260px;
-    max-height: 270px;
-    min-height: 250px;
+    max-height: 260px;
+    min-height: 240px;
+    margin-bottom: 5px !important;
+  }
+  .jumbotron-fluid {
+    padding-top: 0px !important;
+    padding-bottom: 10px !important;
   }
   }
 
 @media (min-width: 360px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 90px !important;
   }
   .card1 {
@@ -95,17 +94,20 @@ a.text-success:hover {
     min-width: 320px;
     max-height: 320px;
     min-height: 300px;
+    margin-bottom: 20px !important;
   }
-  // .invest-card {
-  //   max-height: 240px;
-  //   min-height: 145px;
-  //   }
 }
 
 @media (min-width: 375px) {
+  .rub-head4 {
+    margin-left: 100px !important;
+  }
   .card1 {
+    max-width: 360px;
+    min-width: 330px;
     max-height: 360px;
     min-height: 340px;
+    margin-bottom: 0px !important;
   }
   }
 
@@ -114,7 +116,6 @@ a.text-success:hover {
     font-size: 18px;
   }
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 110px !important;
   }
   .card1 {
@@ -127,7 +128,6 @@ a.text-success:hover {
 
 @media (min-width: 445px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 135px !important;
   }
   .card1 {
@@ -140,7 +140,6 @@ a.text-success:hover {
 
 @media (min-width: 568px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 230px !important;
   }
   .card1 {
@@ -174,7 +173,6 @@ a.text-success:hover {
     margin-right: 0px !important;
   }
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 370px !important;
   }
   .card1 {
@@ -182,8 +180,12 @@ a.text-success:hover {
     min-width: 712px;
     max-height: 670px;
     min-height: 660px;
+    margin-bottom: 20px !important;
   }
-  h5 {
+  .jumbotron-fluid {
+    padding-bottom: 15px !important;
+  }
+h5 {
     font-size: 20px !important;
   }
 }

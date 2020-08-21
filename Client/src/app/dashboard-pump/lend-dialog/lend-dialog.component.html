@@ -1,10 +1,22 @@
+        <div class="modal-header bg-info close pull-right modal-lg">
+          <h4 class="modal-title pull-right text-info"> {{ title }} </h4>
+        </div>
+        <div class="modal-body text-primo">
+          <div class="lend-modal my-3 mx-3">
+          <h5 class="my-3 mx-3 text-info">Transaction Successful</h5>
+          <span class="my-2 mx-3">Number Plate: {{data.number_plate}}</span>
+          <span class="my-2 mx-3">Transaction Id: {{data.txn_id}}</span>
+          <span class="my-2 mx-3">Borrowed: {{data.amount_to_borrow|number}}</span>
+          <span class="my-2 mx-3">Amount Due: {{data.amount_due|number}}</span>
+        </div>
+                 <button type="button" class="btn btn-info my-3 mx-auto" (click)="modalRef.hide()">
+              <span aria-hidden="true" class="text-info">OK</span>
+            </button>
+          </div>
 
-
-
-
-      <div class="modal-header bg-success text-light">
+      <!-- <div class="modal-header bg-success text-light">
         <h4 class="modal-title pull-right"> {{ title }} </h4>
-       
+
     </div>
 
     <div class="modal-body bg-success text-light">
@@ -16,5 +28,4 @@
        <button type="button" class="btn btn-info my-3 mx-3" (click)="modalRef.hide()">
             <span aria-hidden="true" class="text-light">OK</span>
           </button>
-    </div>
- 
+    </div> -->

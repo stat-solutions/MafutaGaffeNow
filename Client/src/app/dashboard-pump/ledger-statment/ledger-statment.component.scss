@@ -15,13 +15,14 @@
   height: 100%;
   max-width: 310px;
   min-width: 280px;
+  border-radius: 5px;
   contain: auto;
 }
 .invest-card {
   height: 100%;
   overflow-y: auto;
 }
-.state-table{
+.state-table {
   position: relative;
   width: 100% !important;
   max-width: 900px !important;
@@ -36,45 +37,42 @@ h5 {
   font-size: 16px;
 }
 
-
 button.btn {
   border-radius: 15px;
 }
 
-.text-success {
-  color: #28a745 !important
+.text-info {
+  color: #17aae0ee !important
 }
 
-a.text-success:focus,
-a.text-success:hover {
-  color: #19692c !important
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important
 }
 .btn-info {
-  color: #28a745;
+  color: #17aae0ee;
   background-color: transparent;
-  border-color: #28a745
+  border-color: #17aae0ee
 }
   .btn-info:hover, .btn-info:focus {
     color: #d9dbdd;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #17aae0ee;
+    border-color: #17aae0ee
   }
 .btn-info.focus,
 .btn-info:focus {
-  box-shadow: 0 0 0 .2rem rgba(126, 235, 36, 0.5)
+  box-shadow: 0 0 0 .2rem #0e99ccee
 }
 .btn-info.disabled,
 .btn-info:disabled {
-  color: #83c057e0;
+  color: #1b9eceec;
   background-color: transparent;
-  border-color: #83c057e0
+  border-color: #1b9eceec
 }
 
 .pointerCursor {
   cursor: pointer;
 }
-
-
 
 //media queries
 @media (min-width: 320px) {
@@ -90,7 +88,7 @@ a.text-success:hover {
     min-height: 280px;
     margin-bottom: 0px !important;
   }
-  }
+}
 
 @media (min-width: 360px) {
   .rub-head4 {
@@ -108,22 +106,18 @@ a.text-success:hover {
 }
 
 @media (min-width: 375px) {
-  .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 150px !important;
-  }
-
   .card1 {
-    max-width: 350px;
-    min-width: 330px;
     max-height: 370px;
     min-height: 340px;
   }
-  }
+}
 
 @media (min-width: 410px) {
   h4 {
     font-size: 18px;
+  }
+  h5 {
+    font-size: 17px;
   }
   .rub-head4 {
     margin-right: 0px !important;
@@ -136,7 +130,7 @@ a.text-success:hover {
     max-height: 420px;
     min-height: 390px;
   }
-  .jumbotron-fluid{
+  .jumbotron-fluid {
     margin-bottom: 5px !important;
   }
 }
@@ -152,9 +146,9 @@ a.text-success:hover {
     min-width: 400px;
     max-height: 310px;
     min-height: 280px;
-    padding-bottom: 5px !important;
+    padding-bottom: 10px !important;
   }
-  .jumbotron-fluid{
+  .jumbotron-fluid {
     margin-bottom: 0px !important;
   }
 }
@@ -162,15 +156,20 @@ a.text-success:hover {
 @media (min-width: 568px) {
   .rub-head4 {
     margin-right: 0px !important;
-    margin-left: 210px !important;
+    margin-left: 280px !important;
   }
 
   .card1 {
-    max-width: 420px;
-    min-width: 400px;
+    max-width: 550px;
+    min-width: 520px;
     max-height: 320px;
     min-height: 270px;
-    padding-bottom: 5px !important;
+    padding-bottom: 15px !important;
+  }
+  .select-col {
+    max-width: 350px;
+    min-width: 320px;
+    border-radius: 8px;
   }
 }
 
@@ -179,17 +178,9 @@ a.text-success:hover {
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 210px !important;
-  }
-
   .card1 {
-    max-width: 420px;
-    min-width: 400px;
-    max-height: 320px;
-    min-height: 270px;
-    padding-bottom: 5px !important;
+    max-width: 560px;
+    min-width: 540px;
   }
 }
 
@@ -200,42 +191,58 @@ a.text-success:hover {
   }
   .rub-head4 {
     margin-right: 0px !important;
-    margin-left: 470px !important;
+    margin-left: 390px !important;
   }
   .card1 {
     max-width: 740px;
     min-width: 712px;
-    max-height: 660px;
-    min-height: 620px;
+    max-height: 680px;
+    min-height: 650px;
   }
   .invest-card {
-    max-height: 600px;
-    min-height: 570px;
-    }
+    max-height: 650px;
+    min-height: 620px;
+  }
   h4 {
     font-size: 20px !important;
   }
   h5 {
     font-size: 18px;
   }
+  .table-col {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
   }
+  .jumbotron-fluid{
+    padding-bottom: 40px !important;
+  }
+}
 
 @media (min-width: 812px) {
   .rub-head4 {
     margin-right: 0px !important;
-    margin-left: 490px !important;
+    margin-left: 420px !important;
   }
   .card1 {
     max-width: 750px;
     min-width: 720px;
     max-height: 310px;
     min-height: 290px;
+    padding-bottom: 0px !important;
   }
   .invest-card {
-    max-height: 220px;
-    min-height: 200px;
-    }
+    max-height: 280px;
+    min-height: 260px;
+  }
+  .table-col {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .jumbotron-fluid{
+    padding-bottom: 20px !important;
+  }
 }
+
 @media (min-width: 1024px) {
   .container {
     margin-left: 0px !important;
@@ -271,5 +278,3 @@ a.text-success:hover {
     margin-right: auto !important;
   }
 }
-
-
