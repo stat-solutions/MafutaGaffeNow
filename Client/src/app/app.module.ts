@@ -16,11 +16,12 @@ import { SearchTableDirective } from './directives/search-table.directive';
 import { AngularMaterialModule } from './angular-material.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchTableDirective,
-    
+
 
   ],
   imports: [

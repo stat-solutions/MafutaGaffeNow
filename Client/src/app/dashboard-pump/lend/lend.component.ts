@@ -170,6 +170,9 @@ export class LendComponent implements OnInit {
         }
       );
   }
+
+
+  
   lend() {
 
     this.userForm.patchValue({

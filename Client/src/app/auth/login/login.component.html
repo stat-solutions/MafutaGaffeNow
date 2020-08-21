@@ -63,9 +63,10 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
           />
 
           <datalist id="user_role11k">
-            <option *ngFor="let item3k of userRoleInfo1$">{{
-              item3k.user_roles_name
+            <option *ngFor="let item3k of userRoleInfo1$|async">{{
+              item3k.user_role_name
             }}</option>
+
           </datalist>
         </div>
         <div
@@ -112,7 +113,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
           <input
             id="password"
             formControlName="password"
-            [type]="fieldType ? 'text' : 'password'"
+
             class="form-control"
             [ngClass]="{
               'is-invalid':
@@ -122,16 +123,17 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
             placeholder="Enter your password"
             autocomplete="off"
           />
+           <!-- [type]="fieldType ? 'text' : 'password'" -->
           <div class="input-group-append">
             <span class="input-group-text">
-              <i
+              <!-- <i
                 class="fas"
                 [ngClass]="{
                   'fa-eye-slash': !fieldType,
                   'fa-eye': fieldType
                 }"
                 (click)="toggleFieldType()"
-              ></i>
+              ></i> -->
             </span>
           </div>
         </div>

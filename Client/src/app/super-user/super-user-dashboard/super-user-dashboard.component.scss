@@ -1,0 +1,709 @@
+.rub-row-1{
+  margin-right: auto;
+  margin-left: auto;
+padding-left: 0;
+padding-right: 0px;
+}
+.rub-col-1{
+  margin-top: 15px;
+  margin-right: 0;
+  margin-left: 0;
+padding-left: 0;
+padding-right: 0px;
+}
+.rub-card-1{
+  width: 100%;
+  max-width: 160px;
+  min-width: 120px;
+  margin-right: 5px;
+  margin-left: 0;
+}
+.rub-card-1:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0; /* This will center the border. */
+  width: 30%; /* Change this to whatever width you want. */
+  padding-top: 0px; /* This creates some space between the element and the border. */
+  border-bottom: 4px solid #00162dc0; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.rub-head1{
+  margin-left: 35px;
+  margin-right: 35px;
+  font-size: 18px;
+}
+.rub-head1 hr.top{
+  width: 30%;
+  min-width: 15px;
+  max-width: 36px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head1 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head2{
+  margin-right: 45px;
+  margin-left: 45px;
+  font-size: 18px;
+}
+.rub-head2 hr.top{
+  width: 30%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head3{
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 18px;
+}
+.rub-head3 hr.top{
+  width: 30%;
+  min-width: 15px;
+  max-width: 36px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head3 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head4{
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.rub-head4 hr.top{
+  width: 30%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+.rub-head4 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #00162dc0;
+  height: 3px;
+}
+
+.rub-col-2{
+  margin-top: 15px;
+  margin-right: 0;
+  margin-left: 0;
+padding-left: 0;
+padding-right: 0px;
+}
+.rub-card-2{
+  width: 100%;
+  max-width: 160px;
+  min-width: 120px;
+  margin-right: 0;
+  margin-left: 5px;
+}
+.rub-card-2:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0; /* This will center the border. */
+  width: 30%; /* Change this to whatever width you want. */
+  padding-top: 0px; /* This creates some space between the element and the border. */
+  border-bottom: 4px solid #00162dc0; /* This creates the border. Replace black with whatever color you want. */
+}
+.rub-col-3{
+  margin-top: 0px;
+padding-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+padding-left: 0;
+padding-right: 0px;
+}
+.rub-card-3{
+  width: 100%;
+  max-width: 160px;
+  min-width: 120px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 0px;
+}
+.rub-card-3:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0; /* This will center the border. */
+  width: 30%; /* Change this to whatever width you want. */
+  padding-top: 0px; /* This creates some space between the element and the border. */
+  border-bottom: 4px solid #00162dc0; /* This creates the border. Replace black with whatever color you want. */
+}
+.rub-col-4{
+  margin-top: 0px;
+  margin-right: 0;
+  margin-left: 0;
+padding-top: 0;
+padding-left: 0;
+padding-right: 0px;
+}
+.rub-card-4{
+  width: 100%;
+  max-width: 160px;
+  min-width: 120px;
+  margin-top: 5px;
+  margin-right: 0;
+  margin-left: 5px;
+}
+.rub-card-4:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0; /* This will center the border. */
+  width: 30%; /* Change this to whatever width you want. */
+  padding-top: 0px; /* This creates some space between the element and the border. */
+  border-bottom: 4px solid #00162dc0; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.rub-title-1{
+  font-size: 15px;
+}
+.rub-title-2{
+  font-size: 15px;
+}
+
+.card1{
+  height: 100%;
+  max-height: 320px;
+  min-height: 280px;
+  margin: 0;
+}
+.card2{
+  height: 100%;
+  max-height: 320px;
+  min-height: 280px;
+}
+.invest-card{
+  height: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.tracking-tab1 {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.tracking-tab2 {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+a.tracking-tab1{
+  color: #00162dc0;
+  border-color: transparent !important;
+  background: transparent !important;
+  border-bottom: 0px !important;
+  font-weight: 700 !important;
+}
+a.tracking-tab1:hover{
+  color: #16aa8af2;
+  border-color: transparent !important;
+  border-bottom: 0px !important;
+  font-weight: 700 !important;
+}
+a.tracking-tab2{
+  color: #00162dc0;
+  border-color: transparent !important;
+  background: transparent !important;
+  border-bottom: 0px !important;
+  font-weight: 700 !important;
+}
+a.tracking-tab2:hover{
+  color: #16aa8af2;
+  border-color: transparent !important;
+  border-bottom: 0px !important;
+  font-weight: 700 !important;
+}
+// .select_listing:hover{
+//   background-color: #777676;
+//   color: #e5e2e4f3
+// }
+
+
+
+
+
+//media queries
+@media (min-width:360px){
+  .links{
+  margin-top: 10px !important;
+  margin-bottom: 8px !important;
+  }
+  .rub-col-1{
+    margin-bottom: 5px !important;
+  }
+  .rub-col-2{
+    margin-bottom: 5px !important;
+  }
+  .rub-col-3{
+    margin-bottom: 5px !important;
+  }
+  .rub-col-4{
+    margin-bottom: 5px !important;
+  }
+   .rub-card-2{
+  padding-left: 0px !important;
+  padding-right: 3px !important;
+  }
+  .rub-title-2{
+    font-size: 11px !important;
+  margin-left: 2px !important;
+  padding-left: 0px !important;
+  padding-right: 3px !important;
+  }
+   .fa-coins{
+     font-size: 20px !important;
+   }
+  .rub-card-3{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  }
+  .rub-title-1{
+    font-size: 11px !important;
+  margin-left: 5px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  }
+    .components{
+    margin-top: 6px !important;
+  }
+    }
+
+
+  @media (min-width:375px){
+  }
+
+
+  @media (min-width:400px){
+  h5 {
+    margin-left: 10px !important;
+    padding-left: 20px !important;
+  }
+
+  }
+
+
+  @media (min-width: 768px){
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .card1{
+    height: 270px;
+    padding-bottom: 15px !important;
+  }
+  .card2{
+    height: 300px;
+  }
+  .card2b{
+    height: 214px !important;
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  .card2b .table{
+    height: 160px !important;
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .card2b .btn{
+    margin-top: 0px !important;
+    margin-bottom: 5px !important;
+  }
+  .card2b .card-tools{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    margin-bottom: 5px !important;
+    padding-bottom: 0px !important;
+  }
+  .card3{
+    height: 320px;
+  }
+  .card3b{
+    height: 230px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  .card3b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+  .card3b .btn{
+    width: 80px !important;
+    margin-top: 3px !important;
+    margin-left: 13px !important;
+    margin-bottom: 0px !important;
+    font-size: 10px;
+  }
+  .card3b .card-tools{
+    margin-top: 3px !important;
+    padding-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .card4{
+    height: 250px;
+  }
+  .card5{
+    height: 320px;
+    padding-bottom: 6px !important;
+  }
+  .card5b{
+    height: 230px;
+  }
+  .card5b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+  .card6{
+    height: 320px;
+    padding-bottom: 6px !important;
+  }
+  .card6b{
+    height: 230px;
+  }
+  .card6b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 120px !important;
+    padding-left: 80px !important;
+  }
+  .links{
+  margin-top: 14px !important;
+  margin-bottom: 12px !important;
+  }
+  }
+
+
+  @media(min-width: 812px){
+  .card1{
+    height: 280px;
+    padding-bottom: 15px !important;
+  }
+  .card2{
+    height: 320px;
+  }
+  .card2b{
+    height: 225px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  .card2b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .card2b .btn{
+    margin-top: 0px !important;
+    margin-bottom: 7px !important;
+  }
+  .card3{
+    height: 330px;
+  }
+  .card3b{
+    height: 240px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  .card3b .table{
+    height: 175px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+  .card3b .btn{
+    width: 80px !important;
+    margin-top: 3px !important;
+    margin-left: 13px !important;
+    margin-bottom: 0px !important;
+    font-size: 10px;
+  }
+  .card4{
+    height: 270px;
+  }
+  .card5{
+    height: 320px;
+    padding-bottom: 6px !important;
+  }
+  .card5b{
+    height: 230px;
+    margin-bottom: 6px !important;
+  }
+  .card5b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+  .card6{
+    height: 320px;
+    padding-bottom: 6px !important;
+  }
+  .card6b{
+    height: 230px;
+    margin-bottom: 6px !important;
+  }
+  .card6b .table{
+    height: 165px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+  }
+
+  }
+  @media (min-width: 1024px){
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 180px !important;
+    padding-left: 80px !important;
+  }
+  .links{
+  margin-top: 14px !important;
+  margin-bottom: 12px !important;
+  }
+  .components{
+    margin-top: 10px !important;
+  }
+  .card1{
+    height: 300px;
+    padding-bottom: 5px !important;
+  }
+  .card2{
+    height: 400px;
+  }
+  .card2b{
+    height: 284px !important;
+    margin-bottom: 6px !important;
+    padding-bottom: 10px !important;
+  }
+  .card2b .table{
+    height: 217px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .card2b .btn{
+    margin-top: 5px !important;
+    margin-bottom: 12px !important;
+  }
+  .card2b .card-tools{
+    margin-top: 5px !important;
+    padding-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .card3{
+    height: 380px;
+  }
+  .card3b{
+    height: 270px !important;
+    margin-bottom: 6px !important;
+    padding-bottom: 10px !important;
+  }
+  .card3b .table{
+    height: 195px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 0px !important;
+  }
+  .card3b .btn{
+    width: 100px !important;
+    margin-top: 3px !important;
+    margin-left: 1px !important;
+    margin-bottom: 10px !important;
+    font-size: 14px;
+  }
+  .card3b .card-tools{
+    margin-top: 3px !important;
+    padding-top: 0px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 0px !important;
+  }
+  .card4{
+    height: 320px;
+  }
+  }
+
+
+  @media (min-width:1100px){
+  .rub-col-1{
+    margin-bottom: 15px !important;
+  }
+  .rub-col-2{
+    margin-bottom: 15px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 200px !important;
+    padding-left: 80px !important;
+  }
+
+  }
+
+  @media (min-width:1280px){
+  h5 {
+    font-size: 20px !important;
+    margin-left: 210px !important;
+    padding-left: 80px !important;
+  }
+  .rub-col-1{
+    margin-bottom: 0px !important;
+  }
+  .rub-col-2{
+    margin-bottom: 0px !important;
+  }
+  .rub-col-3{
+    margin-bottom: 0px !important;
+  }
+   .fa-clipboard-list{
+     font-size: 28px !important;
+   }
+   .rub-card-1{
+  padding-bottom: 0px !important;
+   }
+   .rub-title-1{
+    font-size: 16px !important;
+  }
+   .rub-card-2{
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  }
+  .rub-title-2{
+    font-size: 16px !important;
+  margin-left: 0px !important;
+  padding-left: 2px !important;
+  padding-right: 3px !important;
+  }
+   .fa-coins{
+     font-size: 28px !important;
+   }
+  .rub-card-3{
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  }
+  .rub-title-3{
+    font-size: 16px !important;
+  margin-left: 0px !important;
+  padding-left: 2px !important;
+  padding-right: 3px !important;
+  }
+  .fa-building{
+    font-size: 26px !important;
+  }
+
+  .components{
+    margin-top: 12px !important;
+  }
+  .components h6{
+  font-size: 16px !important;
+  }
+  .card5{
+    height: 330px;
+    padding-bottom: 6px !important;
+  }
+  .card6{
+    height: 330px;
+    padding-bottom: 6px !important;
+  }
+  }
+
+
+  @media (min-width:1320px){
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 210px !important;
+    padding-left: 80px !important;
+  }
+   .fa-clipboard-list{
+     font-size: 30px !important;
+   }
+   .rub-card-1{
+  padding-bottom: 0px !important;
+   }
+   .rub-title-1{
+    font-size: 18px !important;
+  }
+   .rub-card-2{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  }
+  .rub-title-2{
+    font-size: 18px !important;
+  margin-left: 0px !important;
+  padding-left: 4px !important;
+  padding-right: 5px !important;
+  }
+   .fa-coins{
+     font-size: 30px !important;
+   }
+  .rub-card-3{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  }
+  .rub-title-3{
+    font-size: 18px !important;
+  margin-left: 0px !important;
+  padding-left: 4px !important;
+  padding-right: 5px !important;
+  }
+  .fa-building{
+    font-size: 28px !important;
+  }
+
+  .components{
+    margin-top: 14px !important;
+  }
+  .components h6{
+  font-size: 18px !important;
+  }
+  }
+
+
