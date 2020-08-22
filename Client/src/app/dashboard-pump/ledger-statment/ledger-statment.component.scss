@@ -1,22 +1,280 @@
-.table-responsive::-webkit-scrollbar {
-    -webkit-appearance: none;
+.jumbotron-fluid {
+  height: inherit !important;
 }
 
-.table-responsive::-webkit-scrollbar:vertical {
-    width: 15px;
+.rub-head4 {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-right: 0px !important;
+  margin-left: 100px !important;
+  contain: auto;
 }
 
-.table-responsive::-webkit-scrollbar:horizontal {
-    height: 15px;
+.card1 {
+  width: 100%;
+  height: 100%;
+  max-width: 310px;
+  min-width: 280px;
+  border-radius: 5px;
+  contain: auto;
+}
+.invest-card {
+  height: 100%;
+  overflow-y: auto;
+}
+.state-table {
+  position: relative;
+  width: 100% !important;
+  max-width: 900px !important;
+  align-self: center;
+  contain: auto;
 }
 
-.table-responsive::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 16px;
 }
 
-.table-responsive::-webkit-scrollbar-track {
-    border-radius: 10px;  
-    background-color: #ffffff; 
+button.btn {
+  border-radius: 15px;
+}
+
+.text-info {
+  color: #17aae0ee !important
+}
+
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important
+}
+.btn-info {
+  color: #17aae0ee;
+  background-color: transparent;
+  border-color: #17aae0ee
+}
+  .btn-info:hover, .btn-info:focus {
+    color: #d9dbdd;
+    background-color: #17aae0ee;
+    border-color: #17aae0ee
+  }
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 0 0 .2rem #0e99ccee
+}
+.btn-info.disabled,
+.btn-info:disabled {
+  color: #1b9eceec;
+  background-color: transparent;
+  border-color: #1b9eceec
+}
+
+.pointerCursor {
+  cursor: pointer;
+}
+
+//media queries
+@media (min-width: 320px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 120px !important;
+  }
+
+  .card1 {
+    max-width: 310px;
+    min-width: 290px;
+    max-height: 290px;
+    min-height: 280px;
+    margin-bottom: 0px !important;
+  }
+}
+
+@media (min-width: 360px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 150px !important;
+  }
+
+  .card1 {
+    max-width: 350px;
+    min-width: 330px;
+    max-height: 340px;
+    min-height: 320px;
+    padding-bottom: 10px !important;
+  }
+}
+
+@media (min-width: 375px) {
+  .card1 {
+    max-height: 370px;
+    min-height: 340px;
+  }
+}
+
+@media (min-width: 410px) {
+  h4 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 17px;
+  }
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 170px !important;
+  }
+
+  .card1 {
+    max-width: 390px;
+    min-width: 370px;
+    max-height: 420px;
+    min-height: 390px;
+  }
+  .jumbotron-fluid {
+    margin-bottom: 5px !important;
+  }
+}
+
+@media (min-width: 445px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 190px !important;
+  }
+
+  .card1 {
+    max-width: 420px;
+    min-width: 400px;
+    max-height: 310px;
+    min-height: 280px;
+    padding-bottom: 10px !important;
+  }
+  .jumbotron-fluid {
+    margin-bottom: 0px !important;
+  }
+}
+
+@media (min-width: 568px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 280px !important;
+  }
+
+  .card1 {
+    max-width: 550px;
+    min-width: 520px;
+    max-height: 320px;
+    min-height: 270px;
+    padding-bottom: 15px !important;
+  }
+  .select-col {
+    max-width: 350px;
+    min-width: 320px;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .card1 {
+    max-width: 560px;
+    min-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 390px !important;
+  }
+  .card1 {
+    max-width: 740px;
+    min-width: 712px;
+    max-height: 680px;
+    min-height: 650px;
+  }
+  .invest-card {
+    max-height: 650px;
+    min-height: 620px;
+  }
+  h4 {
+    font-size: 20px !important;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  .table-col {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .jumbotron-fluid{
+    padding-bottom: 40px !important;
+  }
+}
+
+@media (min-width: 812px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 420px !important;
+  }
+  .card1 {
+    max-width: 750px;
+    min-width: 720px;
+    max-height: 310px;
+    min-height: 290px;
+    padding-bottom: 0px !important;
+  }
+  .invest-card {
+    max-height: 280px;
+    min-height: 260px;
+  }
+  .table-col {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .jumbotron-fluid{
+    padding-bottom: 20px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  h4 {
+    margin-left: 180px !important;
+    padding-left: 80px !important;
+  }
+  .card1 {
+    height: 300px;
+    padding-bottom: 5px !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  h4 {
+    margin-left: 200px !important;
+    padding-left: 80px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  h4 {
+    margin-left: 210px !important;
+    padding-left: 80px !important;
+  }
+}
+
+@media (min-width: 1320px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }

@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   posted = false;
   userForm: FormGroup;
   loginStatus: string;
+  fieldType: boolean;
   value: string;
   stationBalanceExits: boolean;
   mySubscription: any;
@@ -89,11 +90,25 @@ export class LoginComponent implements OnInit {
     return this.userForm.controls;
   }
 
+<<<<<<< HEAD
   // userRoleData1() {
   //   this.authService.getUserRoles().subscribe(
   //     data => {
   //       this.userForm.controls.user_role11.reset();
   //       this.userRoleInfo1 = data;
+=======
+    //toggle visibility of password field
+    toggleFieldType() {
+      this.fieldType = !this.fieldType;
+    }
+
+
+  userRoleData1() {
+    this.authService.getUserRoles().subscribe(
+      data => {
+        this.userForm.controls.user_role11.reset();
+        this.userRoleInfo1 = data;
+>>>>>>> f4ae34b9c096c3ed36c2601a327aaab41e152f34
         // this.alertService.success({
           // html: '<b> User Roles Updated</b>' + '<br/>'
         // });

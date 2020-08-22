@@ -1,0 +1,255 @@
+.jumbotron-fluid {
+  height: inherit !important;
+}
+
+.rub-head4 {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-right: 0px !important;
+  margin-left: 100px !important;
+  contain: auto;
+}
+
+.card1 {
+  width: 100%;
+  height: 100%;
+  max-width: 310px;
+  min-width: 280px;
+  contain: auto;
+}
+.invest-card {
+  height: 100%;
+  overflow-y: auto;
+  // overflow-x: hidden;
+}
+h5 {
+  font-size: 15px;
+}
+
+button.btn {
+  border-radius: 15px;
+}
+
+.text-info {
+  color: #17aae0ee !important
+}
+
+a.text-info:focus,
+a.text-info:hover {
+  color: #48bae4f5 !important
+}
+.btn-info {
+  color: #17aae0ee;
+  background-color: transparent;
+  border-color: #17aae0ee
+}
+  .btn-info:hover, .btn-info:focus {
+    color: #d9dbdd;
+    background-color: #17aae0ee;
+    border-color: #17aae0ee
+  }
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 0 0 .2rem #0e99ccee
+}
+.btn-info.disabled,
+.btn-info:disabled {
+  color: #1b9eceec;
+  background-color: transparent;
+  border-color: #1b9eceec
+}
+
+.pointerCursor {
+  cursor: pointer;
+}
+
+
+
+//media queries
+@media (min-width: 320px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 70px !important;
+  }
+
+  .card1 {
+    max-width: 300px;
+    min-width: 260px;
+    max-height: 260px;
+    min-height: 240px;
+    margin-bottom: 5px !important;
+  }
+  .jumbotron-fluid {
+    padding-top: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  }
+
+@media (min-width: 360px) {
+  .rub-head4 {
+    margin-left: 90px !important;
+  }
+  .card1 {
+    max-width: 350px;
+    min-width: 320px;
+    max-height: 320px;
+    min-height: 300px;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (min-width: 375px) {
+  .rub-head4 {
+    margin-left: 100px !important;
+  }
+  .card1 {
+    max-width: 360px;
+    min-width: 330px;
+    max-height: 360px;
+    min-height: 340px;
+    margin-bottom: 0px !important;
+  }
+  }
+
+@media (min-width: 410px) {
+  h5 {
+    font-size: 18px;
+  }
+  .rub-head4 {
+    margin-left: 110px !important;
+  }
+  .card1 {
+    max-width: 390px;
+    min-width: 370px;
+    max-height: 410px;
+    min-height: 390px;
+  }
+}
+
+@media (min-width: 445px) {
+  .rub-head4 {
+    margin-left: 135px !important;
+  }
+  .card1 {
+    max-width: 430px;
+    min-width: 410px;
+    max-height: 280px;
+    min-height: 260px;
+  }
+}
+
+@media (min-width: 568px) {
+  .rub-head4 {
+    margin-left: 230px !important;
+  }
+  .card1 {
+    max-width: 550px;
+    min-width: 520px;
+    max-height: 250px;
+    min-height: 230px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 240px !important;
+  }
+  .card1 {
+    max-width: 590px;
+    min-width: 542px;
+    max-height: 250px;
+    min-height: 230px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .rub-head4 {
+    margin-left: 370px !important;
+  }
+  .card1 {
+    max-width: 740px;
+    min-width: 712px;
+    max-height: 670px;
+    min-height: 660px;
+    margin-bottom: 20px !important;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 15px !important;
+  }
+h5 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 812px) {
+  .rub-head4 {
+    margin-right: 0px !important;
+    margin-left: 360px !important;
+  }
+  .card1 {
+    max-width: 740px;
+    min-width: 712px;
+    max-height: 660px;
+    min-height: 640px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 180px !important;
+    padding-left: 80px !important;
+  }
+  .links {
+    margin-top: 14px !important;
+    margin-bottom: 12px !important;
+  }
+  .components {
+    margin-top: 10px !important;
+  }
+  .card1 {
+    height: 300px;
+    padding-bottom: 5px !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  h5 {
+    font-size: 20px !important;
+    margin-left: 200px !important;
+    padding-left: 80px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  h5 {
+    font-size: 20px !important;
+    margin-left: 210px !important;
+    padding-left: 80px !important;
+  }
+}
+
+@media (min-width: 1320px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  h5 {
+    font-size: 20px !important;
+    margin-left: 210px !important;
+    padding-left: 80px !important;
+  }
+}

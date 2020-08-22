@@ -3,18 +3,18 @@
 class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 pt-md-0 pt-0 pb-3 shadow-lg col-xs-12 col-lg-8"
 >
 <div class="jumbotron-fluid">
-  <div class="d-flex justify-content-center mt-3 mb-3 pb-0">
+  <div class="head-icon d-flex justify-content-center mt-3 mb-3 pb-0">
     <h2 class="d-flex flex-row justify-content-center mt-3">
-      <i class="fas fa-sign-in-alt text-success mx-auto"></i>
+      <i class="fas fa-sign-in-alt text-info mx-auto"></i>
     </h2>
   </div>
   <div class="card-body mt-1 pt-2 mb-0 pb-1 shadow-lg">
-    <h3 class="text-success d-flex justify-content-center mt-2 pt-1 mb-3">
+    <h3 class="text-info d-flex justify-content-center mt-2 pt-1 mb-3">
       Login
     </h3>
     <form [formGroup]="userForm" (ngSubmit)="login()">
       <div class="form-group text-primary">
-        <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-success' : ''">Enter Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
+        <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-info' : ''">Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
          <div class="input-group mb-2">
          <div class="input-group-prepend">
           <div class="input-group-text">
@@ -34,7 +34,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
         <label
           for="user_role11"
           [ngClass]="fval.user_role11.valid ? 'text-info' : ''"
-          >User Role<i *ngIf="fval.user_role11.valid" class="material-icons"
+          >Account<i *ngIf="fval.user_role11.valid" class="material-icons"
             >check_circle</i
           ></label
         >
@@ -76,7 +76,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
             fval.user_role11.errors?.required
           "
         >
-          The user role is required!
+          The account is required!
         </div>
 
         <div
@@ -86,7 +86,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
             fval.user_role11.errors?.belongTouser_role11s
           "
         >
-          Please select a valid user role!
+          Please select a valid account!
         </div>
 
         <!-- <ngx-alerts></ngx-alerts> -->
@@ -96,7 +96,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
         <label
           for="password"
           [ngClass]="fval.password.valid ? 'text-info' : ''"
-          >Password<i *ngIf="fval.password.valid" class="material-icons"
+          >PIN<i *ngIf="fval.password.valid" class="material-icons"
             >check_circle</i
           ></label
         >
@@ -120,7 +120,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
                 (fval.password.touched || fval.password.dirty) &&
                 fval.password.errors
             }"
-            placeholder="Enter your password"
+            placeholder="Enter your PIN"
             autocomplete="off"
           />
            <!-- [type]="fieldType ? 'text' : 'password'" -->
@@ -144,7 +144,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
             fval.password.errors?.required
           "
         >
-          Password is required!
+          PIN is required!
         </div>
       </div>
 
@@ -185,7 +185,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
         </div>
         <div class="col-6 d-flex flex-row justify-content-start mt-2 pt-0">
           <div class="form-group">
-            <a class="text-success mr-0" routerLink="/authpage/registeruser">
+            <a class="text-info mr-0" routerLink="/authpage/registeruser">
               Register&nbsp;<i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -197,7 +197,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
   <!--footer -->
   <div class="d-flex justify-content-center col-xs-12 col-lg-12 mt-3 mx-auto">
     <div class="small text-center text-info">
-      Copyright &copy; 2020 - Fika Salama
+      Copyright &copy; 2020 - Mafuta Gaffe
     </div>
   </div>
   <!--/ footer -->

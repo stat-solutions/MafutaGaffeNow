@@ -1,96 +1,138 @@
-
-  <div class=" jumbotron jumbotron-fluid mx-1 shadow-lg"  style="background:transparent !important">
-
-    <!-- <div class="row"> -->
-            <!-- <div class="col-12"> -->
-               
-   <!-- <div class="card"> -->
-     <!-- <div class="card-header "> -->
-    <h4 class="text-info text-center">LOANS</h4>
-<!-- </div> -->
-  <!-- <div class="table-responsive-lg table-border"> -->
-
-    <form [formGroup]="userForm" >
-
-
-<!-- <div class="row"> -->
- <!-- <div class="col"> -->
-   <!-- <div class="row mx-5" > -->
- <!-- <div class="col"> -->
-
-<div class="form-group">    
-
-  <label for="selection_options" [ngClass]="fval.selection_options.valid ? 'text-success' : ''">DISPLAY OPTION:<i  *ngIf="fval.selection_options.valid" class="material-icons">check_circle</i></label>
-
-    <input type="text"  list="selection_optionsk"  formControlName="selection_options" class="form-control"  [ngClass]=" { 'is-invalid': (fval.selection_options.touched||fval.selection_options.dirty) && fval.selection_options.errors }" autocomplete="off" placeholder="Select Display Option">
-    
-   <datalist id="selection_optionsk">
-    <option >RUNNING LOANS</option>
-    <option >OVERDUE LOANS</option>
-    <option >COMPLETED LOANS</option>
-    </datalist>
-         
-
-       
-    </div>
-
-
-    <div class="form-group">    
-    
-        <input type="text"   formControlName="search" class="form-control"  [ngClass]=" { 'is-invalid': (fval.search.touched||fval.search.dirty) && fval.search.errors }" autocomplete="off" placeholder="Search">
+<div
+  class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 pt-md-0 pt-0 pb-3 mx-auto px-0 shadow-lg col-xs-12 col-lg-8"
+>
+  <div class="jumbotron-fluid mx-0 px-0 mb-0 pb-0">
+    <div class="container mt-2 mx-0 shadow-lg">
+      <div class="row">
+        <div class="col-2 mt-1">
+          <a class="text-info mx-1" routerLink="/dashboarduser">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i
+          ></a>
         </div>
-
-      </form>
-    <div class="table-responsive jumbotron jumbotron-fluid">
-      <table class="table table-striped table-bordered  table-hover"  >
-        <thead >
-         <tr class="text-info">
-            <th>#</th>
-            <th>Name</th>
-            <th>Date Taken</th>
-            <th>Time Taken</th>
-            <th >Amount Taken</th>
-            <th >Loan+Interest Expected</th>
-            <th >Loan+Interest Paid</th>
-            <th >Loan+Interest Remaining</th>
-            <th >Days Unpaid</th>
-         <th >Phone </th>
-         <th >Number Plate</th>
-        <th >Stage</th>
-     
-         </tr>
-         </thead>
-        <tbody>
-
-         <tr *ngFor="let loans of loansDetails"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5" 
-            [class.bg-danger]="loans.aging_days>=10" class="text-success">
-
-        <td>{{ loans.id }}</td>
-         <td>{{ loans.name }}</td>
-         <td>{{ loans.date_taken }}</td>
-         <td>{{ loans.time_taken }}</td>
-          <td>{{ loans.loan_taken|number}}</td>
-           <td>{{ loans.loan_interest_expected|number}}</td>                       
-            <td>{{ loans.loan_interest_paid |number}}</td>
-            <td>{{ loans.loan_interest_remaining|number }}</td>
-            <td>{{ loans.aging_days|number}}</td>
-            <td>{{ loans.phone}}</td>
-            <td>{{ loans.number_plate}}</td>
-            <td>{{ loans.stage}}</td>
-               </tr>
-        </tbody>
-         </table>
+        <div class="col-10">
+          <h4 class="rub-head4 text-info align-right font-weight-bold py-1">
+            Loans
+          </h4>
+        </div>
       </div>
-    
-       
-        <!-- </div> -->
-                      
-    <div class="card-footer text-muted text-center">
-                            The Petrol Company:<span class="badge badge-warning"><strong> {{theCompany}}</strong> </span> The Petrol station:<span class="badge badge-danger"><strong>{{station}}</strong> </span>
-                            </div>
-                          <!-- </div> -->
-<!-- </div> -->
-       
-<!-- </div> -->
-   
     </div>
+    <div class="card1 card shadow-lg mt-2 mb-2 mx-0 px-0 pb-1">
+      <div
+        class="invest-card card-body mt-1 pt-2 mb-0 mx-0 px-0 pb-3 shadow-lg"
+      >
+        <h5
+          class="text-info font-weight-bold d-flex justify-content-center mt-2 pt-1 mb-3"
+        >
+          Loan Details
+        </h5>
+        <div
+          class="select-col col-xs-12 col-sm-5 col-md-5 col-lg-5 my-3 mx-auto px-4 py-3 shadow-lg"
+        >
+          <form [formGroup]="userForm">
+            <div class="form-group text-primary">
+              <label
+                for="selection_options"
+                [ngClass]="fval.selection_options.valid ? 'text-info' : ''"
+                >Display Option<i
+                  *ngIf="fval.selection_options.valid"
+                  class="material-icons"
+                  >check_circle</i
+                ></label
+              >
+              <div class="input-group mb-0">
+                <input
+                  type="text"
+                  class="form-control"
+                  list="selection_optionsk"
+                  formControlName="selection_options"
+                  [ngClass]="{
+                    'is-invalid':
+                      (fval.selection_options.touched ||
+                        fval.selection_options.dirty) &&
+                      fval.selection_options.errors
+                  }"
+                  autocomplete="off"
+                  placeholder="Select Display Option"
+                />
+
+                <datalist id="selection_optionsk">
+                  <option>Running Loans</option>
+                  <option>Overdue Loans</option>
+                  <option>Completed Loans</option>
+                </datalist>
+              </div>
+            </div>
+            <div class="form-group text-primary">
+              <div class="input-group mb-0">
+                <input
+                  type="text"
+                  formControlName="search"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid':
+                      (fval.search.touched || fval.search.dirty) &&
+                      fval.search.errors
+                  }"
+                  autocomplete="off"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table-col col-lg-12 col-xs-12">
+          <div class="table-responsive pt-2">
+            <table class="state-table table table-striped table-sm">
+              <thead>
+                <tr class="text-info">
+                  <th style="width: 4%;">#</th>
+                  <th style="width: 15%;">Name</th>
+                  <th style="width: 5%;">Date</th>
+                  <th style="width: 5%;">Time</th>
+                  <th style="width: 10%;">Amount Taken</th>
+                  <th style="width: 10%;">Loan+Interest Expected</th>
+                  <th style="width: 10%;">Loan+Interest Paid</th>
+                  <th style="width: 10%;">Loan+Interest Remaining</th>
+                  <th style="width: 5%;">Days Unpaid</th>
+                  <th style="width: 8%;">Phone</th>
+                  <th style="width: 8%;">Number Plate</th>
+                  <th style="width: 10%;">Stage</th>
+                </tr>
+              </thead>
+              <tbody class="text-primary">
+                <tr *ngFor="let loans of loansDetails"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
+                  [class.bg-danger]="loans.aging_days>=10" class="text-info">
+                  <td>{{ loans.id }}</td>
+                  <td>{{ loans.name }}</td>
+                  <td>{{ loans.date_taken }}</td>
+                  <td>{{ loans.time_taken }}</td>
+                  <td>{{ loans.loan_taken | number }}</td>
+                  <td>{{ loans.loan_interest_expected | number }}</td>
+                  <td>{{ loans.loan_interest_paid | number }}</td>
+                  <td>{{ loans.loan_interest_remaining | number }}</td>
+                  <td>{{ loans.aging_days | number }}</td>
+                  <td>{{ loans.phone }}</td>
+                  <td>{{ loans.number_plate }}</td>
+                  <td>{{ loans.stage }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+    class="d-flex justify-content-center col-xs-12 col-lg-12 mt-2 mx-auto px-0"
+  >
+    <div class="small text-center text-info mx-0 px-0">
+      Area Region:<span class="text-primo font-weight-bold"
+        ><strong> {{ theCompany }}</strong>
+      </span>
+      Service station:<span class="text-primo font-weight-bold"
+        ><strong>{{ station }}</strong>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+

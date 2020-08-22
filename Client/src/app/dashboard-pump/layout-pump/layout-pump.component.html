@@ -1,65 +1,63 @@
-<nav class="navbar navbar-expand-lg bg-dark pt-0 pb-2">
+<div class="container-fluid mx-0 px-0">
+  <nav class="navbar navbar-expand-lg bg-dark mx-0 pt-0 pb-1">
   <div class="rubai-nav justify-content-end align-self-end">
     <div class="rubai-link">
       <a
         class="dropbtn text-light mx-1"
-        tooltip="Lend"
-        placement="top"
         *ngIf="loggedInPumpUser"
         routerLink="/dashboardpump/lend"
       >
         <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;Lend
       </a>
     </div>
-
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1"
-        tooltip="Payment"
-        placement="top"
-        *ngIf="loggedInPumpUser"
-        routerLink="/dashboardpump/payment"
-      >
-        <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Payment</a
-      >
-    </div>
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1 js-scroll-trigger"
-        tooltip="Loan Statement"
-        placement="top"
-        routerLink="/dashboardpump/statement"
-      >
-        <i class="fas fa-file-invoice" aria-hidden="true"></i>&nbsp;Loan Statement
-      </a>
-    </div>
-    <div class="rubai-link">
+                      <div class="rubai-link">
+                        <a
+                          class="dropbtn text-light mx-1 js-scroll-trigger"
+                          routerLink="/dashboardpump/depositwithdraw"
+                        >
+                          <i class="fas fa-piggy-bank" aria-hidden="true"></i>&nbsp;
+                          Deposit/Withdrawal</a
+                        >
+                      </div>
+                      <div class="rubai-link">
+                        <a
+                          class="dropbtn text-light mx-1"
+                          *ngIf="loggedInPumpUser"
+                          routerLink="/dashboardpump/payment"
+                        >
+                          <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Payment</a
+                        >
+                      </div>
+                                      <div class="rubai-link">
       <a
         class="dropbtn text-light mx-1 js-scroll-trigger"
-        tooltip="Cash Ledger"
-        placement="top"
-        routerLink="/dashboardpump/ledgerstatement"
-      >
-        <i class="fas fa-money-bill" aria-hidden="true"></i>&nbsp;
-        Cash Ledger</a
-      >
-    </div>
-    <div class="rubai-link">
-      <a
-        class="dropbtn text-light mx-1 js-scroll-trigger"
-        tooltip="Shift Management"
-        placement="top"
         routerLink="/dashboardpump/shiftmanagement"
       >
         <i class="fas fa-tasks" aria-hidden="true"></i>&nbsp;
         Shift Management</a
       >
     </div>
+    <div class="rubai-link dropdown">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        id="navbarDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        ><i class="fas fa-clipboard"></i>&nbsp;Statements
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item text-dark" routerLink="/dashboardpump/ledgerstatement"
+          ><i class="fas fa-money-bill-alt"></i>&nbsp;Cash Ledger
+        </a>
+        <a class="dropdown-item text-dark" routerLink="/dashboarduser/statement"
+          ><i class="fas fa-file-invoice"></i>&nbsp;Loan Statement
+        </a>
+      </div>
+    </div>
     <div class="rubai-link">
       <a
         class="dropbtn text-light mx-1 js-scroll-trigger"
-        tooltip="Logout"
-        placement="top"
         routerLink="/authpage/loginpage"
         (click)="logMeout()"
       >
@@ -68,3 +66,4 @@
     </div>
   </div>
 </nav>
+</div>

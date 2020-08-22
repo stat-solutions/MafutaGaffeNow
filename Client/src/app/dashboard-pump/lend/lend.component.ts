@@ -26,6 +26,7 @@ export class LendComponent implements OnInit {
   serviceErrors: string;
   status: boolean;
   checkedOk: boolean;
+  fieldType: boolean;
   station: string;
   theCompany: string;
   closingBal: string;
@@ -100,6 +101,12 @@ export class LendComponent implements OnInit {
   revertPetrol() {
     this.userForm.controls.petrol_station.reset();
   }
+
+      //toggle visibility of password field
+      toggleFieldType() {
+        this.fieldType = !this.fieldType;
+      }
+
 
   get fval() {
     return this.userForm.controls;
