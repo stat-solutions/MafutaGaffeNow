@@ -7,6 +7,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
 import { CustomValidator } from 'src/app/validators/custom-validator';
+import { AreaRegion } from 'src/app/models/area-region';
+import { SuperUserService } from 'src/app/services/super-user.service';
 
 @Component({
   selector: 'app-super-user-dashboard',
@@ -27,8 +29,8 @@ export class SuperUserDashboardComponent implements OnInit {
         value: string;
         mySubscription: any;
         myDateValue: Date;
-        userRoleInfo$: Observable< UserRole[]>;
-        theArea$: Observable<TheBranches[]>;
+        userRoleInfo$: Observable<UserRole[]>;
+        theArea$: Observable<AreaRegion[]>;
 
     // @ViewChild('staticTabs', { static: false }) staticTabs: TabsetComponent;
 
@@ -237,15 +239,19 @@ export class SuperUserDashboardComponent implements OnInit {
           private authService: AuthServiceService,
           private spinner: NgxSpinnerService,
           private router: Router,
-          private alertService: AlertService
+          private alertService: AlertService,
+          private superUserN: SuperUserService
         ) {}
 
         ngOnInit() {
+
           this.myDateValue = new Date();
+
           this.userForm = this.createFormGroup();
+
           this.userRoleInfo$ = this.authService.getUserRoles();
 
-          this.theArea$ = this.authService.getTheBranches();
+          this.theArea$ = this.superUserN.getAreaRegions();
         }
 
         createFormGroup() {
@@ -303,6 +309,7 @@ export class SuperUserDashboardComponent implements OnInit {
         }
 
       //method for filtering out last banked posting
+
       lastBanking()  {
         let removed = this.investTrackingTable.pop();
         let item=Object.entries(removed);

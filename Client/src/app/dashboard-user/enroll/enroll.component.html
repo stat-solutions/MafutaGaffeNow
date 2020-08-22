@@ -13,7 +13,7 @@
       </h3>
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="form-group text-primary">
-          <label for="customer_name" [ngClass]="fval.customer_name.valid ? 'text-success' : ''">Client Name<i  *ngIf="fval.customer_name.valid" class="material-icons">check_circle</i></label>
+          <label for="customer_name" [ngClass]="fval.customer_name.valid ? 'text-info' : ''">Client Name<i  *ngIf="fval.customer_name.valid" class="material-icons">check_circle</i></label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <div class="input-group-text">
@@ -31,7 +31,7 @@
 </div>
 
         <div class="form-group text-primary">
-          <label for="stage_name" [ngClass]="fval.stage_name.valid ? 'text-success' : ''">Stage Name<i  *ngIf="fval.stage_name.valid" class="material-icons">check_circle</i></label>
+          <label for="stage_name" [ngClass]="fval.stage_name.valid ? 'text-info' : ''">Stage Name<i  *ngIf="fval.stage_name.valid" class="material-icons">check_circle</i></label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <div class="input-group-text">
@@ -109,7 +109,7 @@
   </div>
 </div>
 <div class="form-group text-primary">
-          <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-success' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
+          <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-info' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
 
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -159,7 +159,7 @@
           <button
             type="button"
             class="btn btn-info col-5 mx-auto"
-            (click)="returnHome()"
+            (click)="resetStageNames()"
           >
             Cancel
           </button>

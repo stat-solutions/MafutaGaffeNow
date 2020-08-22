@@ -9,13 +9,6 @@ const routes: Routes = [
   {
     path: 'dashboardsuperuser', component: SuperUserComponent, children: [
       { path: 'approveusers', component: SuperUserApproveUserComponent },
-      { path: 'payment', component: PaymentComponent },
-      { path: 'shiftmanagement', component: ShiftManagementComponent },
-      { path: 'shifts', component: ShiftsComponent },
-      { path: 'statement', component: StatementComponent },
-      { path: 'ledgerstatement', component: LedgerStatmentComponent },
-      { path: 'depositwithdraw', component: PostTrnComponent },
-     
     ]
   }
 

@@ -15,6 +15,7 @@ import { LoanStatement } from '../models/loan-statement';
 import { RevenueDetails } from '../models/revenue-details';
 import { GeneralLedgerDetails } from '../models/general-ledger-details';
 import { LoanRepayDetails } from '../models/loan-repay-details';
+import { AreaRegion } from '../models/area-region';
 
 @Injectable({
   providedIn: 'root'
@@ -281,6 +282,21 @@ export class SuperUserService {
         );
     }
 
+    getAreaRegions(): Observable<AreaRegion[]> {
+      return this.http
+        .get<AreaRegion[]>(
+          `${this.API_URL}/api/adminUserDashboard/areaRegions`,
+          this.httpOptions
+        )
+  
+        .pipe(
+          // tap(response => console.log(`${response}`)),
+  
+          catchError(this.handleError)
+        );
+    }
+
+    
     private handleTokensPurchaseError(errorResponse: HttpErrorResponse) {
       if (errorResponse.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.
