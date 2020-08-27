@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'statement', component: StatementComponent },
       { path: 'ledgerstatement', component: LedgerStatmentComponent },
       { path: 'depositwithdraw', component: PostTrnComponent },
-     
+
     ]
   }
 

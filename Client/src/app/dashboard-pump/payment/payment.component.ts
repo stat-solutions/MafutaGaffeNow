@@ -28,6 +28,7 @@ export class PaymentComponent implements OnInit {
   serviceErrors: string;
   status: boolean;
   checkedOk: boolean;
+  fieldType: boolean;
   station: string;
   theCompany: string;
   closingBal: string;
@@ -173,6 +174,12 @@ export class PaymentComponent implements OnInit {
         }
       );
   }
+
+    //toggle visibility of password field
+    toggleFieldType() {
+      this.fieldType = !this.fieldType;
+    }
+
 
   pay() {
     this.userForm.patchValue({

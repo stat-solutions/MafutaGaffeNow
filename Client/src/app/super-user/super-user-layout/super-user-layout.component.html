@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-dark pt-0 pb-2">
+  <div class="rubai-nav justify-content-end align-self-end">
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1"
+        tooltip="Lend"
+        placement="top"
+        *ngIf="loggedInPumpUser"
+        routerLink="/dashboardpump/lend"
+      >
+        <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;Lend
+      </a>
+    </div>
+
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1"
+        tooltip="Payment"
+        placement="top"
+        *ngIf="loggedInPumpUser"
+        routerLink="/dashboardpump/payment"
+      >
+        <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Payment</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Loan Statement"
+        placement="top"
+        routerLink="/dashboardpump/statement"
+      >
+        <i class="fas fa-file-invoice" aria-hidden="true"></i>&nbsp;Loan Statement
+      </a>
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Cash Ledger"
+        placement="top"
+        routerLink="/dashboardpump/ledgerstatement"
+      >
+        <i class="fas fa-money-bill" aria-hidden="true"></i>&nbsp;
+        Cash Ledger</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Shift Management"
+        placement="top"
+        routerLink="/dashboardpump/shiftmanagement"
+      >
+        <i class="fas fa-tasks" aria-hidden="true"></i>&nbsp;
+        Shift Management</a
+      >
+    </div>
+    <div class="rubai-link">
+      <a
+        class="dropbtn text-light mx-1 js-scroll-trigger"
+        tooltip="Logout"
+        placement="top"
+        routerLink="/authpage/loginpage"
+        (click)="logMeout()"
+      >
+        <i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i>&nbsp;Logout
+      </a>
+    </div>
+  </div>
+</nav>

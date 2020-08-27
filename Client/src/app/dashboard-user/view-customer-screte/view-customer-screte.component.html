@@ -42,7 +42,7 @@
         <div class="row d-flex flex-row">
           <div class="col-12 my-0 pt-2 pb-0">
             <div class="form-group">
-              <button type="submit" class="btn btn-info col-12" (click)='getTheLedgerDetails()'>Submit</button>
+              <button type="submit" class="btn btn-info col-12" (click)='getTheNumberPlates()'>Submit</button>
 
               <ngx-spinner
                 class="bg-warning bg-info"
@@ -57,12 +57,6 @@
                 <div class="col" *ngIf="errored" class="text-danger">
                   <i class="material-icons">cancel</i>
 
-                  <ngx-alerts></ngx-alerts>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col" *ngIf="posted" class="text-info">
-                  <i class="material-icons">check_circle</i>
                   <ngx-alerts></ngx-alerts>
                 </div>
               </div>

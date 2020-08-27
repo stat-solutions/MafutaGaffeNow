@@ -16,7 +16,7 @@
           <label
             for="petrol_station_company"
             [ngClass]="fval.petrol_station_company.valid ? 'text-info' : ''"
-            >Area Region<i
+            >Area <i
               *ngIf="fval.petrol_station_company.valid"
               class="material-icons"
               >check_circle</i
@@ -26,7 +26,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <i
-                  class="fas fa-gas-pump text-primary mx-auto"
+                  class="fas fa-train text-primary mx-auto"
                   style="size: 50px;"
                 >
                 </i>
@@ -44,7 +44,7 @@
                   fval.petrol_station_company.errors
               }"
               autocomplete="off"
-              placeholder="Select The Petrol Stations Company"
+              placeholder="Select Location"
               (change)="updateThePetrolStations($event)"
             />
 
@@ -82,7 +82,7 @@
           <label
             for="petrol_station"
             [ngClass]="fval.petrol_station.valid ? 'text-info' : ''"
-            >Service Station<i
+            >Service Points<i
               *ngIf="fval.petrol_station.valid"
               class="material-icons"
               >check_circle</i
@@ -92,7 +92,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <i
-                  class="fas fa-gas-pump text-primary mx-auto"
+                  class="fas fa-assistive-listening-systems text-primary mx-auto"
                   style="size: 50px;"
                 >
                 </i>
@@ -109,7 +109,7 @@
                   fval.petrol_station.errors
               }"
               autocomplete="off"
-              placeholder="Select The Petrol Station"
+              placeholder="Select Service Point"
             />
 
             <datalist id="petrol_station">

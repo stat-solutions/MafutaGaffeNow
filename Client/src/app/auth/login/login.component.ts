@@ -8,8 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { AlertService } from 'ngx-alerts';
 import { LayoutManageService } from 'src/app/services/layout-manage.service';
 import { UserRole } from 'src/app/models/user-role';
-import {fromEvent, from, interval, of, combineLatest, generate, merge, race, concat, forkJoin} from 'rxjs';
-import { withLatestFrom, take, combineAll, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 // import { BootstrapAlertService, BootstrapAlert } from 'ngx-bootstrap-alert';
 @Component({
   selector: 'app-login',
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
   value: string;
   stationBalanceExits: boolean;
   mySubscription: any;
-  userRoleInfo1: UserRole[];
+  userRoleInfo1$: Observable<UserRole[]>;
   serviceErrors: any = {};
   // initialSetUpData: SetupData[];
 
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.createFormGroup();
-    this.userRoleData1();
+    this.userRoleInfo1$= this.authService.getUserRoles();
 
   }
 
@@ -91,33 +90,38 @@ export class LoginComponent implements OnInit {
     return this.userForm.controls;
   }
 
+  // userRoleData1() {
+  //   this.authService.getUserRoles().subscribe(
+  //     data => {
+  //       this.userForm.controls.user_role11.reset();
+  //       this.userRoleInfo1 = data;
     //toggle visibility of password field
     toggleFieldType() {
       this.fieldType = !this.fieldType;
     }
 
 
-  userRoleData1() {
-    this.authService.getUserRoles().subscribe(
-      data => {
-        this.userForm.controls.user_role11.reset();
-        this.userRoleInfo1 = data;
+  // userRoleData1() {
+  //   this.authService.getUserRoles().subscribe(
+  //     data => {
+  //       this.userForm.controls.user_role11.reset();
+  //       this.userRoleInfo1 = data;
         // this.alertService.success({
           // html: '<b> User Roles Updated</b>' + '<br/>'
         // });
-      },
+  //     },
 
-      (error: string) => {
-        this.errored = true;
-        this.serviceErrors = error;
-        this.alertService.danger({
-          html: '<b>' + this.serviceErrors + '</b>' + '<br/>'
-        });
-      }
-    );
-  }
+  //     (error: string) => {
+  //       this.errored = true;
+  //       this.serviceErrors = error;
+  //       this.alertService.danger({
+  //         html: '<b>' + this.serviceErrors + '</b>' + '<br/>'
+  //       });
+  //     }
+  //   );
+  // }
 
-  login() {
+        login() {
     this.submitted = true;
 
     this.spinner.show();
@@ -238,4 +242,5 @@ export class LoginComponent implements OnInit {
 
 
 }
+
 
