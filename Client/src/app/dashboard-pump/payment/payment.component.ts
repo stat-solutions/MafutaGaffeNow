@@ -197,7 +197,7 @@ export class PaymentComponent implements OnInit {
     } else {
       if (this.userForm.controls.amount_to_pay.value > this.amountDue) {
         this.alertService.warning({
-          html: '<b>Amount being paid Exceeded amount due!!</b>' + '<br/>'
+          html: '<b>Amount being paid exceeded amount due!!</b>' + '<br/>'
         });
         return;
       } else {

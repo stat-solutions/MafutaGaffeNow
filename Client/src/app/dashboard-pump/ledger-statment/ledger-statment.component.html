@@ -5,7 +5,7 @@
     <div class="container mt-2 mx-0 shadow-lg">
       <div class="row">
         <div class="col-2 mt-1">
-          <a class="text-info mx-1" routerLink="/dashboardpump">
+          <a class="text-info mx-1" routerLink="/dashboardpump/shiftmanagement">
             <i class="fas fa-arrow-left" aria-hidden="true"></i
           ></a>
         </div>
@@ -97,7 +97,7 @@
 <div class="table-col col-xs-12 col-lg-12">
           <div class="table-responsive pt-2">
     <table class="state-table table table-striped table-hover table-sm">
-        <thead class="bg-dark text-info">
+        <thead class="bg-light text-info">
          <tr>
             <th style="width: 7%;">#</th>
             <th style="width: 12%;">Date</th>
@@ -115,7 +115,7 @@
          [class.text-secondary]="odd"
           [class.text-info]="!odd"
 
-            [class.bg-primary]="first||last"
+            [class.bg-warning]="first||last"
             [class.text-light]="first||last"
            >
         <td>{{ loans.id }}</td>
