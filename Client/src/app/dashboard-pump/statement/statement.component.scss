@@ -21,8 +21,9 @@
 .invest-card {
   height: 100%;
   overflow-y: auto;
+  contain: auto;
 }
-.state-table{
+.state-table {
   position: relative;
   width: 100% !important;
   max-width: 900px !important;
@@ -42,44 +43,42 @@ button.btn {
 }
 
 .text-info {
-  color: #17aae0ee !important
+  color: #17aae0ee !important;
 }
 
 a.text-info:focus,
 a.text-info:hover {
-  color: #48bae4f5 !important
+  color: #48bae4f5 !important;
 }
 .btn-info {
   color: #17aae0ee;
   background-color: transparent;
-  border-color: #17aae0ee
+  border-color: #17aae0ee;
 }
-  .btn-info:hover, .btn-info:focus {
-    color: #d9dbdd;
-    background-color: #17aae0ee;
-    border-color: #17aae0ee
-  }
+.btn-info:hover,
+.btn-info:focus {
+  color: #d9dbdd;
+  background-color: #17aae0ee;
+  border-color: #17aae0ee;
+}
 .btn-info.focus,
 .btn-info:focus {
-  box-shadow: 0 0 0 .2rem #0e99ccee
+  box-shadow: 0 0 0 0.2rem #0e99ccee;
 }
 .btn-info.disabled,
 .btn-info:disabled {
   color: #1b9eceec;
   background-color: transparent;
-  border-color: #1b9eceec
+  border-color: #1b9eceec;
 }
 
 .pointerCursor {
   cursor: pointer;
 }
 
-
-
 //media queries
 @media (min-width: 320px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 90px !important;
   }
 
@@ -90,11 +89,10 @@ a.text-info:hover {
     min-height: 280px;
     margin-bottom: 0px !important;
   }
-  }
+}
 
 @media (min-width: 360px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 120px !important;
   }
 
@@ -112,7 +110,7 @@ a.text-info:hover {
     max-height: 370px;
     min-height: 340px;
   }
-  }
+}
 
 @media (min-width: 410px) {
   h4 {
@@ -122,7 +120,6 @@ a.text-info:hover {
     font-size: 17px;
   }
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 140px !important;
   }
 
@@ -140,7 +137,6 @@ a.text-info:hover {
 
 @media (min-width: 445px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 170px !important;
   }
 
@@ -158,7 +154,6 @@ a.text-info:hover {
 
 @media (min-width: 568px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 270px !important;
   }
 
@@ -193,18 +188,17 @@ a.text-info:hover {
     margin-right: 0px !important;
   }
   .rub-head4 {
-    margin-right: 0px !important;
-    margin-left: 390px !important;
+    margin-left: 370px !important;
   }
   .card1 {
     max-width: 720px;
     min-width: 690px;
-    max-height: 680px;
-    min-height: 650px;
+    max-height: 700px;
+    min-height: 670px;
   }
   .invest-card {
-    max-height: 650px;
-    min-height: 620px;
+    max-height: 670px;
+    min-height: 640px;
   }
   h4 {
     font-size: 20px !important;
@@ -213,17 +207,22 @@ a.text-info:hover {
     font-size: 18px;
   }
   .table-col {
+    margin-top: 30px !important;
     padding-left: 25px !important;
     padding-right: 25px !important;
   }
-  .jumbotron-fluid{
-    padding-bottom: 40px !important;
+  .state-table {
+    height: 100% !important;
+    max-height: 650px !important;
+    min-height: 620px !important;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 60px !important;
   }
 }
 
 @media (min-width: 812px) {
   .rub-head4 {
-    margin-right: 0px !important;
     margin-left: 390px !important;
   }
   .card1 {
@@ -239,7 +238,11 @@ a.text-info:hover {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
-  .jumbotron-fluid{
+  .state-table {
+    max-height: 260px !important;
+    min-height: 240px !important;
+  }
+  .jumbotron-fluid {
     padding-bottom: 20px !important;
   }
 }
@@ -249,33 +252,99 @@ a.text-info:hover {
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
-  h4 {
-    margin-left: 180px !important;
-    padding-left: 80px !important;
+  .jumbotron-fluid {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-bottom: 40px !important;
+  }
+  .rub-head4 {
+    margin-left: 320px !important;
   }
   .card1 {
-    height: 300px;
-    padding-bottom: 5px !important;
+    max-width: 650px;
+    min-width: 600px;
+    max-height: 1050px;
+    min-height: 990px;
+    margin-top: 10px !important;
+    margin-bottom: 50px !important;
+  }
+  .invest-card {
+    max-height: 1030px;
+    min-height: 960px;
+  }
+  .table-col {
+    margin-top: 40px !important;
+  }
+  .state-table {
+    max-height: 630px !important;
+    min-height: 600px !important;
+    overflow-x: auto;
   }
 }
 
 @media (min-width: 1100px) {
-  h4 {
-    margin-left: 200px !important;
-    padding-left: 80px !important;
-  }
 }
 
 @media (min-width: 1280px) {
+  .jumbotron-fluid {
+width: 100%;
+max-width: 1260px;
+min-width: 1232px;
+margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-bottom: 40px !important;
+    background-color: transparent !important;
+  }
+  .container {
+    width: 100%;
+    max-width: 1260px;
+    min-width: 1232px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .rub-head4 {
+    margin-left: 760px !important;
+  }
+  .card1 {
+    max-width: 1260px;
+    min-width: 1232px;
+    max-height: 570px;
+    min-height: 500px;
+    margin-bottom: 40px !important;
+  }
+  .invest-card {
+    max-height: 550px;
+    min-height: 480px;
+  }
   h4 {
-    margin-left: 210px !important;
-    padding-left: 80px !important;
+    font-size: 22px !important;
+  }
+  h5 {
+    font-size: 20px !important;
+  }
+  .table-col {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .state-table {
+    max-width: 1360px !important;
+    max-height: 530px !important;
+    min-height: 460px !important;
   }
 }
 
 @media (min-width: 1320px) {
-  .container {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    .jumbotron-fluid {
+  width: 100% !important;
+  max-width: 1400px !important;
+  min-width: 1352px !important;
+    }
+    .container {
+      max-width: 1400px !important;
+      min-width: 1252px !important;
+    }
+    .card1 {
+      max-width: 1400px;
+      min-width: 1252px;
+    }
   }
-}

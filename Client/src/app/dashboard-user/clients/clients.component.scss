@@ -22,7 +22,7 @@
   height: 100%;
   overflow-y: auto;
 }
-.state-table{
+.state-table {
   position: relative;
   width: 100% !important;
   max-width: 900px !important;
@@ -39,39 +39,38 @@ button.btn {
 }
 
 .text-info {
-  color: #17aae0ee !important
+  color: #17aae0ee !important;
 }
 
 a.text-info:focus,
 a.text-info:hover {
-  color: #48bae4f5 !important
+  color: #48bae4f5 !important;
 }
 .btn-info {
   color: #17aae0ee;
   background-color: transparent;
-  border-color: #17aae0ee
+  border-color: #17aae0ee;
 }
-  .btn-info:hover, .btn-info:focus {
-    color: #d9dbdd;
-    background-color: #17aae0ee;
-    border-color: #17aae0ee
-  }
+.btn-info:hover,
+.btn-info:focus {
+  color: #d9dbdd;
+  background-color: #17aae0ee;
+  border-color: #17aae0ee;
+}
 .btn-info.focus,
 .btn-info:focus {
-  box-shadow: 0 0 0 .2rem #0e99ccee
+  box-shadow: 0 0 0 0.2rem #0e99ccee;
 }
 .btn-info.disabled,
 .btn-info:disabled {
   color: #1b9eceec;
   background-color: transparent;
-  border-color: #1b9eceec
+  border-color: #1b9eceec;
 }
 
 .pointerCursor {
   cursor: pointer;
 }
-
-
 
 //media queries
 @media (min-width: 320px) {
@@ -89,8 +88,7 @@ a.text-info:hover {
   .jumbotron-fluid {
     margin-bottom: 45px !important;
   }
-
-  }
+}
 
 @media (min-width: 360px) {
   .rub-head4 {
@@ -118,7 +116,7 @@ a.text-info:hover {
   .jumbotron-fluid {
     margin-bottom: 35px !important;
   }
-  }
+}
 
 @media (min-width: 410px) {
   h4 {
@@ -204,16 +202,12 @@ a.text-info:hover {
     padding-left: 25px !important;
     padding-right: 25px !important;
   }
-  .jumbotron-fluid{
+  .jumbotron-fluid {
     padding-bottom: 10px !important;
   }
 }
 
 @media (min-width: 812px) {
-  // .rub-head4 {
-  //   margin-right: 0px !important;
-  //   margin-left: 390px !important;
-  // }
   .card1 {
     max-height: 300px;
     min-height: 260px;
@@ -226,7 +220,7 @@ a.text-info:hover {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
-  .jumbotron-fluid{
+  .jumbotron-fluid {
     padding-bottom: 5px !important;
   }
 }
@@ -236,33 +230,83 @@ a.text-info:hover {
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
-  h4 {
-    margin-left: 180px !important;
-    padding-left: 80px !important;
+  .rub-head4 {
+    margin-left: 390px !important;
   }
   .card1 {
-    height: 300px;
-    padding-bottom: 5px !important;
+    max-width: 720px;
+    min-width: 670px;
+    max-height: 1030px;
+    min-height: 950px;
+    margin-bottom: 30px !important;
+  }
+  .invest-card {
+    max-height: 1010px;
+    min-height: 930px;
+  }
+  .table-col {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 45px !important;
   }
 }
 
 @media (min-width: 1100px) {
-  h4 {
-    margin-left: 200px !important;
-    padding-left: 80px !important;
-  }
 }
 
 @media (min-width: 1280px) {
-  h4 {
-    margin-left: 210px !important;
-    padding-left: 80px !important;
+  .container {
+    width: 100%;
+    max-width: 1260px;
+    min-width: 1232px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .rub-head4 {
+    margin-left: 820px !important;
+  }
+  .card1 {
+    max-width: 1260px;
+    min-width: 1232px;
+    max-height: 540px;
+    min-height: 470px;
+    margin-bottom: 35  px !important;
+  }
+  .invest-card {
+    max-height: 520px;
+    min-height: 450px;
+    }
+      h4 {
+    font-size: 22px !important;
+  }
+  .table-col {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .state-table {
+    max-width: 1360px !important;
+    max-height: 500px !important;
+    min-height: 430px !important;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 30px !important;
   }
 }
 
 @media (min-width: 1320px) {
-  .container {
-    margin-left: auto !important;
-    margin-right: auto !important;
+  .jumbotron-fluid {
+    width: 100% !important;
+    max-width: 1400px !important;
+    min-width: 1352px !important;
+      }
+      .container {
+        max-width: 1400px !important;
+        min-width: 1352px !important;
+      }
+      .card1 {
+        max-width: 1400px;
+        min-width: 1252px;
+      }
   }
-}

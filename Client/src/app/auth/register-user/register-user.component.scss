@@ -98,6 +98,7 @@ h3 {
 
 }
 
+
 @media (min-width: 812px) {
   .card-body {
     margin-bottom: 0px !important;
@@ -105,7 +106,12 @@ h3 {
 }
 
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+  .card-body {
+    margin-bottom: 220px !important;
+  }
+}
+
 
 @media (min-width: 1100px) {
       h3 {
@@ -113,7 +119,12 @@ h3 {
   }
 }
 
-@media (min-width: 1280px) {}
+@media (min-width: 1280px) {
+  .card-body {
+    margin-bottom: 20px !important;
+  }
+
+}
 
 
 @media (min-width: 1320px) {}
