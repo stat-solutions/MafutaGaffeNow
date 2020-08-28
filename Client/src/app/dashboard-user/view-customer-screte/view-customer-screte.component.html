@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="card-body mt-2 pt-3 mb-0 mx-auto pb-0 shadow-lg">
-      <form [formGroup]="userForm" (ngSubmit)="postTxn()">
+      <form [formGroup]="userForm" (ngSubmit)="secretPin()">
         <div class="form-group text-primary">
           <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-info' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
           <div class="input-group mb-0">

@@ -15,7 +15,7 @@ import { FilterPipe } from 'ngx-filter-pipe';
 })
 export class StatementComponent implements OnInit {
   public searchText: string;
-  userFilter: any = { stage: '' };
+  userFilter: any = { number_plate: '' };
   station: any;
   term : any;
   theCompany: any;
