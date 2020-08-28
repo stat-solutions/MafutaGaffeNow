@@ -105,11 +105,11 @@ h3 {
     min-height: 500px !important;
     max-height: 560px !important;
     margin-top: 30px !important;
-    margin-bottom: 85px !important;
+    margin-bottom: 50px !important;
   }
   .jumbotron-fluid {
     padding-top: 40px !important;
-    padding-bottom: 70px !important;
+    padding-bottom: 20px !important;
   }
 }
 
@@ -131,8 +131,6 @@ h3 {
     font-size: 24px !important;
   }
   .card-body {
-    min-height: 500px !important;
-    max-height: 560px !important;
     margin-top: 30px !important;
     margin-bottom: 85px !important;
   }
@@ -148,18 +146,17 @@ h3 {
 
 @media (min-width: 1280px) {
   h3 {
-    font-size: 27px !important;
+    font-size: 26px !important;
   }
   .card-body {
-    min-height: 500px !important;
-    max-height: 560px !important;
-    margin-top: 30px !important;
-    margin-bottom: 5px !important;
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 15px !important;
   }
   .jumbotron-fluid {
-    padding-top: 30px !important;
-    padding-bottom: 40px !important;
     margin-bottom: 0px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
 }
 

@@ -13,7 +13,7 @@
 .card-body {
   width: 100%;
   height: 100%;
-  max-width: 300px;
+  max-width: 320px;
   min-width: 260px;
   border-radius: 8px;
 contain: auto;
@@ -65,12 +65,12 @@ a.text-info:hover {
 //media queries
 @media (min-width: 320px) {
   .rub-head4 {
-    margin-left: 90px !important;
+    margin-left: 110px !important;
   }
 
   .card-body {
-    max-width: 300px;
-    min-width: 260px;
+    max-width: 320px;
+    min-width: 290px;
     max-height: 230px;
     min-height: 180px;
   }
@@ -82,14 +82,14 @@ a.text-info:hover {
 
 @media (min-width: 360px) {
   .rub-head4 {
-    margin-left: 125px !important;
+    margin-left: 135px !important;
   }
   .card-body {
-    max-width: 350px;
-    min-width: 320px;
+    max-width: 360px;
+    min-width: 330px;
     max-height: 250px;
     min-height: 210px;
-    padding-top: 30px;
+    padding-top: 25px !important;
     margin-bottom: 35px !important;
   }
   .jumbotron-fluid {
@@ -100,15 +100,17 @@ a.text-info:hover {
 
 @media (min-width: 375px) {
   .rub-head4 {
-    margin-left: 135px !important;
+    margin-left: 150px !important;
   }
     .card-body {
-      max-width: 360px;
-      min-width: 330px;
-      margin-bottom: 45px !important;
+      max-width: 375px;
+      min-width: 345px;
+      margin-top: 10px !important;
+      margin-bottom: 160px !important;
     }
     .jumbotron-fluid {
-      padding-bottom: 80px !important;
+      padding-top: 10px !important;
+      padding-bottom: 90px !important;
     }
 
     }
@@ -120,19 +122,21 @@ a.text-info:hover {
   .rub-head4 {
     margin-left: 140px !important;
   }
-    .card-body {
-      max-width: 370px;
-      min-width: 350px;
-    }
-    .jumbotron-fluid {
-      padding-top: 18px !important;
-      padding-bottom: 80px !important;
-    }
+  .card-body {
+    max-width: 375px;
+    min-width: 345px;
+    margin-top: 10px !important;
+    margin-bottom: 60px !important;
+  }
+  .jumbotron-fluid {
+    padding-top: 10px !important;
+    padding-bottom: 90px !important;
+  }
 }
 
 @media (min-width: 445px) {
   .rub-head4 {
-    margin-left: 155px !important;
+    margin-left: 165px !important;
   }
     .card-body {
       max-width: 410px;
@@ -150,8 +154,6 @@ a.text-info:hover {
     margin-left: 170px !important;
   }
     .card-body {
-      max-width: 410px;
-      min-width: 390px;
       padding-top: 10px !important;
     }
     .jumbotron-fluid {
@@ -176,27 +178,17 @@ a.text-info:hover {
     font-size: 20px !important;
   }
     .card-body {
-      max-width: 410px;
-      min-width: 390px;
       padding-top: 25px !important;
-      margin-bottom: 80px !important;
+      margin-bottom: 180px !important;
     }
     .jumbotron-fluid {
       padding-top: 30px !important;
-      padding-bottom: 110px !important;
+      padding-bottom: 180px !important;
     }
 }
 
 @media (min-width: 812px) {
-  // .rub-head4 {
-  //   margin-right: 0px !important;
-  //   margin-left: 125px !important;
-  // }
     .card-body {
-      max-width: 410px;
-      min-width: 390px;
-      max-height: 250px;
-      min-height: 240px;
       padding-top: 10px !important;
       margin-bottom: 5px !important;
     }
@@ -207,46 +199,40 @@ a.text-info:hover {
 }
 
 @media (min-width: 1024px) {
-  .container {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-  }
   h5 {
-    font-size: 20px !important;
-    margin-left: 180px !important;
-    padding-left: 80px !important;
+    font-size: 22px !important;
+}
+.rub-head4 {
+  margin-left: 150px !important;
+}
+.card-body {
+    padding-top: 25px !important;
+    margin-bottom: 230px !important;
   }
-  .card1 {
-    height: 300px;
-    padding-bottom: 5px !important;
+  .jumbotron-fluid {
+    padding-top: 50px !important;
+    padding-bottom: 270px !important;
   }
 }
 
 @media (min-width: 1100px) {
-  h5 {
-    font-size: 20px !important;
-    margin-left: 200px !important;
-    padding-left: 80px !important;
-  }
 }
+
 
 @media (min-width: 1280px) {
   h5 {
-    font-size: 20px !important;
-    margin-left: 210px !important;
-    padding-left: 80px !important;
+    font-size: 24px !important;
+  }
+  .card-body {
+    padding-top: 25px !important;
+    margin-bottom: 90px !important;
+  }
+  .jumbotron-fluid {
+    padding-top: 50px !important;
+    padding-bottom: 130px !important;
   }
 }
 
 @media (min-width: 1320px) {
-  .container {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  h5 {
-    font-size: 20px !important;
-    margin-left: 210px !important;
-    padding-left: 80px !important;
-  }
 }
 

@@ -105,8 +105,11 @@ a.text-info:hover {
 
 @media (min-width: 375px) {
   .card1 {
-    max-height: 370px;
-    min-height: 340px;
+    max-height: 510px;
+    min-height: 450px;
+  }
+  .jumbotron-fluid {
+    padding-bottom: 35px !important;
   }
 }
 
@@ -129,6 +132,7 @@ a.text-info:hover {
   }
   .jumbotron-fluid {
     margin-bottom: 5px !important;
+    padding-bottom: 5px !important;
   }
 }
 
@@ -153,7 +157,12 @@ a.text-info:hover {
   .rub-head4 {
     margin-left: 280px !important;
   }
-
+  h4 {
+    font-size: 20px !important;
+  }
+  h5 {
+    font-size: 18px;
+  }
   .card1 {
     max-width: 550px;
     min-width: 520px;
@@ -190,26 +199,26 @@ a.text-info:hover {
   .card1 {
     max-width: 740px;
     min-width: 712px;
-    max-height: 720px;
-    min-height: 670px;
-    margin-bottom: 10px !important;
+    max-height: 670px;
+    min-height: 630px;
+    margin-bottom: 25px !important;
   }
   .invest-card {
-    max-height: 700px;
-    min-height: 660px;
+    max-height: 660px;
+    min-height: 600px;
   }
   h4 {
-    font-size: 20px !important;
+    font-size: 22px !important;
   }
   h5 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .table-col {
     padding-left: 25px !important;
     padding-right: 25px !important;
   }
   .jumbotron-fluid{
-    padding-bottom: 40px !important;
+    padding-bottom: 20px !important;
   }
 }
 
@@ -248,18 +257,13 @@ a.text-info:hover {
   .card1 {
     max-width: 710px;
     min-width: 650px;
-    max-height: 1050px;
-    min-height: 990px;
-    margin-top: 10px !important;
-    margin-bottom: 50px !important;
+    max-height: 970px;
+    min-height: 930px;
+    margin-bottom: 25px !important;
   }
   .invest-card {
-    max-height: 1030px;
-    min-height: 960px;
-  }
-  .table-col {
-    padding-left: 25px !important;
-    padding-right: 25px !important;
+    max-height: 940px;
+    min-height: 850px;
   }
   .jumbotron-fluid{
     padding-top: 10px !important;
@@ -274,38 +278,38 @@ a.text-info:hover {
   .jumbotron-fluid {
     margin-left: 0px !important;
     margin-right: 0px !important;
-    padding-bottom: 40px !important;
+    padding-bottom: 20px !important;
   }
   .container {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   .rub-head4 {
-    margin-left: 600px !important;
+    margin-left: 640px !important;
   }
   .card1 {
-    max-width: 1140px;
-    min-width: 1062px;
-    max-height: 570px;
-    min-height: 500px;
-    margin-bottom: 40px !important;
+    max-width: 1440px;
+    min-width: 1262px;
+    max-height: 520px;
+    min-height: 480px;
+    margin-bottom: 20px !important;
   }
   .invest-card {
-    max-height: 550px;
-    min-height: 480px;
+    max-height: 500px;
+    min-height: 460px;
   }
   h4 {
-    font-size: 22px !important;
+    font-size: 24px !important;
   }
   h5 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .table-col {
     padding-left: 25px !important;
     padding-right: 25px !important;
   }
   .state-table {
-max-width: 1200px;
+max-width: 1400px;
   }
   }
 

@@ -109,9 +109,9 @@ a.text-info:hover {
     margin-left: 180px !important;
   }
   .card1 {
-    max-height: 340px;
-    min-height: 300px;
-    padding-bottom: 15px !important;
+    max-height: 470px;
+    min-height: 440px;
+    margin-bottom: 20px !important;
   }
   .jumbotron-fluid {
     margin-bottom: 35px !important;
@@ -259,7 +259,7 @@ a.text-info:hover {
 @media (min-width: 1280px) {
   .container {
     width: 100%;
-    max-width: 1260px;
+    max-width: 1400px;
     min-width: 1232px;
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -268,11 +268,11 @@ a.text-info:hover {
     margin-left: 820px !important;
   }
   .card1 {
-    max-width: 1260px;
+    max-width: 1400px;
     min-width: 1232px;
     max-height: 540px;
     min-height: 470px;
-    margin-bottom: 35  px !important;
+    margin-bottom: 35px !important;
   }
   .invest-card {
     max-height: 520px;
@@ -298,15 +298,15 @@ a.text-info:hover {
 @media (min-width: 1320px) {
   .jumbotron-fluid {
     width: 100% !important;
-    max-width: 1400px !important;
+    max-width: 1440px !important;
     min-width: 1352px !important;
       }
       .container {
-        max-width: 1400px !important;
+        max-width: 1440px !important;
         min-width: 1352px !important;
       }
       .card1 {
-        max-width: 1400px;
+        max-width: 1440px;
         min-width: 1252px;
       }
   }
