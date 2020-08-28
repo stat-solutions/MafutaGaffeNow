@@ -101,7 +101,7 @@
               </thead>
               <tbody class="text-primary">
                 <tr *ngFor="let loans of loansDetails"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
-                  [class.bg-danger]="loans.aging_days>=10" class="text-info">
+                  [class.bg-whiteb]="loans.aging_days>=10" class="text-danger">
                   <td>{{ loans.id }}</td>
                   <td>{{ loans.name }}</td>
                   <td>{{ loans.date_taken }}</td>
