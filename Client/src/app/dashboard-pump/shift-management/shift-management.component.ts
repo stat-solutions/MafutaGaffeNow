@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
 import { DashboardPumpService } from 'src/app/services/dashboard-pump.service';
 import * as jwt_decode from 'jwt-decode';
 import { FormGroup, FormControl } from '@angular/forms';
-import { LayoutManageService } from 'src/app/services/layout-manage.service';
+import { ShiftDetails } from 'src/app/models/shift-details';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-shift-management',
   templateUrl: './shift-management.component.html',
@@ -16,7 +16,8 @@ export class ShiftManagementComponent implements OnInit {
 
   userForm: FormGroup;
   actionButton: string;
-  shiftDetails: any;
+  shiftDetails$: Observable<ShiftDetails[]>;
+  shiftDetails: ShiftDetails [];
   errored: boolean;
   serviceErrors: string;
   status: boolean;
@@ -29,16 +30,15 @@ export class ShiftManagementComponent implements OnInit {
     private authService: AuthServiceService,
     private pumpService: DashboardPumpService,
     private spinner: NgxSpinnerService,
-    private alertService: AlertService,
-    private layoutService: LayoutManageService  ) { }
+    private alertService: AlertService  ) { }
 
   ngOnInit() {
     this.station = jwt_decode(this.authService.getJwtToken()).user_station_name;
     this.theCompany = jwt_decode(this.authService.getJwtToken()).user_station_company;
-    this.getTheShiftDetails();
-    this.checkWhetherBalanceIsEnoughOrExists();
     this.userForm = this.createFormGroup();
-
+    this.shiftDetails$ = this.pumpService.shiftDetails(jwt_decode(this.authService.getJwtToken()).user_station);
+    this.checkWhetherBalanceIsEnoughOrExists();
+    this.getTheShiftDetails();
   }
 
 
@@ -56,12 +56,14 @@ export class ShiftManagementComponent implements OnInit {
 
 
 
-    this.pumpService.shiftDetails(jwt_decode(this.authService.getJwtToken()).user_station).subscribe(
+    this.shiftDetails$.subscribe(
 
       (datab) => {
 
-        this.shiftDetails = datab[0];
+        this.shiftDetails = datab;
+
         this.setActionStatus();
+
         // this.alertService.success({ html: '<b> Shift details fetched</b>' + '<br/>' });
       },
 
@@ -81,7 +83,7 @@ export class ShiftManagementComponent implements OnInit {
       (datak) => {
         this.alertService.success({ html: '<b>en' + this.balanceEnough + '</b>' + '<br/>' });
         this.balanceEnough = datak;
-       
+
         this.setActionStatus();
         // this.alertService.success({ html: '<b> Shift details fetched</b>' + '<br/>' });
       },
@@ -100,14 +102,14 @@ export class ShiftManagementComponent implements OnInit {
   setActionStatus() {
 
     // console.log(this.shiftDetails.shift_status);
-    if (this.shiftDetails.shift_status === 'OPENED') {
-      this.layoutService.emitChangePumpUser(true);
+    if (this.shiftDetails[0].shift_status === 'OPENED') {
+      // this.layoutService.emitChangePumpUser(true);
       this.actionButton = 'Close Running Shift';
       this.closingBal = 'RUNNING BAL:';
       this.status = true;
 
-    } else if (this.shiftDetails.shift_status === 'CLOSED') {
-      this.layoutService.emitChangePumpUser(false);
+    } else if (this.shiftDetails[0].shift_status === 'CLOSED') {
+      // this.layoutService.emitChangePumpUser(false);
       this.actionButton = 'Open New Shift';
       this.closingBal = 'CLOSING BALANCE:';
       this.status = false;
@@ -126,7 +128,7 @@ export class ShiftManagementComponent implements OnInit {
     });
 
 
-    if (this.shiftDetails.shift_status === 'OPENED') {
+    if (this.shiftDetails[0].shift_status === 'OPENED') {
 
       this.pumpService.closeOpenShift(this.userForm).subscribe(
         (data1) => {
@@ -156,7 +158,7 @@ export class ShiftManagementComponent implements OnInit {
 
 
 
-    } else if (this.shiftDetails.shift_status === 'CLOSED') {
+    } else if (this.shiftDetails[0].shift_status === 'CLOSED') {
 
 
       this.pumpService.openClosedShift(this.userForm).subscribe(

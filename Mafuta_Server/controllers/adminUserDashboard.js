@@ -20,9 +20,16 @@ router.post('/updateCustomer', function(req, res,next) {
  
   });
 
+  router.post('/waiveThatInterest', function(req, res,next) {
+  
+    serviceU.waiveTheInterestNowNow(req.body).then( function(results) {
+      res.setHeader('Content-Type', 'application/json');
+      res.json(results);
+    }).catch(next);
+   
+    });
 
-
-
+  
 
 
 
@@ -97,10 +104,28 @@ res.status(401).json('A chairman with the same CONTACT NUMBER already exists!!!'
     
     });
   
-
+    
     
 
+
+    router.get('/customerPayStatemnt', function(req, res,next) {
+      // console.log(req.query.id);
+       serviceU.getcustomerPayStatemntNow(req.query.id).then( function(results) {
+         res.setHeader('Content-Type', 'application/json');
+         res.json(results);
+       } ).catch(next);});
+
+    router.get('/outstandInterestNow', function(req, res,next) {
+      // console.log(req.query.id);
+       serviceU.theOutStandingInt(req.query.id).then( function(results) {
+         res.setHeader('Content-Type', 'application/json');
+         res.json(results);
+       } ).catch(next);});
     
+
+
+
+
   router.get('/allClients', function(req, res,next) {
     // console.log(req.query.id);
      serviceU.getAllTheClientsDetails(req.query.id).then( function(results) {

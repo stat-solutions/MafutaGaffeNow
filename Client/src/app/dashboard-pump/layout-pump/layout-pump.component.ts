@@ -72,7 +72,7 @@ export class LayoutPumpComponent implements OnInit {
   }
   setActionStatus() {
 
-    // console.log(this.shiftDetails.shift_status);
+    console.log(this.shiftDetails.shift_status);
     if (this.shiftDetails.shift_status === 'OPENED') {
       this.loggedIn = true;
       this.loggedInPumpUser = true;

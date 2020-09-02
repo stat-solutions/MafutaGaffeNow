@@ -13,6 +13,7 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
       Login
     </h3>
     <form [formGroup]="userForm" (ngSubmit)="login()">
+
       <div class="form-group text-primary">
         <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-info' : ''">Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
          <div class="input-group mb-2">
@@ -20,13 +21,62 @@ class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 mt-1 
           <div class="input-group-text">
             <i class="fas fa-phone text-primary mx-auto" style="size: 50px">
            </i></div> </div>
-                         <input id="main_contact_number" formControlName="main_contact_number" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.main_contact_number.touched||fval.main_contact_number.dirty) && fval.main_contact_number.errors }" placeholder="Mobile number like 07XXXXXXXX" autocomplete="off"/>
+                         <input id="main_contact_number" formControlName="main_contact_number" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.main_contact_number.touched||fval.main_contact_number.dirty) && fval.main_contact_number.errors }" placeholder="Mobile number like 07XXXXXXXX"   (blur)='changeBranchValue($event)' autocomplete="off"/>
                        </div>
                      <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.required">The main mobile number is required</div>
                      <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.hasNumber">The main mobile number should be in digits/numbers</div>
                              <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.maxlength">The main mobile number should not exceed 10 digits</div>
                              <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.minlength">The main mobile number  should have atleast 10 digits</div>
                      </div>
+
+                     <div class="form-group" *ngIf='whiteListedContact'>
+                      <label
+                        for="user_role_name"
+                        [ngClass]="fval.service_points.valid ? 'text-success' : ''"
+                        ><i *ngIf="fval.service_points.valid" class="material-icons"
+                          >check_circle</i
+                        >Service Points:</label
+                      >
+                      <select
+                        formControlName="service_points"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid':
+                            (fval.service_points.touched || fval.service_points.dirty) &&
+                            fval.service_points.errors
+                        }"
+                        autocomplete="off"
+                        placeholder="Select The User Role"
+                        (input)="setTheServicePointId($event)"
+                      >
+                        <option selected>Select Service Point</option>
+                        <option *ngFor="let item3 of   theServicePoints$ |async">{{
+                          item3.service_point_name
+                        }}</option>
+                      </select>
+
+                      <div
+                        class="text-danger col"
+                        *ngIf="
+                          (fval.service_points.touched || fval.service_points.dirty) &&
+                          fval.service_points.errors?.required
+                        "
+                      >
+                        The service_points is required
+                      </div>
+
+                      <div
+                        class="text-danger col"
+                        *ngIf="
+                          (fval.service_points.touched || fval.service_points.dirty) &&
+                          fval.service_points.errors?.belongToservice_pointss
+                        "
+                      >
+                        Please select a valid service_points
+                      </div>
+
+                      <ngx-alerts></ngx-alerts>
+                    </div>
 
 
       <!-- <div class="btn btn-info mr-5 " routerLink='/authpage/testing'></div> -->

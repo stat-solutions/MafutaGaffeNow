@@ -9,6 +9,7 @@ import { map, tap, catchError, mapTo, withLatestFrom } from 'rxjs/operators';
 import { UserRole } from '../models/user-role';
 import { CompanyPetroStations } from '../models/company-petro-stations';
 import { TheStations } from '../models/the-stations';
+import { ServicePoints } from '../models/service-points';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,25 @@ export class AuthServiceService {
 
         catchError(this.handleLoginError)
 
+      );
+  }
+
+
+
+
+
+
+
+
+  getAllServicePoints(): Observable<ServicePoints[]> {
+
+    return this.http.get<ServicePoints[]>(`${this.API_URL}/api/auth/getTheServicePoints`, this.httpOptions)
+
+      .pipe(
+
+        // tap(response => console.log(`${response}`)),
+
+        catchError(this.OtherErrors)
       );
   }
 
@@ -85,6 +105,21 @@ export class AuthServiceService {
       );
   }
 
+
+
+
+  exitingInWhiteListed(id: string): Observable<number> {
+
+
+    const options1 = { params: new HttpParams().set('id', id) };
+
+    return this.http.get<number>(`${this.API_URL}/api/auth/testTheWhiteListed`, options1)
+
+      .pipe(
+        catchError(this.OtherErrors)
+      );
+
+  }
 
 
 

@@ -9,6 +9,7 @@ import { AlertService } from 'ngx-alerts';
 import { LayoutManageService } from 'src/app/services/layout-manage.service';
 import { UserRole } from 'src/app/models/user-role';
 import { Observable } from 'rxjs';
+import { ServicePoints } from 'src/app/models/service-points';
 // import { BootstrapAlertService, BootstrapAlert } from 'ngx-bootstrap-alert';
 @Component({
   selector: 'app-login',
@@ -16,10 +17,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  registered = false;
-  submitted = false;
-  errored = false;
-  posted = false;
+  registered: boolean;
+  submitted: boolean;
+  errored: boolean;
+  posted: boolean;
+  whiteListedContact: boolean;
   userForm: FormGroup;
   loginStatus: string;
   fieldType: boolean;
@@ -27,8 +29,11 @@ export class LoginComponent implements OnInit {
   stationBalanceExits: boolean;
   mySubscription: any;
   userRoleInfo1$: Observable<UserRole[]>;
+
+ theServicePoints$: Observable<ServicePoints[]>;
+
   serviceErrors: any = {};
-  // initialSetUpData: SetupData[];
+
 
   constructor(
     private authService: AuthServiceService,
@@ -41,8 +46,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.createFormGroup();
-    this.userRoleInfo1$= this.authService.getUserRoles();
-
+    this.userRoleInfo1$ = this.authService.getUserRoles();
+    this.theServicePoints$ = this.authService.getAllServicePoints();
   }
 
 
@@ -50,6 +55,9 @@ export class LoginComponent implements OnInit {
 
   createFormGroup() {
     return new FormGroup({
+
+      contact_white_liested: new FormControl(''),
+
       main_contact_number: new FormControl(
         '',
         Validators.compose([
@@ -71,6 +79,20 @@ export class LoginComponent implements OnInit {
         ])
       ),
 
+      service_points: new FormControl(
+        { value: '', disabled: true },
+        Validators.compose([
+          Validators.required
+
+        ])
+      ),
+      service_points_id: new FormControl(
+        { value: '', disabled: true },
+        Validators.compose([
+          Validators.required
+
+        ])
+      ),
       password: new FormControl(
         '',
         Validators.compose([
@@ -82,44 +104,65 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // revert() {
-  //   this.userForm.reset();
-  // }
+
+
+  changeBranchValue(contactNumber: any) {
+
+    this.authService.exitingInWhiteListed(contactNumber.target.value).subscribe(
+
+      whiteList => {
+
+        if (whiteList[0].whiteListed > 1) {
+          // console.log(roledata[0].roles);
+          this.whiteListedContact = true;
+          this.fval. service_points.enable();
+          this.userForm.patchValue({
+           contact_white_liested: this.whiteListedContact
+          });
+
+        } else {
+
+          // console.log(roledata[0].roles);
+
+          this.whiteListedContact = false;
+
+          this.fval. service_points.disable();
+        }
+
+      }, (error: string) => { }
+
+     ); }
+
+
+     setTheServicePointId(event: any) {
+
+       if (event.target.value === 'Select The User Role') {
+
+this.fval.service_points.setErrors({required: true});
+
+       } else {
+
+
+      this.fval. service_points_id.enable();
+      this.theServicePoints$.subscribe(
+        servicePoints =>
+          this.fval.service_points_id.setValue(servicePoints.find(
+            theServicePoint => theServicePoint.service_point_name === event.target.value
+          ).service_point_id) );
+        }
+     }
+
 
   get fval() {
     return this.userForm.controls;
   }
 
-  // userRoleData1() {
-  //   this.authService.getUserRoles().subscribe(
-  //     data => {
-  //       this.userForm.controls.user_role11.reset();
-  //       this.userRoleInfo1 = data;
-    //toggle visibility of password field
+
     toggleFieldType() {
       this.fieldType = !this.fieldType;
     }
 
 
-  // userRoleData1() {
-  //   this.authService.getUserRoles().subscribe(
-  //     data => {
-  //       this.userForm.controls.user_role11.reset();
-  //       this.userRoleInfo1 = data;
-        // this.alertService.success({
-          // html: '<b> User Roles Updated</b>' + '<br/>'
-        // });
-  //     },
-
-  //     (error: string) => {
-  //       this.errored = true;
-  //       this.serviceErrors = error;
-  //       this.alertService.danger({
-  //         html: '<b>' + this.serviceErrors + '</b>' + '<br/>'
-  //       });
-  //     }
-  //   );
-  // }
 
         login() {
     this.submitted = true;
@@ -170,6 +213,7 @@ export class LoginComponent implements OnInit {
 
                     this.layoutService.emitChangePumpUser(true);
                     this.layoutService.emitLoginLogout(true);
+
                     this.router.navigate(['dashboardpump/shiftmanagement']);
                     // location.reload();
                   }, 1000);

@@ -49,6 +49,36 @@ router.get('/getUserRoles', function(req, res,next) {
   
   });
 
+  router.get('/getTheServicePoints', function(req, res,next) {
+   
+    authDbService.getTheActualServicePoints().then( function(results) {
+      res.setHeader('Content-Type', 'application/json');
+      res.json(results);
+  
+      
+    }
+    
+    ).catch(next);
+    
+    });
+
+   
+
+  router.get("/testTheWhiteListed", function(req, res, next) {
+    // console.log(req.query.id);
+    authDbService
+      .getTheWhiteListingStatus(req.query.id)
+      .then(function(results) {
+        res.setHeader("Content-Type", "application/json");
+        res.json(results);
+      })
+      .catch(next);
+  });
+
+
+
+
+
   router.get('/getCompanyPetrolStations', function(req, res,next) {
    
     authDbService.getTheCompanyPetrolStations().then( function(results) {
@@ -82,20 +112,42 @@ console.log(results1);
  if(results1){
 
   authDbService.getDbCredentialsNormalUser(req.body.main_contact_number,req.body.user_role11,next).then(function(results) {
-console.log(req.body.password);
-console.log(results.users_password);
+
     if(bcrypt.compareSync(req.body.password, results.users_password)){
 
-    const payload = {
-     "user_id": results.users_id,
-     "user_contact": results.users_name,
-     "user_role": results. fk_user_role_id_users,
-     "user_station": results.fk_petrol_station_id_users,
-     "user_status": results. users_active_status,
-     "user_name": results. name,
-     "user_station_name": results.petrol_station_name,
-     "user_station_company": results. petrol_station_company_name
-   }
+      let payload=null;
+     
+      if(req.body.contact_white_liested){
+        
+        payload = {
+          "user_id": results.users_id,
+          "user_contact": results.users_name,
+          "user_role": results. fk_user_role_id_users,
+          "user_station": req.body.service_points_id,
+          "user_status": results. users_active_status,
+          "user_name": results. name,
+          "user_station_name": req.body.service_points,
+          "user_station_company": results. petrol_station_company_name,
+          "white_listed": true
+        }
+
+
+      }else{
+
+        payload = {
+          "user_id": results.users_id,
+          "user_contact": results.users_name,
+          "user_role": results. fk_user_role_id_users,
+          "user_station": results.fk_petrol_station_id_users,
+          "user_status": results. users_active_status,
+          "user_name": results. name,
+          "user_station_name": results.petrol_station_name,
+          "user_station_company": results. petrol_station_company_name,
+          "white_listed": false
+        }
+
+      }
+    
    const token = jwt.sign(payload, CRYPITOL_KEY, {expiresIn: 10000});
    const refreshToken = randtoken.uid(256);
    refreshTokens[refreshToken] = results.user_name;

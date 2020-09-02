@@ -19,9 +19,8 @@ import { PaymentDialogComponent } from './payment-dialog/payment-dialog.componen
 import { LayoutPumpComponent } from './layout-pump/layout-pump.component';
 import { LedgerStatmentComponent } from './ledger-statment/ledger-statment.component';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { FilterPipeModule } from 'ngx-filter-pipe';
-import { FilterPipe } from '../pipes/filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 @NgModule({
   declarations: [
     ShiftManagementComponent,
@@ -35,7 +34,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     PaymentDialogComponent,
     LayoutPumpComponent,
     LedgerStatmentComponent,
-    FilterPipe
+
 
   ],
   imports: [
@@ -48,9 +47,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BsDatepickerModule.forRoot(),
     ModalDialogModule.forRoot(),
     ModalModule.forRoot(),
-    FilterPipeModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FilterPipeModule
   ],
   entryComponents: [
     LendDialogComponent,

@@ -218,3 +218,43 @@ exports.getThePetrolStations = function (company_station, next) {
 });
 
 }
+
+
+
+
+
+exports.getTheWhiteListingStatus = function (contactNumber) {
+  // console.log(userId);
+    return new Promise(function (resolve,next) {
+      // console.log(userId);
+      var sql = "CALL theWhiteListExitsHow("+"'"+contactNumber+"'"+")";
+    // console.log(sql);
+    dbconnection.query(sql, null, function (error, results, fields) {
+      if (error) {
+        return next(error);
+      } else {
+          // console.log(results[0]);
+       resolve(results[0]);
+      }
+    });
+  });
+  
+  }
+
+
+
+  
+exports. getTheActualServicePoints=function(){
+  return new Promise(function (resolve,next) {
+    var sql = "CALL getTheNowServiceStations()";
+    // console.log(sql);
+    dbconnection.query(sql, null, function( error, results) {
+    if(error){    
+        return next(error);
+    }else{
+      // console.log(results);
+       resolve(results[0]);
+    }
+} );});
+
+  } 

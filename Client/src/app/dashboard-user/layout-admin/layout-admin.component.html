@@ -7,12 +7,19 @@
         </a>
       </div>
 
+
+    <div class="rubai-link">
+      <a class="dropdown-item text-dark" routerLink="/dashboarduser/cashledger"
+      ><i class="fas fa-money-bill-wave"></i>&nbsp;Cash Ledger
+    </a>
+    </div>
+
       <div class="rubai-link">
         <a class="dropbtn text-light mx-1 js-scroll-trigger" routerLink="/dashboarduser/revenue">
           <i class="fas fa-coins" aria-hidden="true"></i>&nbsp;Revenue</a
         >
       </div>
-      <div class="rubai-link">
+      <div class="rubai-link" *ngIf="hasRights">
         <a
           class="dropbtn text-light mx-1 js-scroll-trigger"
           routerLink="/dashboarduser/post_trn2"

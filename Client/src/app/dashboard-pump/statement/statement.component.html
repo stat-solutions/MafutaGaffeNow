@@ -65,6 +65,12 @@
               [(ngModel)]="userFilter.number_plate"
               placeholder="Enter Number Plate"
             />
+            <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="userFilter1.stage"
+            placeholder="Enter Stage"
+          />
           </div>
         </div>
         </div>
@@ -90,7 +96,7 @@
               <tbody class="text-primary">
                 <tr
                   *ngFor="
-                    let loans of loansDetails$ | async | filterBy: userFilter
+                    let loans of loansDetails$ | async | filterBy: userFilter|filterBy: userFilter1
                   "
                   [class.bg-warning]="loans.aging_days >= 5"
                   [class.text-light]="loans.aging_days >= 5"

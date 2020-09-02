@@ -62,7 +62,7 @@
                 </datalist>
               </div>
             </div>
-            <div class="form-group text-primary">
+            <!-- <div class="form-group text-primary">
               <div class="input-group mb-0">
                 <input
                   type="text"
@@ -77,14 +77,41 @@
                   placeholder="Search"
                 />
               </div>
-            </div>
+            </div> -->
+
+
           </form>
+          <div class="form-group text-primary">
+            <div class="input-group mb-0">
+              <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="userFilter.number_plate"
+              placeholder="Number Plate"
+            />
+            <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="userFilter1.name"
+            placeholder="Customer Name"
+          />
+          <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="userFilter2.stage"
+          placeholder="Stage"
+        />
+          </div>
         </div>
-        <div class="table-col col-lg-12 col-xs-12 ">
+        
+        </div>
+
+        <div class="table-col col-lg-12 col-xs-12" *ngIf="hasRights">
           <div class="table-responsive pt-2">
             <table class="state-table table table-hover table-striped table-sm">
               <thead class="bg-light text-info">
                 <tr>
+                  <th  style="width: 7%;">Wave Interest</th>
                   <th style="width: 4%;">#</th>
                   <th style="width: 15%;">Name</th>
                   <th style="width: 5%;">Date</th>
@@ -100,8 +127,9 @@
                 </tr>
               </thead>
               <tbody class="text-primary">
-                <tr *ngFor="let loans of loansDetails"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
+                <tr *ngFor="let loans of loansDetails|filterBy: userFilter|filterBy: userFilter1|filterBy: userFilter2"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
                   [class.bg-whiteb]="loans.aging_days>=10" class="text-danger">
+                  <td > <button  class="btn btn-info mr-5" [routerLink]="['/dashboarduser/waiveinterest', loans.number_plate]">Waive</button></td>
                   <td>{{ loans.id }}</td>
                   <td>{{ loans.name }}</td>
                   <td>{{ loans.date_taken }}</td>
@@ -119,6 +147,49 @@
             </table>
           </div>
         </div>
+
+        <div class="table-col col-lg-12 col-xs-12" *ngIf="!hasRights">
+          <div class="table-responsive pt-2">
+            <table class="state-table table table-hover table-striped table-sm">
+              <thead class="bg-light text-info">
+                <tr>
+                  <!-- <th *ngIf="hasRights" style="width: 7%;">Wave Interest</th> -->
+                  <th style="width: 4%;">#</th>
+                  <th style="width: 15%;">Name</th>
+                  <th style="width: 5%;">Date</th>
+                  <th style="width: 5%;">Time</th>
+                  <th style="width: 10%;">Amount Taken</th>
+                  <th style="width: 10%;">Loan+Interest Expected</th>
+                  <th style="width: 10%;">Loan+Interest Paid</th>
+                  <th style="width: 10%;">Loan+Interest Remaining</th>
+                  <th style="width: 5%;">Days Unpaid</th>
+                  <th style="width: 8%;">Phone</th>
+                  <th style="width: 8%;">Number Plate</th>
+                  <th style="width: 10%;">Stage</th>
+                </tr>
+              </thead>
+              <tbody class="text-primary">
+                <tr *ngFor="let loans of loansDetails|filterBy: userFilter|filterBy: userFilter1|filterBy: userFilter2"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
+                  [class.bg-whiteb]="loans.aging_days>=10" class="text-danger">
+                  <!-- <td > <button  class="btn btn-info mr-5" [routerLink]="['/dashboarduser/waiveinterest', loans.number_plate]">Waive</button></td> -->
+                  <td>{{ loans.id }}</td>
+                  <td>{{ loans.name }}</td>
+                  <td>{{ loans.date_taken }}</td>
+                  <td>{{ loans.time_taken }}</td>
+                  <td>{{ loans.loan_taken | number }}</td>
+                  <td>{{ loans.loan_interest_expected | number }}</td>
+                  <td>{{ loans.loan_interest_paid | number }}</td>
+                  <td>{{ loans.loan_interest_remaining | number }}</td>
+                  <td>{{ loans.aging_days | number }}</td>
+                  <td>{{ loans.phone }}</td>
+                  <td>{{ loans.number_plate }}</td>
+                  <td>{{ loans.stage }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
     <div

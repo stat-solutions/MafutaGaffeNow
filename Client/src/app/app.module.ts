@@ -17,10 +17,12 @@ import { AngularMaterialModule } from './angular-material.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchTableDirective,
+
 
 
   ],
@@ -37,7 +39,8 @@ import { AngularMaterialModule } from './angular-material.module';
     BsDatepickerModule.forRoot(),
     ModalDialogModule.forRoot(),
     ModalModule.forRoot(),
-    AngularMaterialModule
+    AngularMaterialModule,
+
   ],
   entryComponents: [
     LendDialogComponent

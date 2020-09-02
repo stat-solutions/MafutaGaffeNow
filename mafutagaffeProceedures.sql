@@ -614,7 +614,7 @@ CREATE PROCEDURE   shiftDetailsPumpUser(IN station INT)
 BEGIN
 
 SELECT s.shift_id,s.shift_opening_bal,s.shift_closing_bal,s.shift_status,DATE_FORMAT(DATE(s.shift_start_date),"%d/%m/%Y") AS shift_date,TIME(s.shift_start_date) AS open_time,TIME(s.shift_end_date) AS close_time,UserName(s.fk_user_id_created_by_shift) AS opened_by,UserName(s.fk_user_id_closed_by_shift) AS closed_by FROM shift s  WHERE s.fk_petrol_station_id_shift=station ORDER BY s.shift_id DESC LIMIT 1;
-
+close_time
 END ##
 DELIMITER ;
 
@@ -1957,7 +1957,7 @@ DELIMITER ;
 
 
 
-
+/* 
 DROP PROCEDURE IF EXISTS ledgerStatement;
 
 DELIMITER ##
@@ -1996,88 +1996,10 @@ END IF;
 
 END ##
 
-DELIMITER ;
+DELIMITER ; */
 
 
 
-
-DROP PROCEDURE IF EXISTS generalLedgerShiftAll;
-
-DELIMITER ##
-
-CREATE PROCEDURE generalLedgerShiftAll(IN shiftId INT,IN openingBal DOUBLE,IN stationId INT) READS SQL DATA BEGIN
-DECLARE DATE,TIME,TYPE,NUMBER_PLATE VARCHAR(60);
-DECLARE DEBIT,CREDIT,RUNNING_BALANCE DOUBLE;
-DECLARE l_done,glIds INT;
-DECLARE forSelectingGeneralLedgerTxns CURSOR FOR SELECT trn_general_ledger_id  FROM trn_general_ledger WHERE fk_petrol_station_id_trn_general_ledger=stationId AND fk_shift_id_trn_general_ledger=shiftId;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET l_done=1;
-
-
-DROP TABLE IF EXISTS temp_ledger;
-
-CREATE TEMPORARY  TABLE temp_ledger(id INT,trn_date VARCHAR(60),trn_time VARCHAR(60),trn_type VARCHAR(60),number_plate VARCHAR(45),debit_amount DOUBLE,credit_amount DOUBLE,running_balance DOUBLE);
---  number_plate
-OPEN forSelectingGeneralLedgerTxns;
-SET @RUNNING_BALANCE=openingBal;
-
-SET @TOTAL_DEBIT=0;
-
-SET @TOTAL_CREDIT=0;
-
-SET @ID=0;
-INSERT INTO temp_ledger VALUES(NULL,'OPENING BALANCE',NULL,NULL,NULL,NULL,NULL,openingBal);
-
-accounts_loop: LOOP 
-FETCH forSelectingGeneralLedgerTxns into glIds;
-  
-IF l_done=1 THEN
-LEAVE accounts_loop;
-END IF;
- 
- SELECT DATE_FORMAT(DATE(trn_date),"%d/%m/%Y"),TIME(trn_date),trn_type,trn_debit,trn_credit INTO DATE,TIME,TYPE,DEBIT,CREDIT FROM trn_general_ledger WHERE trn_general_ledger_id=glIds;
-
- SELECT c.trn_number_plate INTO NUMBER_PLATE FROM trn_customer_details c INNER JOIN trn_general_ledger g ON c.fk_trn_general_ledger_id_trn_customer_details=g.trn_general_ledger_id WHERE g.trn_general_ledger_id=glIds;
-
- IF ISNULL(NUMBER_PLATE) THEN 
- SET NUMBER_PLATE="NOT APPLICABLE";
- END IF;
-
-SET @RUNNING_BALANCE=@RUNNING_BALANCE+DEBIT-CREDIT;
-
-SET @TOTAL_DEBIT=@TOTAL_DEBIT+DEBIT;
-
-SET @TOTAL_CREDIT=@TOTAL_CREDIT+CREDIT;
-
-
-SET @ID=@ID+1;
-
-IF DEBIT=0 THEN
-
-SET DEBIT=NULL;
-
-END IF;
-
-IF CREDIT=0 THEN
-
-SET CREDIT=NULL;
-
-END IF;
-
-
-INSERT INTO temp_ledger VALUES(@ID,DATE,TIME,TYPE,NUMBER_PLATE,DEBIT,CREDIT,@RUNNING_BALANCE);
-
-SET l_done=0;
-END LOOP accounts_loop;
-CLOSE forSelectingGeneralLedgerTxns;
-
-SET @NET_BALANCE=@TOTAL_DEBIT-@TOTAL_CREDIT;
-
-INSERT INTO temp_ledger VALUES(NULL,'TOTAL/NET BALANCE',NULL,NULL,NULL,@TOTAL_DEBIT,@TOTAL_CREDIT,@NET_BALANCE);
-
-
-SELECT * FROM temp_ledger;
-END ##
-DELIMITER ;
 
 
 
@@ -2864,3 +2786,168 @@ DELIMITER ;
 
 
 
+
+
+
+
+
+
+
+DROP PROCEDURE IF EXISTS theOutstandInterestNowX;
+
+DELIMITER ##
+
+CREATE PROCEDURE theOutstandInterestNowX(IN numberPlate VARCHAR(45)) READS SQL DATA BEGIN
+
+  SELECT i.interest_remaining AS the_interest from interest i INNER JOIN loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id WHERE l.loan_status=1 AND  c.customers_number_plate=numberPlate;
+
+END ##
+
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS waiveInterstIncome;
+
+DELIMITER ##
+
+CREATE PROCEDURE waiveInterstIncome(IN data JSON) READS SQL DATA BEGIN
+
+
+END ##
+
+DELIMITER ;
+
+  
+
+  
+
+
+  
+DROP PROCEDURE IF EXISTS getTheNowServiceStations;
+DELIMITER ##
+CREATE PROCEDURE   getTheNowServiceStations() 
+BEGIN
+
+SELECT tst.petrol_station_id AS service_point_id,tst.petrol_station_name AS service_point_name FROM petrol_station tst ;
+
+END ##
+DELIMITER ;
+
+
+/* COUNT ALL USER ROLES */
+DROP PROCEDURE IF EXISTS theWhiteListExitsHow;
+
+DELIMITER ##
+
+CREATE PROCEDURE   theWhiteListExitsHow(IN thePhoneNumber VARCHAR(45)) 
+
+BEGIN
+
+SELECT COUNT(users_id) AS whiteListed FROM white_users  WHERE users_contact=thePhoneNumber;
+
+END ##
+
+DELIMITER ;
+
+
+
+
+/* COUNT ALL USER ROLES */
+DROP PROCEDURE IF EXISTS individualLoanStatment;
+
+DELIMITER ##
+
+CREATE PROCEDURE   individualLoanStatment(IN numberPlate VARCHAR(45)) 
+BEGIN
+
+select DATE_FORMAT(DATE(gl.trn_date),"%d/%m/%Y") AS dateN,TIME(gl.trn_date) AS timeN,gl.trn_type,gl.trn_debit,gl.trn_credit from trn_general_ledger gl INNER JOIN trn_customer_details tcd ON tcd.fk_trn_general_ledger_id_trn_customer_details=gl.trn_general_ledger_id WHERE tcd.trn_number_plate=numberPlate;
+
+END ##
+
+DELIMITER ;
+-- 'UES 172P'
+
+/* CALL ledgerStatement('{"user_id":100000023,"user_station":509,"current_date":"01/09/2020"}') */
+
+
+DROP PROCEDURE IF EXISTS generalLedgerShiftAll;
+
+DELIMITER ##
+
+CREATE PROCEDURE generalLedgerShiftAll(IN data JSON) READS SQL DATA BEGIN
+DECLARE DATE,TIME,TYPE,NUMBER_PLATE VARCHAR(60);
+DECLARE DEBIT,CREDIT,RUNNING_BALANCE,openingBal DOUBLE;
+DECLARE l_done,glIds INT;
+
+DECLARE forSelectingGeneralLedgerTxns CURSOR FOR SELECT trn_general_ledger_id  FROM trn_general_ledger WHERE fk_petrol_station_id_trn_general_ledger=JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station')) AND DATE(trn_date)=JSON_UNQUOTE(JSON_EXTRACT(data, '$.current_date')) AND TIME(trn_date)>='00:00:00' AND TIME(trn_date)<='23:59:59';
+
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET l_done=1;
+
+
+DROP TABLE IF EXISTS temp_ledger;
+
+CREATE TEMPORARY  TABLE temp_ledger(id INT,trn_date VARCHAR(60),trn_time VARCHAR(60),trn_type VARCHAR(60),number_plate VARCHAR(45),debit_amount DOUBLE,credit_amount DOUBLE,running_balance DOUBLE);
+
+SELECT the_balance INTO openingBal FROM balance_per_day WHERE  DATE(trn_date)=DATE_SUB(JSON_UNQUOTE(JSON_EXTRACT(data, '$.current_date')),INTERVAL 1 DAY) AND  fk_petrol_station_id_balance_per_day=JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station'));
+
+OPEN forSelectingGeneralLedgerTxns;
+SET @RUNNING_BALANCE=openingBal;
+
+SET @TOTAL_DEBIT=0;
+
+SET @TOTAL_CREDIT=0;
+
+SET @ID=0;
+INSERT INTO temp_ledger VALUES(NULL,'OPENING BALANCE',NULL,NULL,NULL,NULL,NULL,openingBal);
+
+accounts_loop: LOOP 
+FETCH forSelectingGeneralLedgerTxns into glIds;
+  
+IF l_done=1 THEN
+LEAVE accounts_loop;
+END IF;
+ 
+ SELECT DATE_FORMAT(DATE(trn_date),"%d/%m/%Y"),TIME(trn_date),trn_type,trn_debit,trn_credit INTO DATE,TIME,TYPE,DEBIT,CREDIT FROM trn_general_ledger WHERE trn_general_ledger_id=glIds;
+
+ SELECT c.trn_number_plate INTO NUMBER_PLATE FROM trn_customer_details c INNER JOIN trn_general_ledger g ON c.fk_trn_general_ledger_id_trn_customer_details=g.trn_general_ledger_id WHERE g.trn_general_ledger_id=glIds;
+
+ IF ISNULL(NUMBER_PLATE) THEN 
+ SET NUMBER_PLATE="WITHDRAWAL/DEPOSIT";
+ END IF;
+
+SET @RUNNING_BALANCE=@RUNNING_BALANCE+DEBIT-CREDIT;
+
+SET @TOTAL_DEBIT=@TOTAL_DEBIT+DEBIT;
+
+SET @TOTAL_CREDIT=@TOTAL_CREDIT+CREDIT;
+
+
+SET @ID=@ID+1;
+
+IF DEBIT=0 THEN
+
+SET DEBIT=NULL;
+
+END IF;
+
+IF CREDIT=0 THEN
+
+SET CREDIT=NULL;
+
+END IF;
+
+
+INSERT INTO temp_ledger VALUES(@ID,DATE,TIME,TYPE,NUMBER_PLATE,DEBIT,CREDIT,@RUNNING_BALANCE);
+
+SET l_done=0;
+END LOOP accounts_loop;
+CLOSE forSelectingGeneralLedgerTxns;
+
+SET @NET_BALANCE=@TOTAL_DEBIT-@TOTAL_CREDIT;
+
+INSERT INTO temp_ledger VALUES(NULL,'TOTAL/NET BALANCE',NULL,NULL,NULL,@TOTAL_DEBIT,@TOTAL_CREDIT,@NET_BALANCE);
+
+
+SELECT * FROM temp_ledger;
+END ##
+DELIMITER ;

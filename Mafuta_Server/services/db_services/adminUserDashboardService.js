@@ -71,7 +71,26 @@ exports.saveStageDetails = function (data) {
     }
   });
 }); }
-  
+
+
+
+exports.waiveTheInterestNowNow = function (data) {
+
+  return new Promise(function (resolve,next) {
+
+    var sql = "CALL waiveInterstIncome("+"'"+JSON.stringify(data)+"'"+")";
+  console.log(sql);
+  dbconnection.query(sql, null, function (error, results, fields) {
+    if (error) {
+      return next(error);
+    } else {
+
+      // console.log(results[0]);
+
+     resolve(results[0]);
+    }
+  });
+}); }
 
 exports.getAllLoansDetailsNow = function () {
 
@@ -92,6 +111,44 @@ exports.getAllLoansDetailsNow = function () {
 }
 
 
+
+
+exports.getcustomerPayStatemntNow = function (numberPlate) {
+  // console.log(userId);
+    return new Promise(function (resolve,next) {
+      // console.log(userId);
+      var sql = "CALL individualLoanStatment("+"'"+numberPlate+"'"+")";
+    // console.log(sql);
+    dbconnection.query(sql, null, function (error, results, fields) {
+      if (error) {
+        return next(error);
+      } else {
+          // console.log(results[0]);
+       resolve(results[0]);
+      }
+    });
+  });
+  
+  }
+
+
+exports.theOutStandingInt = function (numberPlate) {
+  // console.log(userId);
+    return new Promise(function (resolve,next) {
+      // console.log(userId);
+      var sql = "CALL theOutstandInterestNowX("+"'"+numberPlate+"'"+")";
+    // console.log(sql);
+    dbconnection.query(sql, null, function (error, results, fields) {
+      if (error) {
+        return next(error);
+      } else {
+          // console.log(results[0]);
+       resolve(results[0]);
+      }
+    });
+  });
+  
+  }
 
 
 exports.getAllTheClientsDetails = function (stationId) {

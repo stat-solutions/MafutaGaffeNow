@@ -8,3 +8,5 @@ export interface AllClients {
   chair_number: number;
   l_limit: number;
 }
+
+

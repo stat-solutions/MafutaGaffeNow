@@ -162,11 +162,26 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 100000000
 DEFAULT CHARACTER SET = utf8;
 
--- CREATE INDEX `fk_user_role_id_users_idx` ON `users` (`fk_user_role_id_users` ASC) VISIBLE;
--- CREATE INDEX `fk_petrol_station_id_users_idx` ON `users` (`fk_petrol_station_id_users` ASC) VISIBLE;
+ CREATE INDEX `fk_user_role_id_users_idx` ON `users` (`fk_user_role_id_users` ASC) VISIBLE;
+ CREATE INDEX `fk_petrol_station_id_users_idx` ON `users` (`fk_petrol_station_id_users` ASC) VISIBLE;
 
 
+-- ---------------------------------------------------
+-- Table `white_users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS  `white_users`;
 
+CREATE TABLE IF NOT EXISTS `white_users` (
+  `users_id` INT(11) NOT NULL,
+  `users_contact` VARCHAR(45) NULL DEFAULT 'GoogoBazi',
+ 
+  PRIMARY KEY (`users_id`)
+
+    
+    )
+ENGINE = InnoDB
+
+DEFAULT CHARACTER SET = utf8;
 
 -- ---------------------------------------------------
 -- Table `common_bio_data`

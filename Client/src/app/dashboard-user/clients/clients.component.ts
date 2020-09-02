@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AllLoansDisplay } from 'src/app/models/all-loans-display';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { DashboardUserService } from 'src/app/services/dashboard-user.service';
 import { NgxSpinnerService } from 'ngx-spinner';

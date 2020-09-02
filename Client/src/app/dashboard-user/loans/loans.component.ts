@@ -10,6 +10,7 @@ import * as jwt_decode from 'jwt-decode';
 import { AllLoansDisplay } from 'src/app/models/all-loans-display';
 import { DashboardUserService } from 'src/app/services/dashboard-user.service';
 import { LoanStatement } from 'src/app/models/loan-statement';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-loans',
   templateUrl: './loans.component.html',
@@ -20,6 +21,7 @@ export class LoansComponent implements OnInit {
   actionButton: string;
   loanDetails: AllLoansDisplay[];
   errored: boolean;
+  hasRights: boolean;
   serviceErrors: string;
   status: boolean;
   balance = 1000000;
@@ -27,6 +29,11 @@ export class LoansComponent implements OnInit {
   theCompany: string;
   closingBal: string;
   loansDetails: LoanStatement[];
+  userFilter: any = { number_plate: '' };
+  userFilter1: any = { name: '' };
+  userFilter2: any = { stage: '' };
+  filter: FormControl;
+  filter$: Observable<string>;
   constructor(
     private authService: AuthServiceService,
     private adminUserService: DashboardUserService,
@@ -37,13 +44,15 @@ export class LoansComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.setRightsNow();
     this.station = jwt_decode(this.authService.getJwtToken()).user_station_name;
     this.theCompany = jwt_decode(
       this.authService.getJwtToken()
     ).user_station_company;
+ 
     this.userForm = this.createFormGroup();
     this.getTheLoansNow();
-
+   
   }
 
   createFormGroup() {
@@ -57,7 +66,13 @@ export class LoansComponent implements OnInit {
       )
     });
   }
-  
+
+  setRightsNow() {
+
+this.hasRights = jwt_decode(this.authService.getJwtToken()).white_listed;
+console.log(this.hasRights);
+  }
+
 
   revert() {
     this.userForm.reset();

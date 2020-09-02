@@ -13,6 +13,8 @@ import { tap, catchError } from 'rxjs/operators';
 import { StageNames } from '../models/stage-names';
 import { AllLoansDisplay } from '../models/all-loans-display';
 import { AllClients } from '../models/all-clients';
+import { InterestOut } from '../models/interest-out';
+import { CustomerPayStatement } from '../models/customer-pay-statement';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +79,44 @@ export class DashboardUserService {
       );
   }
 
+
+
+  waiveInterestNow(postData: FormGroup): Observable<boolean> {
+    return this.http
+      .post<boolean>(
+        `${this.API_URL}/api/adminUserDashboard/waiveThatInterest`,
+        postData.value,
+        this.httpOptions
+      )
+
+      .pipe(
+        // tap(response => console.log(`${response}`)),
+
+        catchError(this.handleError)
+      );
+  }
+
+
+
+  getTheMiniLoanStatement(id: string): Observable<CustomerPayStatement[]> {
+    const options1 = { params: new HttpParams().set('id', id) };
+
+    return this.http
+      .get<CustomerPayStatement[]>(
+        `${this.API_URL}/api/adminUserDashboard/customerPayStatemnt`,
+        options1
+      )
+
+      .pipe(
+        // tap(response => console.log(`${response}`)),
+
+        catchError(this.handleError)
+      );
+  }
+
+
+
+
   getAllClients(id: string): Observable<AllClients[]> {
     const options1 = { params: new HttpParams().set('id', id) };
 
@@ -92,6 +132,26 @@ export class DashboardUserService {
         catchError(this.handleError)
       );
   }
+
+
+
+
+  getTheOutStandItnesNow(id: string): Observable<InterestOut[]> {
+    const options1 = { params: new HttpParams().set('id', id) };
+
+    return this.http
+      .get<InterestOut[]>(
+        `${this.API_URL}/api/adminUserDashboard/outstandInterestNow`,
+        options1
+      )
+
+      .pipe(
+        // tap(response => console.log(`${response}`)),
+
+        catchError(this.handleError)
+      );
+  }
+
 
   getAllLoans(): Observable<AllLoansDisplay[]> {
     return this.http

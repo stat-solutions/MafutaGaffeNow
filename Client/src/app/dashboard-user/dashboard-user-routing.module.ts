@@ -10,6 +10,8 @@ import { PostComponent } from './post/post.component';
 import { PostTrn2Component } from './post-trn2/post-trn2.component';
 import { ViewCustomerScreteComponent } from './view-customer-screte/view-customer-screte.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
+import { WaiveInterestComponent } from './waive-interest/waive-interest.component';
+import { LedgerStatmentComponent } from '../dashboard-pump/ledger-statment/ledger-statment.component';
 
 
 const routes: Routes = [
@@ -18,13 +20,15 @@ const routes: Routes = [
   path: 'dashboarduser', component: DashboardUserComponent, children: [
     { path: 'clients', component: ClientsComponent },
     { path: 'loans', component: LoansComponent },
+    { path: 'cashledger', component: LedgerStatmentComponent },
     { path: 'enroll', component: EnrollComponent },
     { path: 'revenue', component: RevenueComponent },
     { path: 'stage', component: StageComponent },
     { path: 'post', component: PostComponent },
     { path: 'post_trn2', component: PostTrn2Component },
     { path: 'viewsecrete', component: ViewCustomerScreteComponent },
-    { path: 'editcustomer/:name/:stage/:phone/:plate', component: EditClientComponent }
+    { path: 'editcustomer/:name/:stage/:phone/:plate', component: EditClientComponent },
+    { path: 'waiveinterest/:plate', component: WaiveInterestComponent }
   ]
 }
 ];

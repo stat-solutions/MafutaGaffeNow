@@ -257,7 +257,7 @@ exports.theLedgerDetails = function (data) {
 
   return new Promise(function (resolve,next) {
 
-    var sql = "CALL ledgerStatement(" + "'" + JSON.stringify(data)+"'"+ ")";
+    var sql = "CALL generalLedgerShiftAll(" + "'" + JSON.stringify(data)+"'"+ ")";
 
     console.log(sql);
     

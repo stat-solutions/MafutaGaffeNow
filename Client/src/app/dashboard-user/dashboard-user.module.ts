@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSpinnersModule } from 'ngx-spinners';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-alerts';
 import { DashboardUserRoutingModule } from './dashboard-user-routing.module';
 import { LoansComponent } from './loans/loans.component';
@@ -19,6 +19,14 @@ import { ViewCustomerScreteComponent } from './view-customer-screte/view-custome
 import { EditClientComponent } from './edit-client/edit-client.component';
 
 
+
+import { ModalDialogModule } from 'ngx-modal-dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { WaiveInterestComponent } from './waive-interest/waive-interest.component';
 @NgModule({
   declarations: [
     LoansComponent,
@@ -31,7 +39,9 @@ import { EditClientComponent } from './edit-client/edit-client.component';
         PostComponent,
         PostTrn2Component,
         ViewCustomerScreteComponent,
-        EditClientComponent],
+        EditClientComponent,
+        WaiveInterestComponent,
+      ],
   imports: [
     CommonModule,
     DashboardUserRoutingModule,
@@ -39,7 +49,10 @@ import { EditClientComponent } from './edit-client/edit-client.component';
     NgxSpinnerModule,
     NgxSpinnersModule,
     ReactiveFormsModule,
-    AlertModule
+    AlertModule,
+    Ng2SearchPipeModule,
+    ModalDialogModule,
+    ModalModule,FormsModule,FilterPipeModule
   ]
 })
 export class DashboardUserModule { }

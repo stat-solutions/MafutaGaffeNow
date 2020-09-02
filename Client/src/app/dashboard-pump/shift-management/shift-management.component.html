@@ -51,12 +51,12 @@
             class="table table-condensed table-striped table-sm"
             *ngIf="balanceEnough"
           >
-            <tbody>
+            <tbody *ngFor="let deta of shiftDetails$|async">
               <tr>
                 <td class="text-primary">Shift ID</td>
                 <td>
                   <span class="badge badge-pill badge-info p-2">{{
-                    shiftDetails.shift_id
+                    deta.shift_id
                   }}</span>
                 </td>
               </tr>
@@ -64,7 +64,7 @@
                 <td class="text-primary">Shift Status</td>
                 <td>
                   <span class="badge badge-pill badge-success p-2">{{
-                    shiftDetails.shift_status
+                    deta.shift_status
                   }}</span>
                 </td>
               </tr>
@@ -72,7 +72,7 @@
                 <td class="text-primary">Open Date</td>
                 <td>
                   <span class="badge badge-pill badge-warning p-2">{{
-                    shiftDetails.shift_date
+                    deta.shift_date
                   }}</span>
                 </td>
               </tr>
@@ -80,7 +80,7 @@
                 <td class="text-primary">Open Time</td>
                 <td>
                   <span class="badge badge-pill badge-primary p-2">{{
-                    shiftDetails.open_time
+                    deta.open_time
                   }}</span>
                 </td>
               </tr>
@@ -89,7 +89,7 @@
                 <td class="text-primary">Closing Time</td>
                 <td>
                   <span class="badge badge-pill badge-primary p-2">{{
-                    shiftDetails.close_time
+                    deta.close_time
                   }}</span>
                 </td>
               </tr>
@@ -97,7 +97,7 @@
                 <td class="text-primary">Opening Balance</td>
                 <td>
                   <span class="badge badge-pill badge-secondary p-2">{{
-                    shiftDetails.shift_opening_bal | number
+                    deta.shift_opening_bal | number
                   }}</span>
                 </td>
               </tr>
@@ -105,7 +105,7 @@
                 <td class="text-primary">{{ closingBal }}</td>
                 <td>
                   <span class="badge badge-pill badge-secondary p-2">{{
-                    shiftDetails.shift_closing_bal | number
+                    deta.shift_closing_bal | number
                   }}</span>
                 </td>
               </tr>
@@ -113,7 +113,7 @@
                 <td class="text-primary">Opened By</td>
                 <td class="badge badge-pill badge-danger p-2">
                   <!-- <h5><span class="badge badge-pill badge-danger"> -->
-                  {{ shiftDetails.opened_by }}
+                  {{ deta.opened_by }}
                   <!-- </span></h5> -->
                 </td>
               </tr>
@@ -122,7 +122,7 @@
                 <td class="text-primary">Closed By</td>
                 <td>
                   <span class="badge badge-pill badge-danger p-2">{{
-                    shiftDetails.closed_by
+                    deta.closed_by
                   }}</span>
                 </td>
               </tr>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { Router } from '@angular/router';
 import { LayoutManageService } from 'src/app/services/layout-manage.service';
-
+import * as jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-layout-admin',
   templateUrl: './layout-admin.component.html',
@@ -12,7 +12,7 @@ export class LayoutAdminComponent implements OnInit {
   loggedInPumpUser: boolean;
   loggedInAdminUser: boolean;
   loggedIn: boolean;
-
+  hasRights: boolean;
   imageUrl = './assets/blimassLead.jpg';
   boxUsage = 'Loans';
   usage = ['View Loans'];
@@ -36,6 +36,7 @@ export class LayoutAdminComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.setRightsNow();
     // if (jwt_decode(this.authService.getJwtToken()).user_role === 1001) {
     //   this.layoutService.emitLoginLogout(true);
     //   this.layoutService.emitChangeAdminUser(true);
@@ -52,6 +53,13 @@ export class LayoutAdminComponent implements OnInit {
 
     this.updateLayout();
   }
+
+
+  setRightsNow() {
+    this.hasRights = jwt_decode(this.authService.getJwtToken()).white_listed;
+    console.log(this.hasRights);
+      }
+
 
   updateLayout() {
     this.layoutService.changeEmittedlogoutin$.subscribe(status1 => {

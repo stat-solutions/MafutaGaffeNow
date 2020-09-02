@@ -16,14 +16,14 @@ import { FilterPipe } from 'ngx-filter-pipe';
 export class StatementComponent implements OnInit {
   public searchText: string;
   userFilter: any = { number_plate: '' };
+  userFilter1: any = { stage: '' };
+  // filter = { $or: ['German', 'English'] };
   station: any;
-  term : any;
+  term  : any;
   theCompany: any;
   userForm: FormGroup;
   loansDetails$: Observable<LoanStatement[]>;
   // filteredloansDetails$: Observable<LoanStatement[]>;
-  filter: FormControl;
-  filter$: Observable<string>;
   errored: boolean;
   serviceErrors: string;
   overduePast15: boolean;
@@ -34,7 +34,7 @@ export class StatementComponent implements OnInit {
     private pumpService: DashboardPumpService,
     private alertService: AlertService  ) {
 
-      this.filter = new FormControl('');
+
   }
 
   ngOnInit() {
@@ -44,23 +44,7 @@ export class StatementComponent implements OnInit {
     ).user_station_company;
     this.userForm = this.createFormGroup();
     this.getTheLoansNow();
-
-    // this. loanFiltering();
   }
-
-// loanFiltering() {
-
-//   this.filter = new FormControl('');
-//   this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-
-//   this.filteredloansDetails$ = combineLatest([this.loansDetails$, this.filter$])
-//   .pipe(
-// tap(x=>console.log(x)),
-//     map(([loandetails, filterString]) => loandetails.filter(
-
-//       loandetail => loandetail.stage.toLowerCase().indexOf(filterString.toLowerCase()) !== -1))
-//   );
-// }
 
 
   createFormGroup() {
@@ -89,40 +73,6 @@ export class StatementComponent implements OnInit {
   get fval() {
     return this.userForm.controls;
   }
-
-  // Time	Number plate	Amount	Description
-  // getTheLoansNow() {
-  //   if (this.userForm.controls.selection_options.value === '') {
-  //     this.userForm.patchValue({
-  //       selection_options: 'RUNNING LOANS'
-  //     });
-
-  //   }
-  //   // console.log(jwt_decode(this.authService.getJwtToken()).user_id);
-  //   this.userForm.patchValue({
-  //     user_id: jwt_decode(this.authService.getJwtToken()).user_id,
-  //     user_station: jwt_decode(this.authService.getJwtToken()).user_station
-  //   });
-
-
-
-  //   this.pumpService
-  //     .theRunningLoans(this.userForm)
-  //     .subscribe(
-  //       data => {
-  //         this.loansDetails = data;
-  //       },
-
-  //       (error: string) => {
-  //         this.errored = true;
-  //         this.serviceErrors = error;
-  //         this.alertService.danger({
-  //           html: '<b>' + this.serviceErrors + '</b>' + '<br/>'
-  //         });
-  //       }
-  //     );
-  // }
-
 
 
   getTheLoansNow() {
