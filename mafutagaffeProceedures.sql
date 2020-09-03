@@ -2890,6 +2890,12 @@ CREATE TEMPORARY  TABLE temp_ledger(id INT,trn_date VARCHAR(60),trn_time VARCHAR
 
 SELECT the_balance INTO openingBal FROM balance_per_day WHERE  DATE(trn_date)=DATE_SUB(JSON_UNQUOTE(JSON_EXTRACT(data, '$.current_date')),INTERVAL 1 DAY) AND  fk_petrol_station_id_balance_per_day=JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station'));
 
+IF ISNULL(openingBal) THEN
+
+SET openingBal=0;
+
+END IF;
+
 OPEN forSelectingGeneralLedgerTxns;
 SET @RUNNING_BALANCE=openingBal;
 
@@ -2949,5 +2955,68 @@ INSERT INTO temp_ledger VALUES(NULL,'TOTAL/NET BALANCE',NULL,NULL,NULL,@TOTAL_DE
 
 
 SELECT * FROM temp_ledger;
+END ##
+DELIMITER ;
+
+
+
+/*WAVING ALL INTEREST FUNCTION */
+DROP FUNCTION IF EXISTS updateTOtherTs;
+DELIMITER ##
+CREATE FUNCTION updateTOtherTs(iId INT,iRemain DOUBLE) 
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+DECLARE oldTotalPaid, newTotalPaid DOUBLE;
+
+SELECT interest_paid INTO oldTotalPaid FROM interest WHERE interest_id=iId;
+
+SET newTotalPaid=oldTotalPaid+iRemain;
+
+INSERT INTO interest_payments VALUES(NULL,0,iRemain,0,CURRENT_TIMESTAMP,iId);
+
+RETURN newTotalPaid;
+END ##
+DELIMITER ;
+
+
+
+
+
+
+DROP PROCEDURE IF EXISTS waveAllBranchInterest;
+
+DELIMITER ##
+
+CREATE PROCEDURE waveAllBranchInterest(IN branchID INT) READS SQL DATA BEGIN
+
+
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- | Field                   | Type    | Null | Key | Default | Extra          |
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- | interest_id             | int(11) | NO   | PRI | NULL    | auto_increment |
+-- | interest_accrual_status | int(11) | YES  |     | NULL    |                |
+-- | interest_amount         | double  | YES  |     | NULL    |                |
+-- | interest_paid           | double  | YES  |     | NULL    |                |
+-- | interest_remaining      | double  | YES  |     | NULL    |                |
+-- | fk_loans_id_interest    | int(11) | YES  | MUL | NULL    |                |
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> show columns from interest_payments;
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- | Field                           | Type      | Null | Key | Default | Extra          |
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- | interest_payments_id            | int(11)   | NO   | PRI | NULL    | auto_increment |
+-- | interest_amount_added           | double    | YES  |     | NULL    |                |
+-- | interest_amount_paid            | double    | YES  |     | NULL    |                |
+-- | interest_amount_remaining       | double    | YES  |     | NULL    |                |
+-- | interest_date_paid              | timestamp | YES  |     | NULL    |                |
+-- | fk_interest_id_interest_payment | int(11)   | YES  | MUL | NULL    |                |
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- 6 rows in set (0.00 sec)
+
+UPDATE interest it,(SELECT i.interest_id AS iId,updateTOtherTs(i.interest_id,i.interest_remaining) AS totalIntPaid FROM interest i INNER JOIN loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN customers  c ON l.fk_customers_id_loans=c.customers_id INNER JOIN users u ON u.users_id=c. fk_user_id_created_by_customers INNER JOIN petrol_station ps ON u. fk_petrol_station_id_users=ps.petrol_station_id WHERE l.loan_status=1 AND ps.petrol_station_id=branchID) AS innerQ SET it.interest_accrual_status=2,it.interest_paid=innerQ.totalIntPaid,interest_remaining=0 WHERE it.interest_id=innerQ.iId;
+
 END ##
 DELIMITER ;

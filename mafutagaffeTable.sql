@@ -267,6 +267,39 @@ DEFAULT CHARACTER SET = utf8;
 -- CREATE INDEX `fk_user_id_created_by_customers_indx` ON `customers` (`fk_user_id_created_by_customers` ASC) VISIBLE;
 
 
+-- ---------------------------------------------------
+-- Table `customers_extra`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS  `customers_extra`;
+
+CREATE TABLE IF NOT EXISTS `customers_extra` (
+  `customers_extra_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `status` INT(11) NOT NULL DEFAULT  1,-- 1=New,2=OLD,3=CLOSED
+  `loan_limit` DOUBLE NULL DEFAULT 0 ,
+  `savings_added` DOUBLE NULL DEFAULT 0 ,
+   `savings_removed` DOUBLE NULL DEFAULT 0 ,
+      `savings_balance` DOUBLE NULL DEFAULT 0 ,
+            `comment` VARCHAR(450) NULL DEFAULT 'Well paying customer',
+       `national_id` VARCHAR(45) NULL DEFAULT 'CM8B1061033ATG',
+         `photo_url` VARCHAR(450) NULL DEFAULT 'https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg' ,
+ `fk_customers_id_customers_extra` INT,
+  PRIMARY KEY (`customers_extra_id`),
+
+  CONSTRAINT `fk_customers_id_customers_extra`
+    FOREIGN KEY (`fk_customers_id_customers_extra`)
+    REFERENCES `customers` (`customers_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+    )
+ENGINE = InnoDB
+AUTO_INCREMENT = 900000
+DEFAULT CHARACTER SET = utf8;
+
+
+
+CREATE INDEX `fk_customers_id_customers_extra_indx` ON `customers_extra` (`fk_customers_id_customers_extra` ASC) VISIBLE;
+
+-- INSERT INTO customers_extra(customers_extra_id,fk_customers_id_customers_extra) SELECT NULL,customers_id from customers;
 -- -----------------------------------------------------
 -- Table `loans`
 -- -----------------------------------------------------
