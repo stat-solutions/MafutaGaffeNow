@@ -170,7 +170,7 @@
               </thead>
               <tbody class="text-primary">
                 <tr *ngFor="let loans of loansDetails|filterBy: userFilter|filterBy: userFilter1|filterBy: userFilter2"  [class.bg-warning]="loans.aging_days>=5" [class.text-light]="loans.aging_days>=5"
-                  [class.bg-whiteb]="loans.aging_days>=10" class="text-danger">
+                  [class.bg-danger]="loans.aging_days>=10" class="text-white">
                   <!-- <td > <button  class="btn btn-info mr-5" [routerLink]="['/dashboarduser/waiveinterest', loans.number_plate]">Waive</button></td> -->
                   <td>{{ loans.id }}</td>
                   <td>{{ loans.name }}</td>
