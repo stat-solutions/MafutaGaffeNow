@@ -98,9 +98,10 @@ export class PostTrn2Component implements OnInit {
             this.alertService.warning({
               html: '<b>' + 'Txn was successfully posted!!' + '</b>' + '<br/>'
             });
-            this.router.navigate(['dashboarduser/loans']);
+
 
             setTimeout(() => {
+              this.router.navigate(['dashboarduser/cashledger']);
               location.reload();
             }, 3000);
           } else {

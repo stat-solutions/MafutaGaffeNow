@@ -731,9 +731,9 @@ DECLARE CustmerNumberPlate,CustomerName VARCHAR(60);
 
 ELSE 
 
-SET CustmerNumberPlate='NOT APPLICABLE';
+SET CustmerNumberPlate='FLOAT DEPOSIT';
 
-SET CustomerName='NOT APPLICABLE';
+SET CustomerName='FLOAT DEPOSIT';
 
 END IF;
 
@@ -766,9 +766,9 @@ DECLARE CustmerNumberPlate,CustomerName VARCHAR(60);
 
 ELSE 
 
-SET CustmerNumberPlate='NOT APPLICABLE';
+SET CustmerNumberPlate='FLOAT WITHDRAWAL';
 
-SET CustomerName='NOT APPLICABLE';
+SET CustomerName='FLOAT WITHDRAWAL';
 
 END IF;
 
