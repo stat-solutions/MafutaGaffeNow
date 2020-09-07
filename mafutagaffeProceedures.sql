@@ -361,7 +361,7 @@ DELIMITER ;
 
 /* CREATE A LOAN */
 
-DROP PROCEDURE IF EXISTS createLoanNow;
+/* DROP PROCEDURE IF EXISTS createLoanNow;
 
 DELIMITER ##
 
@@ -372,18 +372,18 @@ DECLARE newLoanCycle, loanCycle,customerId,loan_id,interestRate,computedInterest
 
 DECLARE closeBal,newCloseBal DOUBLE;
 
-SELECT COUNT(l.loans_id) INTO loanCycle FROM loans l INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+SELECT COUNT(l.loans_id) INTO loanCycle FROM loans l INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')); */
 -- SELECT loanCycle;
 
-SELECT c.fk_user_id_created_by_customers INTO customerCreatedById FROM customers c  WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+/* SELECT c.fk_user_id_created_by_customers INTO customerCreatedById FROM customers c  WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')); */
 
 -- SELECT customerCreatedById;
-SET newLoanCycle=loanCycle+1;
+/* SET newLoanCycle=loanCycle+1;
 
-SELECT customers_id INTO customerId FROM customers  WHERE customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+SELECT customers_id INTO customerId FROM customers  WHERE customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')); */
 -- SELECT customerId;
 
-INSERT INTO loans VALUES(NULL,newLoanCycle,1,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),0,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),CURRENT_TIMESTAMP,customerCreatedById,customerId);
+/* INSERT INTO loans VALUES(NULL,newLoanCycle,1,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),0,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),CURRENT_TIMESTAMP,customerCreatedById,customerId);
 
 SET loan_id=LAST_INSERT_ID();
 
@@ -398,6 +398,8 @@ CALL reduceShiftClosingBalance(JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station')
 
 SELECT psr.petrol_station_interest INTO interestRate FROM petrol_station_rates psr INNER JOIN petrol_station ps ON psr.fk_petrol_station_id_petrol_station_rates=ps.petrol_station_id WHERE ps.petrol_station_id= JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station'));
 
+
+
 SET computedInterestperDay=((interestRate*JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')))/100);
 
 INSERT INTO interest VALUES(NULL,1,computedInterestperDay,0,computedInterestperDay,loan_id);
@@ -408,7 +410,7 @@ SELECT loans_id INTO loanId FROM loans ORDER BY loans_id DESC LIMIT 1;
 
 SELECT (JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow'))+computedInterestperDay) AS amount_due,loanId AS txn_id;
 END ##
-DELIMITER ;
+DELIMITER ; */
 
 
 
@@ -3018,5 +3020,96 @@ CREATE PROCEDURE waveAllBranchInterest(IN branchID INT) READS SQL DATA BEGIN
 
 UPDATE interest it,(SELECT i.interest_id AS iId,updateTOtherTs(i.interest_id,i.interest_remaining) AS totalIntPaid FROM interest i INNER JOIN loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN customers  c ON l.fk_customers_id_loans=c.customers_id INNER JOIN users u ON u.users_id=c. fk_user_id_created_by_customers INNER JOIN petrol_station ps ON u. fk_petrol_station_id_users=ps.petrol_station_id WHERE l.loan_status=1 AND ps.petrol_station_id=branchID) AS innerQ SET it.interest_accrual_status=2,it.interest_paid=innerQ.totalIntPaid,interest_remaining=0 WHERE it.interest_id=innerQ.iId;
 
+END ##
+DELIMITER ;
+
+
+/*WAVING ALL INTEREST FUNCTION */
+DROP FUNCTION IF EXISTS isNotChairman;
+DELIMITER ##
+CREATE FUNCTION isNotChairman(numberPlate VARCHAR(30)) 
+RETURNS INTEGER 
+DETERMINISTIC
+BEGIN
+DECLARE isTheChair  INT;
+
+ SELECT COUNT(c.customers_id) INTO isTheChair FROM customers c INNER JOIN stage s ON c.fk_stage_id_customer=s.stage_id WHERE s.chairmans_number=c.customers_phone_number AND c.customers_number_plate=numberPlate;
+
+
+IF isTheChair>0 THEN
+
+SET isTheChair=0;
+
+END IF;
+
+IF isTheChair<=0 THEN
+
+SET isTheChair=2;
+
+END IF;
+
+
+RETURN isTheChair;
+END ##
+DELIMITER ;
+
+
+
+
+/* CREATE A LOAN */
+
+DROP PROCEDURE IF EXISTS createLoanNow;
+
+DELIMITER ##
+
+CREATE PROCEDURE   createLoanNow(IN data JSON) 
+BEGIN
+
+DECLARE newLoanCycle, loanCycle,customerId,loan_id,interestRate,computedInterestperDay,interest_id,sId,loanId,customerCreatedById INT;
+
+DECLARE closeBal,newCloseBal DOUBLE;
+
+SELECT COUNT(l.loans_id) INTO loanCycle FROM loans l INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+-- SELECT loanCycle;
+
+SELECT c.fk_user_id_created_by_customers INTO customerCreatedById FROM customers c  WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+
+-- SELECT customerCreatedById;
+SET newLoanCycle=loanCycle+1;
+
+SELECT customers_id INTO customerId FROM customers  WHERE customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
+-- SELECT customerId;
+
+INSERT INTO loans VALUES(NULL,newLoanCycle,1,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),0,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),CURRENT_TIMESTAMP,customerCreatedById,customerId);
+
+SET loan_id=LAST_INSERT_ID();
+
+INSERT INTO lc_manager VALUES(NULL,1,CURRENT_TIMESTAMP,(CURRENT_TIMESTAMP  + INTERVAL 24 HOUR),0,loan_id);
+
+
+INSERT INTO loan_payments VALUES(NULL,1,0,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),CURRENT_TIMESTAMP,loan_id);
+
+CALL  creditGeneralLedger('BORROW',JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_id')),customerCreatedById,JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station')),customerId) ;
+
+CALL reduceShiftClosingBalance(JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station')),JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')));
+
+SELECT psr.petrol_station_interest INTO interestRate FROM petrol_station_rates psr INNER JOIN petrol_station ps ON psr.fk_petrol_station_id_petrol_station_rates=ps.petrol_station_id WHERE ps.petrol_station_id= JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station'));
+
+IF isNotChairman(JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')))>1 THEN
+SET computedInterestperDay=((interestRate*JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')))/100);
+END IF;
+
+IF isNull(computedInterestperDay) THEN
+SET computedInterestperDay=0;
+END IF;
+
+
+INSERT INTO interest VALUES(NULL,1,computedInterestperDay,0,computedInterestperDay,loan_id);
+SET interest_id=LAST_INSERT_ID();
+INSERT INTO interest_payments VALUES(NULL,computedInterestperDay,0,computedInterestperDay,CURRENT_TIMESTAMP,interest_id);
+
+SELECT loans_id INTO loanId FROM loans ORDER BY loans_id DESC LIMIT 1;
+
+SELECT (JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow'))+computedInterestperDay) AS amount_due,loanId AS txn_id;
 END ##
 DELIMITER ;
