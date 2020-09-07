@@ -55,6 +55,70 @@
 
 <div class="form-group text-primary">
   <label
+    for="loan_limit"
+    [ngClass]="fval.loan_limit.valid ? 'text-info' : ''"
+    >Loan Limit<i
+      *ngIf="fval.loan_limit.valid"
+      class="material-icons"
+      >check_circle</i
+    ></label
+  >
+  <div class="input-group mb-0">
+    <input
+      type="text"
+      list="loan_limit"
+      formControlName="loan_limit"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          (fval.loan_limit.touched ||
+            fval.loan_limit.dirty) &&
+          fval.loan_limit.errors
+      }"
+      autocomplete="off"
+      placeholder="Enter Loan Limit"
+      (keyup)="onKey($event)"
+    />
+  </div>
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.loan_limit.touched || fval.loan_limit.dirty) &&
+      fval.loan_limit.errors?.required
+    "
+  >
+    The  loan limit is required!
+  </div>
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.loan_limit.touched || fval.loan_limit.dirty) &&
+      fval.loan_limit.errors?.maxLength
+    "
+  >
+    Please enter valid loan limit!
+  </div>
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.loan_limit.touched || fval.loan_limit.dirty) &&
+      fval.loan_limit.errors?.minlength
+    "
+  >
+    Please enter valid loan limit!
+  </div>
+  <div
+    class="text-danger col"
+    *ngIf="
+      (fval.loan_limit.touched || fval.loan_limit.dirty) &&
+      fval.loan_limit.errors?.hasNumber
+    "
+  >
+    Please enter valid amount to borrow!
+  </div>
+</div>
+<div class="form-group text-primary">
+  <label
     for="main_contact_number"
     [ngClass]="fval.main_contact_number.valid ? 'text-info' : ''"
     >Mobile Number<i
@@ -108,6 +172,7 @@
     The main mobile number should be equal to 10 "digits"!
   </div>
 </div>
+
 <div class="form-group text-primary">
           <label for="number_plate" [ngClass]="fval.number_plate.valid ? 'text-info' : ''">Number Plate<i  *ngIf="fval.number_plate.valid" class="material-icons">check_circle</i></label>
 
@@ -131,6 +196,42 @@
           <div class="text-danger col" *ngIf="(fval.number_plate.touched||fval.number_plate.dirty)  && fval.number_plate.errors?.beUgandanNumberPlate">The number plate should follow the Ugandan number plate format and all letters must be in capital letters!
        </div>
 </div>
+
+
+
+<div class="form-group text-primary">
+  <label for="national_id" [ngClass]="fval.national_id.valid ? 'text-info' : ''">National Id<i  *ngIf="fval.national_id.valid" class="material-icons">check_circle</i></label>
+
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i
+          class="fas fa-cog text-primary mx-auto"
+          style="size: 50px;"
+        >
+        </i>
+      </div>
+    </div>
+    <input type="text"  list="national_id"  formControlName="national_id" class="form-control"  [ngClass]=" { 'is-invalid': (fval.national_id.touched||fval.national_id.dirty) && fval.national_id.errors}" autocomplete="off" placeholder="Enter National Id" >
+  </div>
+  <div class="text-danger col" *ngIf="(fval.national_id.touched||fval.national_id.dirty)  && fval.national_id.errors?.required">The national id  is required!</div>
+
+  <div class="text-warning col" *ngIf="(fval.national_id.touched||fval.national_id.dirty)  && fval.national_id.errors?.minlength">The national id should have a minimum of 14 characters!</div>
+
+  <div class="text-danger col" *ngIf="(fval.national_id.touched||fval.national_id.dirty)  && fval.national_id.errors?.maxLength">The national id should have a maxmum of 14 characters!</div>
+  <!-- <div class="text-danger col" *ngIf="(fval.national_id.touched||fval.national_id.dirty)  && fval.national_id.errors?.beUgandanNumberPlate">The number plate should follow the Ugandan number plate format and all letters must be in capital letters! -->
+<!-- </div> -->
+
+<div class="form-group text-primary">
+  <label for="comment" [ngClass]="fval.comment.valid ? 'text-info' : ''">Comment<i  *ngIf="fval.comment.valid" class="material-icons">check_circle</i></label>
+          <div class="input-group mb-1">
+            <textarea formControlName="comment" class="form-control"  [ngClass]=" { 'is-invalid': (fval.comment.touched||fval.comment.dirty) && fval.comment.errors }"  rows="2" cols="50">Comment on Customer</textarea>
+          </div>
+          <div class="text-danger col" *ngIf="(fval.comment.touched||fval.comment.dirty)  && fval.comment.errors?.required">The comment is required</div>
+        </div>
+</div>
+
+
 
         <div class="d-flex my-2 py-2 mx-auto">
           <button

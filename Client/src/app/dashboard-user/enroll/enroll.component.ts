@@ -22,7 +22,8 @@ export class EnrollComponent implements OnInit {
   userForm: FormGroup;
   serviceErrors: any = {};
   value: string;
-
+  numberValue: number;
+  values: any;
   theStageNames: StageNames[];
 
   constructor(
@@ -60,6 +61,20 @@ export class EnrollComponent implements OnInit {
         '',
         Validators.compose([Validators.required])
       ),
+      comment: new FormControl(
+        '',
+        Validators.compose([Validators.required])
+      ),
+
+      loan_limit: new FormControl('',
+        Validators.compose([
+          Validators.required,
+          CustomValidator.patternValidator(/\d/, { hasNumber: true }),
+          Validators.maxLength(6),
+          Validators.minLength(3)
+        ])
+      ),
+
       number_plate: new FormControl(
         '',
         Validators.compose([
@@ -71,6 +86,19 @@ export class EnrollComponent implements OnInit {
             { beUgandanNumberPlate: true }
           )
         ])
+      ),
+
+      national_id: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(14),
+          Validators.maxLength(14),
+          // CustomValidator.patternValidator(
+          //   /^(([U])([A-Z])([A-Z])(\s)([0-9])([0-9])([0-9])([A-Z]))$/,
+          //   { beUgandanNumberPlate: true }
+          // )
+        ])
       )
     });
   }
@@ -78,6 +106,19 @@ export class EnrollComponent implements OnInit {
   revert() {
     this.userForm.reset();
   }
+  onKey(event: any) {
+    // without type info
+    this.values = event.target.value.replace(/[\D\s\._\-]+/g, '');
+
+    this.numberValue = this.values ? parseInt(this.values, 10) : 0;
+
+    // tslint:disable-next-line:no-unused-expression
+    this.values =
+      this.numberValue === 0 ? '' : this.numberValue.toLocaleString('en-US');
+
+    this.userForm.controls.loan_limit.setValue(this.values);
+  }
+
 
   resetStageNames() {
     this.userForm.controls.stage_name.reset();
@@ -108,7 +149,9 @@ export class EnrollComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.spinner.show();
-
+    this.userForm.patchValue({
+      loan_limit: parseInt( this.userForm.controls.loan_limit.value.replace(/[\D\s\._\-]+/g, ''), 10 )
+    });
     if (this.userForm.invalid === true) {
       return;
     } else {

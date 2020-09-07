@@ -8,6 +8,7 @@ import { ShiftsComponent } from './shifts/shifts.component';
 import { StatementComponent } from './statement/statement.component';
 import { PostTrnComponent } from './post-trn/post-trn.component';
 import { LedgerStatmentComponent } from './ledger-statment/ledger-statment.component';
+import { SavingsComponent } from './savings/savings.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'statement', component: StatementComponent },
       { path: 'ledgerstatement', component: LedgerStatmentComponent },
       { path: 'depositwithdraw', component: PostTrnComponent },
+      { path: 'savings', component: SavingsComponent },
 
     ]
   }

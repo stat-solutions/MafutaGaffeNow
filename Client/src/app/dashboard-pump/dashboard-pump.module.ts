@@ -21,6 +21,7 @@ import { LedgerStatmentComponent } from './ledger-statment/ledger-statment.compo
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { SavingsComponent } from './savings/savings.component';
 @NgModule({
   declarations: [
     ShiftManagementComponent,
@@ -34,6 +35,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     PaymentDialogComponent,
     LayoutPumpComponent,
     LedgerStatmentComponent,
+    SavingsComponent,
 
 
   ],

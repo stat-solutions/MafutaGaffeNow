@@ -1,0 +1,218 @@
+<div
+  class="container-fluid d-flex flex-row justify-content-center mb-0 mt-md-1 pt-md-0 pt-0 pb-3 shadow-lg col-xs-12 col-lg-8"
+>
+<div class="jumbotron-fluid mx-0 px-0 mb-0 pb-1">
+  <div class="container mt-3 mx-0 shadow-lg">
+    <div class="row">
+      <div class="col-2 mt-1">
+        <a class="text-info mx-1" routerLink="/dashboarduser/loans">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i
+        ></a>
+      </div>
+      <div class="col-10">
+        <h5
+          class="rub-head4 text-info align-right font-weight-bold pt-0 py-1"
+        >
+      Savings Deposit/Withdrawal
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-2 pt-3 mb-0 mx-auto pb-0 shadow-lg">
+      <form [formGroup]="userForm" (ngSubmit)="postTxn()">
+        <div class="form-group text-primary">
+          <label for="txn_type">Transaction type</label>
+          <div class="input-group mb-0">
+            <input
+              type="text"
+              list="txn_typek"
+              formControlName="txn_type"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (fval.txn_type.touched || fval.txn_type.dirty) &&
+                  fval.txn_type.errors
+              }"
+              autocomplete="off"
+              placeholder="Txn Type"
+            /><i *ngIf="fval.txn_type.valid" class="material-icons"
+              >check_circle</i
+            >
+            <datalist id="txn_typek">
+              <option>SAVINGS DEPOSIT</option>
+              <option>SAVINGS WITHDRAWAL</option>
+            </datalist>
+          </div>
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.txn_type.touched || fval.txn_type.dirty) &&
+              fval.txn_type.errors?.required
+            "
+          >
+            The Transaction Type is required!
+          </div>
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.txn_type.touched || fval.txn_type.dirty) &&
+              fval.txn_type.errors?.belongTotxn_types
+            "
+          >
+            Please select a valid Transaction Type!
+          </div>
+        </div>
+
+
+        <div class="form-group text-primary">
+          <label
+            for="number_plate"
+            [ngClass]="fval.number_plate.valid ? 'text-info' : ''"
+            >Number Plate<i
+              *ngIf="fval.number_plate.valid"
+              class="material-icons"
+              >check_circle</i
+            ></label
+          >
+          <div class="input-group mb-0">
+            <input
+              type="text"
+              list="number_plate"
+              formControlName="number_plate"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (fval.number_plate.touched || fval.number_plate.dirty) &&
+                  fval.number_plate.errors
+              }"
+              autocomplete="off"
+              placeholder="Select Number Plate"
+            />
+            <!-- numberPlates: NumberPlates[]; -->
+            <datalist id="number_plate">
+              <option *ngFor="let item of numberPlates">{{
+                item.customers_number_plate
+              }}</option>
+            </datalist>
+          </div>
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.number_plate.touched || fval.number_plate.dirty) &&
+              fval.number_plate.errors?.required
+            "
+          >
+            The number plate is required!
+          </div>
+
+          <div
+            class="text-warning col"
+            *ngIf="
+              (fval.number_plate.touched || fval.number_plate.dirty) &&
+              fval.number_plate.errors?.minlength
+            "
+          >
+            The number plate should have a minimum of 8 characters!
+          </div>
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.number_plate.touched || fval.number_plate.dirty) &&
+              fval.number_plate.errors?.maxLength
+            "
+          >
+            The number plate should have a maximum of 8 characters!
+          </div>
+        </div>
+        <div class="form-group text-primary">
+          <label
+            for="txn_amount"
+            [ngClass]="fval.txn_amount.valid ? 'text-info' : ''"
+            >Amount<i *ngIf="fval.txn_amount.valid" class="material-icons"
+              >check_circle</i
+            ></label
+          >
+          <div class="input-group mb-0">
+            <input
+              id="txn_amount"
+              formControlName="txn_amount"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (fval.txn_amount.touched || fval.txn_amount.dirty) &&
+                  fval.txn_amount.errors
+              }"
+              placeholder="Enter Txn Amount"
+              autocomplete="off"
+              (keyup)="onKey($event)"
+            /><i *ngIf="fval.txn_amount.valid" class="material-icons"
+              >check_circle</i
+            >
+          </div>
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.txn_amount.touched || fval.txn_amount.dirty) &&
+              fval.txn_amount.errors?.required
+            "
+          >
+            The Transaction amount is required!
+          </div>
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.txn_amount.touched || fval.txn_amount.dirty) &&
+              fval.txn_amount.errors?.hasNumber
+            "
+          >
+            The Transaction amount should be in digits/numbers!
+          </div>
+        </div>
+
+        <div class="d-flex mt-3 mb-0 pt-1 pb-0 mx-auto">
+          <button
+            type="submit"
+            class="btn btn-info col-5 mx-auto"
+            [disabled]="!userForm.valid"
+          >
+            Save
+          </button>
+
+          <ngx-spinner class="bg-info" size="medium" type="ball-scale-multiple">
+            <p class="text-light">Please wait...</p>
+          </ngx-spinner>
+          <label class="col" *ngIf="errored" class="text-danger">
+            <i class="material-icons">Cancel</i>
+
+            <ngx-alerts></ngx-alerts>
+          </label>
+
+          <button
+            type="button"
+            class="btn btn-info col-5 mx-auto"
+            (click)="revert()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+    class="d-flex justify-content-center col-xs-12 col-lg-12 mt-3 mx-auto px-0"
+  >
+    <div class="small text-center text-info mx-0 px-0">
+      Area Region:<span class="text-primary font-weight-bold"
+        ><strong> {{ theCompany }}</strong>
+      </span>&nbsp;
+      Service station:<span class="text-primary font-weight-bold"
+        ><strong> {{ station }}</strong>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
