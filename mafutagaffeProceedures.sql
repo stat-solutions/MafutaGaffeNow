@@ -1105,7 +1105,7 @@ DELIMITER ;
 /* CREATE EVENTS*/
 
 
-CREATE EVENT manage_interest ON SCHEDULE EVERY 120 MINUTE STARTS CURRENT_TIMESTAMP  DO CALL manage_interest(CURRENT_TIMESTAMP());
+
 
 CREATE EVENT change_daily_balances ON SCHEDULE EVERY 24 HOUR STARTS TIMESTAMP(CURRENT_DATE)  DO CALL changeBalance(CURRENT_TIMESTAMP());
 
@@ -2690,12 +2690,15 @@ DELIMITER ;
 CALL normaliseCommision();
 
 
+CREATE EVENT manage_interestOld2 ON SCHEDULE EVERY 120 MINUTE STARTS CURRENT_TIMESTAMP  DO CALL manage_interestOld2(CURRENT_TIMESTAMP());
+
+
 /* GET SHIFT DETAILS */
-DROP PROCEDURE IF EXISTS manage_interest;
+DROP PROCEDURE IF EXISTS manage_interestOld2;
 
 DELIMITER ##
 
-CREATE PROCEDURE   manage_interest(IN timeStatmp TIMESTAMP) 
+CREATE PROCEDURE   manage_interestOld2(IN timeStatmp TIMESTAMP) 
 BEGIN
 
 
@@ -3025,9 +3028,9 @@ DELIMITER ;
 
 
 /*WAVING ALL INTEREST FUNCTION */
-DROP FUNCTION IF EXISTS isNotChairman;
+DROP FUNCTION IF EXISTS isChairman;
 DELIMITER ##
-CREATE FUNCTION isNotChairman(numberPlate VARCHAR(30)) 
+CREATE FUNCTION isChairman(numberPlate VARCHAR(30)) 
 RETURNS INTEGER 
 DETERMINISTIC
 BEGIN
@@ -3036,17 +3039,6 @@ DECLARE isTheChair  INT;
  SELECT COUNT(c.customers_id) INTO isTheChair FROM customers c INNER JOIN stage s ON c.fk_stage_id_customer=s.stage_id WHERE s.chairmans_number=c.customers_phone_number AND c.customers_number_plate=numberPlate;
 
 
-IF isTheChair>0 THEN
-
-SET isTheChair=0;
-
-END IF;
-
-IF isTheChair<=0 THEN
-
-SET isTheChair=2;
-
-END IF;
 
 
 RETURN isTheChair;
@@ -3065,9 +3057,11 @@ DELIMITER ##
 CREATE PROCEDURE   createLoanNow(IN data JSON) 
 BEGIN
 
-DECLARE newLoanCycle, loanCycle,customerId,loan_id,interestRate,computedInterestperDay,interest_id,sId,loanId,customerCreatedById INT;
+DECLARE newLoanCycle, loanCycle,customerId,loan_id,interestRate,computedInterestperDay,interest_id,sId,loanId,customerCreatedById,isTheChairMan INT;
 
 DECLARE closeBal,newCloseBal DOUBLE;
+
+DECLARE TIMEnextDue TIMESTAMP;
 
 SELECT COUNT(l.loans_id) INTO loanCycle FROM loans l INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id WHERE c.customers_number_plate=JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate'));
 -- SELECT loanCycle;
@@ -3084,7 +3078,17 @@ INSERT INTO loans VALUES(NULL,newLoanCycle,1,JSON_UNQUOTE(JSON_EXTRACT(data, '$.
 
 SET loan_id=LAST_INSERT_ID();
 
-INSERT INTO lc_manager VALUES(NULL,1,CURRENT_TIMESTAMP,(CURRENT_TIMESTAMP  + INTERVAL 24 HOUR),0,loan_id);
+
+IF isChairman(JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')))>=1 THEN
+
+SET isTheChairMan=2;
+ELSEIF  isChairman(JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')))<=0 THEN
+SET isTheChairMan=1;
+END IF;
+
+INSERT INTO loans_extra VALUES(NULL,1,isTheChairMan,1,1,1,loan_id);
+
+INSERT INTO lc_manager VALUES(NULL,1,CURRENT_TIMESTAMP,(TIMESTAMP(CURRENT_DATE)+INTERVAL 2 DAY),0,loan_id);
 
 
 INSERT INTO loan_payments VALUES(NULL,1,0,JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')),CURRENT_TIMESTAMP,loan_id);
@@ -3095,7 +3099,7 @@ CALL reduceShiftClosingBalance(JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station')
 
 SELECT psr.petrol_station_interest INTO interestRate FROM petrol_station_rates psr INNER JOIN petrol_station ps ON psr.fk_petrol_station_id_petrol_station_rates=ps.petrol_station_id WHERE ps.petrol_station_id= JSON_UNQUOTE(JSON_EXTRACT(data, '$.user_station'));
 
-IF isNotChairman(JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')))>1 THEN
+IF isChairman(JSON_UNQUOTE(JSON_EXTRACT(data, '$.number_plate')))<=0 THEN
 SET computedInterestperDay=((interestRate*JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow')))/100);
 END IF;
 
@@ -3113,3 +3117,145 @@ SELECT loans_id INTO loanId FROM loans ORDER BY loans_id DESC LIMIT 1;
 SELECT (JSON_UNQUOTE(JSON_EXTRACT(data, '$.amount_to_borrow'))+computedInterestperDay) AS amount_due,loanId AS txn_id;
 END ##
 DELIMITER ;
+
+
+
+
+
+DROP PROCEDURE IF EXISTS waveChairmanInterest;
+
+DELIMITER ##
+
+CREATE PROCEDURE waveChairmanInterest(IN branchID INT) READS SQL DATA BEGIN
+
+
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- | Field                   | Type    | Null | Key | Default | Extra          |
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- | interest_id             | int(11) | NO   | PRI | NULL    | auto_increment |
+-- | interest_accrual_status | int(11) | YES  |     | NULL    |                |
+-- | interest_amount         | double  | YES  |     | NULL    |                |
+-- | interest_paid           | double  | YES  |     | NULL    |                |
+-- | interest_remaining      | double  | YES  |     | NULL    |                |
+-- | fk_loans_id_interest    | int(11) | YES  | MUL | NULL    |                |
+-- +-------------------------+---------+------+-----+---------+----------------+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> show columns from interest_payments;
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- | Field                           | Type      | Null | Key | Default | Extra          |
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- | interest_payments_id            | int(11)   | NO   | PRI | NULL    | auto_increment |
+-- | interest_amount_added           | double    | YES  |     | NULL    |                |
+-- | interest_amount_paid            | double    | YES  |     | NULL    |                |
+-- | interest_amount_remaining       | double    | YES  |     | NULL    |                |
+-- | interest_date_paid              | timestamp | YES  |     | NULL    |                |
+-- | fk_interest_id_interest_payment | int(11)   | YES  | MUL | NULL    |                |
+-- +---------------------------------+-----------+------+-----+---------+----------------+
+-- 6 rows in set (0.00 sec)
+
+UPDATE interest it,(SELECT i.interest_id AS iId,updateTOtherTs(i.interest_id,i.interest_remaining) AS totalIntPaid FROM interest i INNER JOIN loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN customers  c ON l.fk_customers_id_loans=c.customers_id INNER JOIN users u ON u.users_id=c. fk_user_id_created_by_customers INNER JOIN petrol_station ps ON u. fk_petrol_station_id_users=ps.petrol_station_id WHERE l.loan_status=1 AND ps.petrol_station_id=branchID AND isChairman(c.customers_number_plate)>1) AS innerQ SET it.interest_accrual_status=2,it.interest_paid=innerQ.totalIntPaid,interest_remaining=0 WHERE it.interest_id=innerQ.iId;
+
+END ##
+
+DELIMITER ;
+
+
+
+CREATE EVENT manage_interest ON SCHEDULE EVERY 24 HOUR STARTS (TIMESTAMP(CURRENT_DATE)+INTERVAL 1 DAY)  DO CALL manage_interest(CURRENT_TIMESTAMP());
+
+
+/* GET SHIFT DETAILS */
+DROP PROCEDURE IF EXISTS manage_interest;
+
+DELIMITER ##
+
+CREATE PROCEDURE   manage_interest(IN timeStatmp TIMESTAMP) 
+BEGIN
+
+
+
+  DECLARE lcId,noPAccruals, maxNoPAccruals,interestRateAccrual,interestId,n,newnoPAccruals INT;
+
+    DECLARE newexpirelyTime ,expirelyTime TIMESTAMP;
+
+   DECLARE loanAmountR,interestCPMPU,existInterestAmountRemain,NewExistInterestAmountRemain,existingInterest,NewExistingInterest DOUBLE;
+
+
+  DECLARE l_done INTEGER DEFAULT 0;
+  
+ DECLARE selectTrnIds CURSOR FOR SELECT lc.lc_manager_id  FROM lc_manager lc INNER JOIN loans l ON lc.fk_loans_id_lc_manager=l.loans_id INNER JOIN loans_extra le ON le.fk_loans_id_loans_extra=l.loans_id WHERE lc.lc_manager_status=1 AND l.loan_status=1 AND le.interest_accruel=1 AND le.chairman_status=1;
+ 
+ DECLARE CONTINUE HANDLER FOR NOT FOUND SET l_done=1;
+
+ OPEN selectTrnIds;
+
+
+LedgerIds_loop: LOOP 
+
+ FETCH selectTrnIds into lcId;
+
+ IF l_done=1 THEN
+
+LEAVE LedgerIds_loop;
+
+ END IF;
+ 
+SELECT timeStatmp;
+ 
+SELECT lc.lc_manager_expirely_time, psl.ps_l_accrual_p_number,lc.lc_manager_no_accruals,psr.petrol_station_interest,i.interest_amount,i.interest_remaining,i.interest_id,l.loan_amount_remaining INTO expirelyTime,maxNoPAccruals,noPAccruals,interestRateAccrual,existingInterest,existInterestAmountRemain,interestId,loanAmountR FROM lc_manager lc INNER JOIN loans l ON lc.fk_loans_id_lc_manager=l.loans_id INNER JOIN customers c ON l.fk_customers_id_loans=c.customers_id INNER JOIN users u ON c.fk_user_id_created_by_customers=u.users_id INNER JOIN petrol_station ps ON u.fk_petrol_station_id_users=ps.petrol_station_id INNER JOIN petrol_station_rates psr ON psr.fk_petrol_station_id_petrol_station_rates=ps.petrol_station_id INNER JOIN ps_l_accrual_p psl ON psl.fk_petrol_station_id_ps_l_accrual_p=ps.petrol_station_id  INNER JOIN interest i ON i.fk_loans_id_interest=l.loans_id  WHERE lc.lc_manager_id=lcId;
+
+
+-- SELECT lp.loan_amount_remaining INTO loanAmountR FROM loan_payments lp INNER JOIN loans l ON lp.fk_loans_id_loan_payment=l.loans_id INNER JOIN interest i ON i.fk_loans_id_interest=l.loans_id INNER JOIN lc_manager lc ON lc. fk_loans_id_lc_manager=l.loans_id WHERE lc.lc_manager_id=lcId ORDER BY lp.loan_payments_id DESC LIMIT 1;
+
+-- SELECT ip.interest_amount_remaining,ip.no_days_paid INTO existInterestAmountRemain,n FROM interest_payments ip INNER JOIN interest i ON ip. fk_interest_id_interest_payment=i.interest_id INNER JOIN loans l ON i.fk_loans_id_interest=l.loans_id INNER JOIN lc_manager lc ON lc.fk_loans_id_lc_manager=l.loans_id WHERE lc.lc_manager_id=lcId ORDER BY ip.interest_payments_id DESC LIMIT 1;
+
+
+IF expirelyTime<=timeStatmp THEN
+
+SET interestCPMPU=ROUND(((loanAmountR*interestRateAccrual)/100));
+SELECT interestCPMPU;
+
+SET NewExistInterestAmountRemain=existInterestAmountRemain+interestCPMPU;
+
+SET NewExistingInterest=existingInterest+interestCPMPU;
+
+SELECT NewExistingInterest;
+
+SET newnoPAccruals=noPAccruals+1;
+SELECT newnoPAccruals;
+SET newexpirelyTime=expirelyTime + INTERVAL 24 HOUR;
+SELECT newexpirelyTime;
+
+UPDATE interest SET interest_amount=NewExistingInterest,interest_remaining=NewExistInterestAmountRemain WHERE interest_id=interestId;
+
+
+INSERT INTO interest_payments VALUES(NULL,interestCPMPU,0,NewExistInterestAmountRemain,CURRENT_TIMESTAMP,interestId);
+
+
+UPDATE lc_manager SET lc_manager_expirely_time=newexpirelyTime,lc_manager_no_accruals=newnoPAccruals WHERE lc_manager_id=lcId;
+
+IF newnoPAccruals>=maxNoPAccruals THEN
+
+UPDATE lc_manager SET lc_manager_status=2 WHERE lc_manager_id=lcId;
+
+END IF;
+
+
+END IF;
+
+
+SET l_done=0;
+
+ END LOOP LedgerIds_loop;
+
+
+
+CLOSE selectTrnIds;
+
+END ##
+DELIMITER ;
+
+
+
+

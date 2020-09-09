@@ -20,6 +20,7 @@ import { LoanStatement } from '../models/loan-statement';
 import { GeneralLedgerDetails } from '../models/general-ledger-details';
 import { RevenueDetails } from '../models/revenue-details';
 import { UserSecret } from '../models/user-secret';
+import { SavingsRepayment } from '../models/savings-repayment';
 
 @Injectable({
   providedIn: 'root'
@@ -83,6 +84,23 @@ export class DashboardPumpService {
         catchError(this.handleError)
       );
   }
+
+  checkWhetherTheCLoanSavings(id: string): Observable<SavingsRepayment[]> {
+    const options1 = { params: new HttpParams().set('id', id) };
+
+    return this.http
+      .get<SavingsRepayment[]>(
+        `${this.API_URL}/api/pumpUserDashboard/theClientSavingPayment`,
+        options1
+      )
+
+      .pipe(
+        // tap(response => console.log(`${response}`)),
+
+        catchError(this.handleError)
+      );
+  }
+
 
   checkWhetherTheCLoanable(id: string): Observable<LoanabilityDetails[]> {
     const options1 = { params: new HttpParams().set('id', id) };

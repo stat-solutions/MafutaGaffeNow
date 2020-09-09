@@ -78,6 +78,7 @@
           >
           <div class="input-group mb-0">
             <input
+            (keyup)="updateChanged($event)"
               type="text"
               list="number_plate"
               formControlName="number_plate"
@@ -88,14 +89,14 @@
                   fval.number_plate.errors
               }"
               autocomplete="off"
-              placeholder="Select Number Plate"
+              placeholder="Enter Number Plate"
             />
             <!-- numberPlates: NumberPlates[]; -->
-            <datalist id="number_plate">
-              <option *ngFor="let item of numberPlates">{{
+            <!-- <input id="number_plate" (keyup)="updateChanged($event)"> -->
+              <!-- <option *ngFor="let item of numberPlates"> {{
                 item.customers_number_plate
-              }}</option>
-            </datalist>
+              }}</option> -->
+            <!-- </input> -->
           </div>
 
           <div
@@ -126,6 +127,16 @@
             "
           >
             The number plate should have a maximum of 8 characters!
+          </div>
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              (fval.number_plate.touched || fval.number_plate.dirty) &&
+              fval.number_plate.errors?.ugandanPlate
+            "
+          >
+            The number plate should follow the Ugandan number plate format WITHOUT SPACE!
           </div>
         </div>
         <div class="form-group text-primary">
@@ -173,6 +184,28 @@
             The Transaction amount should be in digits/numbers!
           </div>
         </div>
+
+
+        <div class="table-responsive pt-2">
+          <table class="state-table table table-striped table-sm" *ngIf="checkedOk">
+            <tbody class="text-primary">
+              <tr>
+                <td>Client Name:</td>
+                <td class="badge badge-pill badge-success">
+                  {{loanDetails.customers_name}}
+                </td>
+              </tr>
+              <tr>
+
+                  <td>Savings Available:</td>
+                  <td class="badge badge-pill badge-success">
+
+                    {{loanDetails.savings_amount_available|number}}
+                  </td>
+      </tr>
+            </tbody>
+          </table>
+                </div>
 
         <div class="d-flex mt-3 mb-0 pt-1 pb-0 mx-auto">
           <button

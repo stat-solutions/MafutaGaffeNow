@@ -340,6 +340,78 @@ DEFAULT CHARACTER SET = utf8;
 
 
 
+
+-- -----------------------------------------------------
+-- Table `loans_extra`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `loans_extra` (
+ 
+  `loans_extra_id` INT(11) NOT NULL AUTO_INCREMENT,
+
+  `interest_accruel` INT NULL DEFAULT 1, -- 1=NotExcepted,2=Excepted,3=Stopped 
+
+    `chairman_status` INT NULL DEFAULT 1, --  1=HeIsNot,2=HeIs,3=HeWasStopped 
+
+  `other_status_1` INT NULL DEFAULT 0,
+   `other_status_2` INT NULL DEFAULT 0,
+    `other_status_3` INT NULL DEFAULT 0,
+  `fk_loans_id_loans_extra` INT,
+  PRIMARY KEY (`loans_extra_id`),
+
+  CONSTRAINT `fk_loans_id_loans_extra`
+    FOREIGN KEY (`fk_loans_id_loans_extra`)
+    REFERENCES `loans` (`loans_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+    )
+ENGINE = InnoDB
+AUTO_INCREMENT = 1700
+DEFAULT CHARACTER SET = utf8;
+
+
+ CREATE INDEX `fk_loans_id_loans_extra_indx` ON `loans_extra` (`fk_loans_id_loans_extra` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `loans`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `loans` (
+  `loans_id` INT(11) NOT NULL AUTO_INCREMENT,
+
+  `loan_cycle` INT NULL,
+
+    `loan_status` INT NULL, --  1=Running,2=Completed,3=Stopped 
+
+  `loan_amount_taken` DOUBLE NULL,
+   `loan_amount_paid` DOUBLE NULL,
+    `loan_amount_remaining` DOUBLE NULL,
+  `loan_date_taken` TIMESTAMP,
+   `fk_user_id_loans` INT,
+  `fk_customers_id_loans` INT,
+
+  PRIMARY KEY (`loans_id`),
+
+  CONSTRAINT `fk_user_id_loans`
+    FOREIGN KEY (`fk_user_id_loans`)
+    REFERENCES `users` (`users_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+    
+      CONSTRAINT `fk_customers_id_loans`
+    FOREIGN KEY (`fk_customers_id_loans`)
+    REFERENCES `customers` (`customers_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+    
+    )
+ENGINE = InnoDB
+AUTO_INCREMENT = 1700
+DEFAULT CHARACTER SET = utf8;
+
+-- CREATE INDEX `fk_customers_id_loans_indx` ON `loans` (`fk_customers_id_loans` ASC) VISIBLE;
+
+
+
 -- -----------------------------------------------------
 -- Table `loan_payments`
 -- -----------------------------------------------------

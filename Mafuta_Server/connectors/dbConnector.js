@@ -7,7 +7,7 @@ dbConnectionInfo = {
   user: "root",
   password: "PRINCE?;=2020",
   connectionLimit: 5, //mysql connection pool length
-  database: "mafutagaffe",
+  database: "mafutagaffe2",
   insecureAuth : true
 };
 
